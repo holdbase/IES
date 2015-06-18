@@ -1,0 +1,28 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+
+
+
+/*公共头部开始*/
+.public_header{ width:100%; height:50px; background:#fff; border-bottom:3px solid #77829a;}
+.header_center{ width:1200px; margin:0 auto; overflow:hidden; zoom:1; font-family:'Microsoft YaHei';}
+.company_logo{ float:left; margin:10px 10px 0 0; height:30px; line-height:25px; font-size:20px; color:#333;}
+.company_logo img{ display:block; float:left; margin-right:10px;}
+.user_box{ float:right; width:110px; margin-top:10px; line-height:30px; color:#fff;  position:relative; z-index:10;}
+.user_name{ height:30px; background:#374760; font-size:14px; position:relative;}
+.user_name img{ display:inline-block; float:left; width:20px; height:20px; margin:2px 10px 0 3px; border:2px solid #2a3950}
+.user_name span.icon_arrow{ display:block; width:16px; height:16px; background-position:0 0; position:absolute; right:5px; top:7px;}
+.user_name span.zhankai{ background-position:0 -16px;}
+.user_info{ display:none; background:#374760; padding:5px 0;}
+.user_info li{ height:30px; overflow:hidden; position:relative;}
+.user_info li a{ display:block; width:110px; height:30px; line-height:30px; padding-left:10px; color:#fff; position:absolute; top:0; left:0;}
+.user_info li a:hover{ text-decoration:none; background:#14a4fa;}
+.nav_box{ overflow:hidden; zoom:1; margin-top:10px;}
+.nav_box li{ height:40px; float:left;}
+.nav_box li.active a{ background:#374760; color:#fff; border-bottom:10px solid #374760;height:40px}
+.nav_box li a{ display:block; width:80px; text-align:center; font-size:14px; height:30px; line-height:30px;  color:#666;}
+.nav_box li a:hover{ text-decoration:none;background:#e4e4e4;}
+.nav_box li.active a:hover{ text-decoration:none;background:#374760;}
+.nav_box li.hover a{background:#e4e4e4;}
+/*公共头部结束*/

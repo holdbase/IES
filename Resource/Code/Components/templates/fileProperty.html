@@ -1,0 +1,25 @@
+﻿<div>
+    <div class="pop_bg"></div>
+    <div class="pop_400">
+        <h4>资料属性设置</h4>
+        <span class="icon close_pop"></span>
+        <div class="pop_wrap">
+            <dl class="set_property">
+                <dt>关联章节</dt>
+                <dd>
+                    <select ng-model="chapter" ng-options="item.Title for item in chapters"></select>
+                </dd>
+            </dl>
+            <dl class="set_property">
+                <dt>关联知识点</dt>
+                <dd>
+                    <select ng-model="ken" ng-options="item.Name for item in kens"></select>
+                </dd>
+            </dl>
+            <div class="btn_box">
+                <a class="save" ng-click="onPropertySave(chapter, ken)">保存</a>
+                <a class="cancel">取消</a>
+            </div>
+        </div>
+    </div>
+</div>

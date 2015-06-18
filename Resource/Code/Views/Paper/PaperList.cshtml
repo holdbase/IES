@@ -1,0 +1,96 @@
+﻿<div class="exercise_search">
+    <div class="select_condition">
+        <p class="current_course">我的习题</p>
+    </div>
+    <div class="exercise_btn">
+        <span class="sort_box">[筛选]</span>
+        <a href="javascript:;" class="topic_import">
+            <em><i class="icon"></i></em>
+            <span>新建试卷</span>
+            <ul class="batch_list">
+                <li ng-repeat="item in paperTypes" ng-bind="item.name"></li>
+            </ul>
+        </a>
+        <a href="javascript:;" class="import_exercise"><em><i class="icon"></i></em><span>导出</span></a>
+        <p class="search_topic"><input type="text" placeholder="请输入您要搜索的关键字" ng-model="model.Papername"><span class="icon" ng-click="filterChanged();"></span></p>
+    </div>
+</div>
+<div class="filter_box">
+    <dl class="filter_list">
+        <dt>试卷类型</dt>
+        <dd>
+            <a ng-class="{active:model.Type==item.id}" ng-click="typeChanged(item.id);" style="cursor:pointer" ng-repeat="item in paperTypeFilters"><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>创建时间</dt>
+        <dd>
+            <a ng-class="{active:dateSelection==-1}" ng-click="dateChanged(-1)" style="cursor:pointer"><span>不限</span></a>
+            <a ng-class="{active:dateSelection==1}" ng-click="dateChanged(-1)" style="cursor:pointer"><span>一周内</span></a>
+            <a ng-class="{active:dateSelection==2}" ng-click="dateChanged(1)" style="cursor:pointer"><span>一个月内</span></a>
+            <a ng-class="{active:dateSelection==3}" ng-click="dateChanged(2)" style="cursor:pointer"><span>半年内</span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>使用权限</dt>
+        <dd>
+            <a ng-class="{active:model.Scope==item.id}" ng-click="scopeChanged(item.id);" style="cursor:pointer" ng-repeat="item in shareRangeFilters"><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <span class="guanbi"><i class="icon"></i></span>
+</div>
+<table class="course_data paper_data">
+    <tr>
+        <th width="350">
+            <div class="data_name">
+                <input type="checkbox">
+                <p>试卷名称</p>
+                <i class="icon arrow"></i>
+            </div>
+        </th>
+        <th width="100">创建人</th>
+        <th width="120">试卷类型</th>
+        <th width="90">题目数</th>
+        <th width="80">总分</th>
+        <th>最后修改日期</th>
+    </tr>
+    <tr ng-repeat="item in data">
+        <td>
+            <div class="data_name">
+                <input type="checkbox">
+                <i class="icon_24 paper"></i>
+                <p ng-bind="item.Papername"></p>
+                <input class="rename_test" type="text" ng-model="item.Papername">
+            </div>
+        </td>
+        <td ng-bind="item.CreateUserID"></td>
+        <td ng-bind="item.Type"></td>
+        <td ng-bind="item.Num"></td>
+        <td ng-bind="item.Score"></td>
+        <td>
+            {{item.UpdateTime}}
+            <div class="topic_icon">
+                <a href="javascript:;" class="icon delete_topic"></a>
+                <a href="javascript:;" class="icon icon_preview">
+                    <div class="icon_content">
+                        <span></span><p>预览</p>
+                    </div>
+                </a>
+                <a href="javascript:;" class="icon edit_topic"></a>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="resource_page">
+    <div class="page_box">
+        <a class="prev" style="cursor:pointer" ng-click="pageService.nextGroup();">&lt;&lt;</a>
+        <a class="prev" style="cursor:pointer" ng-click="pageService.next();">&lt;</a>
+        <a class="active" style="cursor:pointer" ng-click="pageService.change(item);" ng-repeat="item in pageService.pages" ng-bind="item"></a>
+        <a class="prev" style="cursor:pointer" ng-click="pageService.previous();">&gt;</a>
+        <a class="prev" style="cursor:pointer" ng-click="pageService.prevGroup();">&gt;&gt;</a>
+        <span>
+            Go To Page:
+            <select ng-model="pageService.pageIndex" ng-change="pageService.locate(pageService.pageIndex);" ng-options="item for item in allPages"></select>
+        </span>
+    </div>
+</div>

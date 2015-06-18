@@ -1,0 +1,182 @@
+﻿@using IES.JW.Model;
+@using IES.Cache;
+@using IES.Security;
+@using IES.Service;
+@using IES.Service.Common;
+@{
+    List<Menu> DropDownMenuList = AuService.Menu_UserDropDown_List();
+
+    int userspace = 3;
+    string menuid = "C2";
+
+    if (UserService.IsTeacher)
+    {
+        userspace = 2;
+        menuid = "B2";
+    }
+
+    List<Menu> TopMenulist = AuService.Menu_Top_List(userspace);
+    List<Menu> LeftMenu = AuService.Menu_Left_List(menuid, userspace);
+}
+
+@helper gethref(string url, string topmenu)
+{
+    var result = Browse.appPatch + url + "?topmenu=" + topmenu;
+    @result
+}
+
+@{
+    var aboutname = "关于卓越";
+    var abouturl = "http://www.able-elec.com";
+    var copyrigh = "Copyright©2003-2014，卓越版权所有";
+    var copyrighturl = "http://www.able-elec.com";
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind="appTitle"></title>
+    <meta name="description" content="@PageData["description"]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    @Styles.Render("~/content/css/app")
+    <script>
+        //应用程序根目录-->  结果('/')||('/g2s')
+        window.appPatch = "@Request.ApplicationPath" == "/" ? "" : "@Request.ApplicationPath";
+    </script>
+    <script src="/Resource/Frameworks/jquery/jquery-1.8.3.min.js"></script>
+    <script>
+        $(function () {
+            var oWidth = $(window).width();
+            if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+                $(".icon_fold").css('margin-left', -438);
+                oWidth = oWidth - 16;
+            } else if (navigator.userAgent.indexOf('Firefox') >= 0) {
+
+            } else if (navigator.userAgent.indexOf('Opera') >= 0) {
+
+            } else {
+                $(".icon_fold").css('margin-left', -438);
+                oWidth = oWidth - 16;
+            }
+            var mWidth = $("#wzbd").width();
+            $('#wzbd').css('margin-left', (oWidth - mWidth) / 2);
+            $(".header_center").css('margin-left', (oWidth - mWidth) / 2);
+
+        })
+    </script>
+</head>
+<body class="exercise">
+    <!--[if lt IE 9]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="wrap">
+        <!--公共头部开始-->
+        <div class="public_header">
+            <div class="header_center">
+                <div class="company_logo">
+                    @IES.Service.Common.ConfigService.CfgSchool_CC.SchoolName
+                </div>
+                <div class="user_box">
+                    <p class="user_name">
+                        <img src=@UserService.CurrentUserIMG width="20" height="20" />
+                        @UserService.CurrentUser.UserName<span class='icon icon_arrow'></span>
+                    </p>
+                    <ul class="user_info">
+                        @foreach (var menu in DropDownMenuList)
+                        {
+                            if (menu.Title == "返回主页" || menu.Title == "退出系统")
+                            {
+                            <li><a href=@gethref( @menu.URL, @menu.MenuID )>@menu.Title</a></li>
+                           }
+                        }
+                    </ul>
+                </div>
+                <ul class="nav_box">
+
+                    @for (int i = 0; i < TopMenulist.Count; i++)
+                    {
+                        var menu = TopMenulist[i];
+                        if (menu.MenuID == "B2")
+                        {
+                            <li class="active"><a target="_self" href=@gethref( @menu.URL, @menu.MenuID )>@menu.Title</a></li>
+                        }
+                        else
+                        {
+                            <li><a target="_self" href=@gethref( @menu.URL, @menu.MenuID )>@menu.Title</a></li>
+                        }
+                    }
+
+                </ul>
+            </div>
+        </div>
+        <!--公共头部结束-->
+        <div id="wzbd" class="main_all main_course">
+            <!--首页左边模块开始-->
+            <div class="side_left" ng-show="enableSideLeft">
+                <!--用户信息开始-->
+                <div class="user">
+                    <img src=@UserService.CurrentUserIMG width="110" height="100" />
+                    <a class="teacher_name" href="#"> @UserService.CurrentUser.UserName 	</a>
+                </div>
+                <!--用户信息结束-->
+                <!--侧边导航开始-->
+                <div class="side_box">
+                    <ul class="side_nav">
+                        @foreach (var menu in LeftMenu)
+                        {
+                            if (menu.Title != "试卷库")
+                            {
+                                <li id="@menu.MenuID" ui-sref-active="active"><a style="height:41px" target="_self" ui-sref="@menu.URL">@menu.Title</a></li>
+                            }
+                            else
+                            {
+                                <li id="@menu.MenuID"><a style="height:41px" target="_self" href=@Browse.appPatch@menu.URL>@menu.Title</a></li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+                <!--侧边导航结束-->
+            </div>
+            <!--首页左边模块结束-->
+            <!--右侧主题内容开始-->
+            <div class="main_content" ng-class="{'margin_exercise_new': !enableSideLeft}">
+                <div ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">
+                    @RenderBody()
+                </div>
+            </div>
+            <!--右侧主题内容结束-->
+
+        </div>
+        <a class="icon_fold" href="javascript:;" ng-show="enableSideLeft"></a>
+        <!--公用底部开始-->
+        <div class="footer">
+            <p class="copyright"><img ng-src="{{basePath}}/images/company_logo2.png" width="70" height="30" alt="">@copyrigh</p>
+            <div class="company_info">
+                <a href=@abouturl target='_blank'>@aboutname</a>
+            </div>
+        </div>
+        <!--公用底部结束-->
+        <a class="icon backto_top" href="javascript:scroll(0,0)"></a>
+    </div>
+    @Scripts.Render("~/js/framework")
+    @Scripts.Render("~/js/app")
+    @*<script src="/Scripts/PageAffect/index.js" type="text/javascript"></script>*@
+    <script src="Components/js/components.js"></script>
+    <script>
+        $(function () {
+            //个人信息展开收起
+            $('.user_box').hover(function () {
+                $(this).find('span').addClass('zhankai');
+                $(this).find('.user_info').slideDown();
+            }, function () {
+                $(this).find('span').removeClass('zhankai');
+                $(this).find('.user_info').slideUp();
+            })
+
+        });
+    </script>
+</body>
+</html>

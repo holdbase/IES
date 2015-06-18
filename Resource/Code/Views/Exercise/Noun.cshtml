@@ -1,0 +1,19 @@
+﻿
+<div class="paper_content">
+    <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
+    <attach-list attachments="attachmentList"></attach-list>
+    <p class="no_rank">名词解释答案可以为空</p>
+    <div>
+        <div class="default fill_blank">            
+            <a>x</a>
+            <input type="text" ng-model="model.exercisecommon.exercise.Conten"> 
+        </div>
+        <textarea class="form-control" rows="6" style="margin-top:5px;" ng-model="model.exercisechoicelist[0].Answer" placeholder="在此处添加答案..."></textarea>
+    </div>
+    <div class="text_box" style="color: #F00; margin-top: 20px;">
+        <input type="hidden" name="editorAnalysis" id="editorAnalysis" ng-model="editorAnalysisText" ng-value="editorAnalysisText">
+        <iframe src="Frameworks/eWebEditor/ewebeditor.htm?id=editorAnalysis&style=coolblue"
+                frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>     
+    </div>
+</div>
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>

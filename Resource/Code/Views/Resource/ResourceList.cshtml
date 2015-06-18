@@ -1,0 +1,130 @@
+﻿<!--右侧头部公告结束-->
+<div class="exercise_search">
+    <div class="select_condition">
+        <p class="current_course">
+            <span ng-repeat="item in tabTitles" style="cursor:pointer" ng-click="tabChange(item)">
+                {{item.name}}
+            </span>
+        </p>
+    </div>
+    <div class="exercise_btn">
+        <span class="sort_box" ng-click="showQuery=!showQuery">[筛选]</span>
+@*@if ((DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 19) || (DateTime.Now.Hour == 8 && DateTime.Now.Minute >= 30) || ( DateTime.Now.Hour == 20 && DateTime.Now.Minute <= 30))
+ {*@
+     <a class="topic_import"  dialog-show dialog-id="eIesUploader"><em style="background-color: #33CC66"><i class="icon"></i></em><span style="background-color: #339966">上传文件</span></a>
+@*}*@
+         <a class="add_topic" ng-click="AddFolder()"><em><i class="icon"></i></em><span>新建文件夹</span></a>
+        <batch-operation ocid="model.OCID" share-ranges="shareRanges" on-fire-remove-all="fireRemoveAll()" on-fire-mobile-batch="fireMobileBatch()"></batch-operation>
+        <p class="search_topic"><input type="text" placeholder="请输入您要搜索的关键字" ng-model="model.FileTitle"><span class="icon" ng-click="filterChanged()"></span></p>
+    </div>
+</div>
+<div class="filter_box" ng-show="showQuery">
+    <dl class="filter_list">
+        <dt>文件类型</dt>
+        <dd>
+            <a ng-class="{active:model.FileType==item.id}" ng-click="typeChanged(item.id);" ng-repeat="item in fileTypes | orderBy:'id' "><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>上传时间</dt>
+        <dd>
+            <a ng-class="{active:model.timePass==item.id}" ng-click="timeChanged(item.id);" ng-repeat="item in timePass"><span ng-bind="item.name"></span></a>
+    </dl>
+    <dl class="filter_list" ng-show="course.OCID>0">
+        <dt>使用权限</dt>
+        <dd>
+            <a ng-class="{active:model.ShareRange==item.id}" ng-click="shareChanged(item.id);" ng-repeat="item in shareRangesQuery"><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <span class="guanbi" style="cursor:pointer;" ng-click="showQuery=!showQuery"><i class="icon"></i></span>
+</div>
+<table class="course_data">
+    <thead>
+        <tr>
+            <th width="38%">
+                <div class="data_name">
+                    <input type="checkbox" ng-model="selectionAllToggle" ng-true-value="YES" ng-false-value="NO">
+                    <p>文件名称</p>
+                    <i class="icon arrow" ng-click="changeOrder('Name');"></i>
+                </div>
+            </th>
+            <th width="12%" ng-show="model.OCID!=0">
+                <div class="data_name">
+                    <p>使用权限</p>
+                </div>
+            </th>
+            <th width="10%" ng-show="model.OCID!=0">
+                <div class="data_name">
+                    <p>关联知识点</p>
+                </div>
+            </th>
+            <th width="10%" ng-show="model.OCID!=0">
+                <div class="data_name">
+                    <p>上传用户</p>
+                    @*<i class="icon arrow" ng-click="changeOrder('Name');"></i>*@
+                </div>
+            </th>
+            <th width="10%">文件大小</th>
+            <th width="10%">
+                <div class="data_name">
+                    <p>修改日期</p>
+                    <i class="icon arrow" ng-click="changeOrder('CreateTime');"></i>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    @*<tr ng-repeat="item in folderRelations | orderBy:orderField">*@
+    <tr ng-repeat="item in folderRelations">
+        <td>
+            <div class="data_name">
+                <input type="checkbox" checklist-model="checks" checklist-value="item" ng-class="{'hideAuth': !authService.hasAuth(item.CreateUserID, model.OCID)}">
+                <folder file-item="item" folder-name="item.Name" folder-ext="item.Ext" folder-item="item" on-open="folderClick(item)" on-blur="updFolderName(item)"></folder>
+                <div class="file_operation">
+                    <div class="more_operation">
+                        <span>...</span>
+                        <file-operation on-property="fileProperty(item)"
+                                        on-remove="fireRemove(item)"
+                                        on-return-page="returnPage(item)"
+                                        on-mobile="fireMobile(item)"
+                                        folder-relation="item"
+                                        ocid="model.OCID"
+                                        creater="item.CreateUserID"
+                                        share-ranges="shareRanges">
+                        </file-operation>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td ng-bind="GetShareRange(item.ShareRange)" ng-show="model.OCID!=0"></td>
+        <td ng-show="model.OCID!=0" title="{{item.Kens}}" >
+            <p ng-bind="item.Kens" style="width:100px; float:left;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;line-height:20px;"></p>
+        </td>
+        <td ng-bind="item.RelationType==1?item.CreateUserName:'一'" ng-show="model.OCID!=0"></td>
+        <td ng-bind="item.FileSize!=0?CalculatedSize(item.FileSize):'一'"></td>
+        <td ng-bind="item.CreateTime | dateFormat"></td>
+    </tr>
+</table>
+
+<div class="pop_400" ng-show="delIsShow">
+    <h4>删除</h4>
+    <span class="icon close_pop" ng-click="close()"></span>
+    <div class="pop_wrap">
+        <p class="confirm_tip">删除操作不能恢复, 继续该操作吗？</p>
+        <div class="btn_box">
+            <a class="save" ng-click="removeAll()">确定</a>
+            <a class="cancel" ng-click="close()">取消</a>
+        </div>
+    </div>
+</div>
+<div class="pop_bg" ng-show="bgShow"></div>
+<div class="pop_400" ng-show="moveShow">
+    <move-folder on-move-file-submit="moveFileSubmit()"
+                 on-close="close()" files="folderTrees"></move-folder>
+</div>
+
+<file-property id="fileProp" style="display:none" chapter="chapter" chapters="chapters" ken="ken" kens="kens"></file-property>
+<ies-file-uploader id="eIesUploader" style="display:none"
+                   ocid="course.OCID"
+                   course-id="course.CourseID"
+                   folder-obj="folderRelation"
+                   file-catetory="1" />

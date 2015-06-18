@@ -1,0 +1,33 @@
+﻿<div class="all_knowledge">
+    <dl class="knowledge_list">
+        <dt>全部知识点</dt>
+        <ies-ken-item ng-repeat="item in ocKens"
+                      on-remove="fireRemove(item)"
+                      on-edit="editKen(item)"
+                      ng-click="kenFocus(item)"
+                      ken-item="item"
+                      data-ken="dataKen"></ies-ken-item> 
+    </dl>
+    <dl class="knowledge_list">
+        <dt>关联章节</dt>
+        <ken-chapter-item ng-repeat="item in dataChapters" 
+                          ng-click="chapterFocus(item)"
+                          ken-chapter="item" data-chapter="dataChapter"
+                          >
+
+        </ken-chapter-item> 
+    </dl>
+</div> 
+
+<div class="pop_bg" ng-show="bgShow"></div>
+<div class="pop_400" ng-show="delIsShow">
+    <h4>删除</h4>
+    <span class="icon close_pop" ng-click="cancelRemove()"></span>
+    <div class="pop_wrap">
+        <p class="confirm_tip">是否确定删除已选择的知识点吗？</p>
+        <div class="btn_box">
+            <a class="save" ng-click="removeKen(willRemovedKen)">确定</a>
+            <a class="cancel" ng-click="cancelRemove()">取消</a>
+        </div>
+    </div>
+</div>

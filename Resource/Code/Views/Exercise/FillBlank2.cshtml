@@ -1,0 +1,22 @@
+﻿<div class="paper_content">
+    <div class="text_box" style="color:#F00;">
+        <textarea class="form-control" rows="4" ng-model="model.exercisecommon.exercise.Conten"></textarea>
+    </div>
+    <a class="add_attach" href="#"><em><i class="icon"></i></em><span>添加附件</span></a>
+    <div class="blank_item" ng-repeat="item in model.exercisechoicelist">
+        <div class="default objective_answer">
+            <input type="text" ng-model="item.Answer">
+            <span class="icon icon_unfold"></span>
+        </div>
+        <div class="default alternative_answer">
+            <a ng-click="Del(item)">x</a>
+            <input type="text" placeholder="备选答案请用逗号隔开" ng-model="item.Spare">
+            <span class="icon icon_unfold"></span>
+        </div>
+    </div>
+    <a class="add_attach" ng-click="Add()"><em><i class="icon"></i></em><span>添加选项</span></a>
+    <div class="text_box" style="color:#F00; margin-top:20px;">
+        试题解析：
+        <textarea class="form-control" rows="4" ng-model="model.exercisecommon.exercise.Analysis"></textarea>      
+    </div>
+</div>

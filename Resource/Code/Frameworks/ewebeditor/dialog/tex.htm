@@ -1,0 +1,461 @@
+﻿<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv=X-UA-Compatible content=IE=EmulateIE7>
+<script language=javascript src="dialog1.js"></script>
+
+<script language="javascript">
+document.write ("<link href='dialog.css' type='text/css' rel='stylesheet'>");
+//document.write("<link href='../language/"+lang.ad+".css' type='text/css' rel='stylesheet'>");
+//document.write("<link href='../skin/"+config.Skin+"/dialog.css' type='text/css' rel='stylesheet'>");
+var sAction="INSERT";
+var sTitle="插入";
+
+var oControl;
+var oSeletion;
+var sRangeType;
+
+var sFromUrl="";
+//var sTexUrl="http://www.yifou.com/cgi-bin/tex.exe?";
+//var sImgurl="http://www.yifou.com/temp/";
+var sTexUrl = "/Resource/Frameworks/eWebEditor/cgi-bin/tex.exe?";
+var sImgurl = "/Resource/Frameworks/eWebEditor/cgi-bin/tex.exe?";
+var sGif="";
+var sAlt="";
+var sBorder="0";
+var sBorderColor="";
+var sFilter="";
+var sAlign="";
+var sWidth="";
+var sHeight="";
+var sVSpace="";
+var sHSpace="";
+
+oSelection=dialogArguments.eWebEditor.document.selection.createRange();
+sRangeType=dialogArguments.eWebEditor.document.selection.type;
+
+if (sRangeType == "Control") {
+	if (oSelection.item(0).tagName == "IMG"){
+		sAction="MODI";
+		sTitle="修改";
+		oControl=oSelection.item(0);
+		sFromUrl=oControl.getAttribute("src", 2).substr(sTexUrl.length);
+		sAlt=oControl.alt;
+		sBorder=oControl.border;
+		sBorderColor=oControl.style.borderColor;
+		sFilter=oControl.style.filter;
+		sAlign=oControl.align;
+		sWidth=oControl.width;
+		sHeight=oControl.height;
+		sVSpace=oControl.vspace;
+		sHSpace=oControl.hspace;
+	}
+}
+
+document.write("<title>公式属性(" + sTitle + ")</title>");
+
+function InitDocument(){
+	SearchSelectValue(d_filter, sFilter);
+	SearchSelectValue(d_align, sAlign.toLowerCase());
+	d_fromurl.value=sFromUrl;
+	d_alt.value=sAlt;
+	d_border.value=sBorder;
+	d_bordercolor.value=sBorderColor;
+	s_bordercolor.style.backgroundColor=sBorderColor;
+	d_width.value=sWidth;
+	d_height.value=sHeight;
+	d_vspace.value=sVSpace;
+	d_hspace.value=sHSpace;
+
+	var w=tabDialogSize.offsetWidth + 6;
+	var h=tabDialogSize.offsetHeight + 25;
+	if(config.IsSP2){
+		h += 20;
+	}
+	window.dialogWidth=w + "px";
+	window.dialogHeight=h + "px";
+	window.dialogLeft=(screen.availWidth - w) / 2;
+	window.dialogTop=(screen.availHeight - h) / 2;
+
+showimages();
+}
+
+function trim(s)
+{
+    if (s == null)
+    {
+        return s;
+    }
+
+    var i;
+    var beginIndex=0;
+    var endIndex=s.length - 1;
+
+    for (i=0; i<s.length; i++)
+    {
+        if (s.charAt(i) == ' ' || s.charAt(i) == '　')
+        {
+            beginIndex++;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    for (i=s.length - 1; i >= 0; i--)
+    {
+        if (s.charAt(i) == ' ' || s.charAt(i) == '　')
+        {
+            endIndex--;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    if (endIndex < beginIndex)
+    {
+        return "";
+    }
+
+    return s.substring(beginIndex, endIndex + 1);
+}
+
+function ReturnValue(){
+	var trueURL = d_fromurl.value;
+	sFromUrl=md5(trim(d_fromurl.value));
+	sAlt=d_alt.value;
+	sBorder=d_border.value;
+	sBorderColor=d_bordercolor.value;
+	sFilter=d_filter.options[d_filter.selectedIndex].value;
+	sAlign=d_align.value;
+	sWidth=d_width.value;
+	sHeight=d_height.value;
+	sVSpace=d_vspace.value;
+	sHSpace=d_hspace.value;
+
+	if (sAction == "MODI") {
+                oControl.src=sTexUrl + sFromUrl;
+		oControl.alt=sAlt;
+		oControl.border=sBorder;
+		oControl.style.borderColor=sBorderColor;
+		oControl.style.filter=sFilter;
+		oControl.align=sAlign;
+		oControl.width=sWidth;
+		oControl.height=sHeight;
+		oControl.style.width=sWidth;
+		oControl.style.height=sHeight;
+		oControl.vspace=sVSpace;
+		oControl.hspace=sHSpace;
+	}else{
+		var sHTML='';
+		if (sFilter!=""){
+			sHTML=sHTML+'filter:'+sFilter+';';
+		}
+		if (sBorderColor!=""){
+			sHTML=sHTML+'border-color:'+sBorderColor+';';
+		}
+		if (sHTML!=""){
+			sHTML=' style="'+sHTML+'"';
+		}
+		sHTML = '<img id=Editor_TempElement_Img src="/Resource/Frameworks/eWebEditor/cgi-bin/tex.exe?' + trueURL + '"' + sHTML;
+		if (sBorder!=""){
+			sHTML=sHTML+' border="'+sBorder+'"';
+		}
+		if (sAlt!=""){
+			sHTML=sHTML+' alt="'+sAlt+'"';
+		}
+		if (sAlign!=""){
+			sHTML=sHTML+' align="'+sAlign+'"';
+		}
+		if (sWidth!=""){
+			sHTML=sHTML+' width="'+sWidth+'"';
+		}
+		if (sHeight!=""){
+			sHTML=sHTML+' height="'+sHeight+'"';
+		}
+		if (sVSpace!=""){
+			sHTML=sHTML+' vspace="'+sVSpace+'"';
+		}
+		if (sHSpace!=""){
+			sHTML=sHTML+' hspace="'+sHSpace+'"';
+		}
+		sHTML=sHTML+'>';
+
+		dialogArguments.insertHTML(sHTML);
+
+		var oTempElement=dialogArguments.eWebEditor.document.getElementById("Editor_TempElement_Img");
+		oTempElement.src =sImgurl +  trueURL + sGif;
+		oTempElement.removeAttribute("id");
+	}
+
+	window.returnValue=null;
+	window.close();
+}
+
+function replaceSpace(s){
+	return s.replace(/(^\s*)|(\s*$)/g, '');  
+}
+
+function showimages() {
+	var temp = replaceSpace(d_fromurl.value);
+	if(temp==''){
+		sFromUrl=sTexUrl+'EDIT';
+	}else{
+		sFromUrl=sTexUrl + d_fromurl.value;
+	}
+	sBorder=d_border.value;
+	sAlign=d_align.value;
+	sWidth=d_width.value;
+	sHeight=d_height.value;
+	var sHTML='';
+		if (sFilter!=""){
+			sHTML=sHTML+'filter:'+sFilter+';';
+		}
+		if (sBorderColor!=""){
+			sHTML=sHTML+'border-color:'+sBorderColor+';';
+		}
+		if (sHTML!=""){
+			sHTML=' style="'+sHTML+'"';
+		}
+		sHTML='<img id=Editor_TempElement_Img src="'+sFromUrl+'"'+sHTML;
+		if (sBorder!=""){
+			sHTML=sHTML+' border="'+sBorder+'"';
+		}
+		if (sAlt!=""){
+			sHTML=sHTML+' alt="'+sAlt+'"';
+		}
+		if (sAlign!=""){
+			sHTML=sHTML+' align="'+sAlign+'"';
+		}
+		if (sWidth!=""){
+			sHTML=sHTML+' width="'+sWidth+'"';
+		}
+		if (sHeight!=""){
+			sHTML=sHTML+' height="'+sHeight+'"';
+		}
+		if (sVSpace!=""){
+			sHTML=sHTML+' vspace="'+sVSpace+'"';
+		}
+		if (sHSpace!=""){
+			sHTML=sHTML+' hspace="'+sHSpace+'"';
+		}
+		sHTML=sHTML+'>';
+	if (sFromUrl.length<20){sHTML='';}
+	document.getElementById('showimage').innerHTML=sHTML;
+}
+
+function ok() {
+	d_border.value=ToInt(d_border.value);
+	d_width.value=ToInt(d_width.value);
+	d_height.value=ToInt(d_height.value);
+	d_vspace.value=ToInt(d_vspace.value);
+	d_hspace.value=ToInt(d_hspace.value);
+
+	if (!IsColor(d_bordercolor.value)){
+		BaseAlert(d_bordercolor,"提示：\n\n无效的边框颜色值！");
+		return false;
+	}
+	else{
+        ReturnValue();
+	}
+}
+
+function storeCaret(textEl) {
+    //debugger;
+   if (textEl.createTextRange) {
+     textEl.focus();
+     textEl.caretPos=document.selection.createRange().duplicate();
+  }
+}
+
+function insertAtCaret (textEl, text) {
+  if (textEl.createTextRange && textEl.caretPos) {
+    var caretPos=textEl.caretPos;
+    caretPos.text=caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+  }
+  else {
+    textEl.value =text;
+  }
+  showimages();
+}
+
+function eqntext(el) {
+  var tArea=document.getElementById('d_fromurl');
+  storeCaret(tArea);
+  insertAtCaret(tArea,el);
+}
+function SelectBrowse(type, what) {
+    var el = document.all("d_" + what);
+    var left = (window.screen.width - 600) / 2;
+    var top = (window.screen.height - 500) / 2;
+    var arr = showModalDialog( type + '.htm?return=input&type=' + type , window, "dialogWidth:820px;dialogHeight:500px;help:no;scroll:yes;status:no");
+    if (arr) {
+        if (type == "file") {
+            var hidrealname = document.all("d_filename");
+            hidrealname.value = arr.split("$")[0];
+            el.value = arr.split("$")[1];
+        }
+        else {
+            el.value = arr;
+        }
+    }
+}
+</script>
+
+<BODY onload="InitDocument()">
+<table width=800 border=0 cellpadding=0 cellspacing=8 align=center id=tabDialogSize>
+  <tr>
+    <td width="55%" height="100%">
+      <table border=0 cellpadding=0 cellspacing=0 align=center width="100%">
+	<tr>
+	  <td>
+	    <fieldset>
+              <legend><span>公式编辑</span></legend>
+	      <table border=0 cellpadding=5 cellspacing=0 width="100%">
+		<tr>
+                  <td>
+                    <table border=0 cellpadding=0 cellspacing=2 width="100%">
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\mathbb{}')"><img src="img/mathbb.gif" alt="BBOLD体"></a><img src="img/Unt.gif"><a onclick="eqntext('\\cal{}')"><img src="img/cal.gif" alt="大写CAL体"></a><img src="img/Unt.gif"><a onclick="eqntext('\\scr{}')"><img src="img/scr.gif" alt="大写SCR体"></a><img src="img/Unt.gif"><a onclick="eqntext('\\tiny')"><img src="img/tiny.gif" alt="0号或指令\fs0"></a><img src="img/Unt.gif"><a onclick="eqntext('\\fs1')"><img src="img/fs1.gif" alt="1号或指令\small"></a><img src="img/Unt.gif"><a onclick="eqntext('\\normalsize')"><img src="img/normalsize.gif" alt="2号或指令\fs2"></a><img src="img/Unt.gif"><a onclick="eqntext('\\large')"><img src="img/large.gif" alt="3号默认"></a><img src="img/Unt.gif"><a onclick="eqntext('\\Large')"><img src="img/large1.gif" alt="4号或指令\fs4"></a><img src="img/Unt.gif"><a onclick="eqntext('\\fs5')"><img src="img/fs5.gif" alt="5号或指令\LARGE"></a><img src="img/Unt.gif"><a onclick="eqntext('\\huge')"><img src="img/huge.gif" alt="6号或指令\fs6"></a><img src="img/Unt.gif"><a onclick="eqntext('\\fs7')"><img src="img/fs7.gif" alt="7号或指令\Huge"></a><img src="img/Unt.gif"><a onclick="eqntext('\\,')"><img src="img/spces1.gif" alt="字符间隙增加1pix或指令\/"></a><img src="img/Unt.gif"><a onclick="eqntext('\\:')"><img src="img/spces2.gif" alt="字符间隙增加2pix或指令\quad"></a><img src="img/Unt.gif"><a onclick="eqntext('\\;')"><img src="img/spces3.gif" alt="字符间隙增加3pix或指令\qquad"></a><img src="img/Unt.gif"><a onclick="eqntext('\\hspace{}')"><img src="img/hspace.gif" alt="自定义字符相对间隙或行对齐间隙"></a><img src="img/Unt.gif"><a onclick="eqntext('{{}\\hfill{}{}}\\hfill{}{}')"><img src="img/hfill.gif" alt="自定义字符左绝对间隙"></a><img src="img/Unt.gif"><a onclick="eqntext('{}\\hfill{}{{}\\hfill{}{}}')"><img src="img/hfill1.gif" alt="自定义字符右绝对间隙"></a><img src="img/Unt.gif"><a onclick="eqntext('\\red')"><img src="img/red.gif" alt="红色"></a><img src="img/Unt.gif"><a onclick="eqntext('\\blue')"><img src="img/blue.gif" alt="蓝色"></a><img src="img/Unt.gif"><a onclick="eqntext('\\green')"><img src="img/green.gif" alt="绿色"></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\alpha')"><img src="img/alpha.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\beta')"><img src="img/beta.gif" alt="分号"></a><img src="img/Unt.gif"><a onclick="eqntext('\\gamma')"><img src="img/gamma.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\delta')"><img src="img/delta.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\epsilon')"><img src="img/epsilon.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\zeta')"><img src="img/zeta.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\eta')"><img src="img/eta.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\theta')"><img src="img/theta1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\iota')"><img src="img/iota.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\kappa')"><img src="img/kappa.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\lambda')"><img src="img/lambda1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\mu')"><img src="img/mu.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\nu')"><img src="img/nu.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\xi')"><img src="img/xi1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\pi')"><img src="img/pi1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\rho')"><img src="img/pho.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sigma')"><img src="img/sigma1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\tau')"><img src="img/tau.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\upsilon')"><img src="img/upsilon1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\phi')"><img src="img/phi1.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\chi')"><img src="img/chi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\psi')"><img src="img/psi1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\omega')"><img src="img/omega1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\varepsilon')"><img src="img/varepsilon.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\vartheta')"><img src="img/vartheta.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\varpi')"><img src="img/varpi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\varrho')"><img src="img/varrho.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\varsigma')"><img src="img/varsigma.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\varphi')"><img src="img/varphi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Theta')"><img src="img/theta.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Lambda')"><img src="img/lambda.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Xi')"><img src="img/xi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Pi')"><img src="img/pi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Sigma')"><img src="img/sigma.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Upsilon')"><img src="img/upsilon.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Phi')"><img src="img/phi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Psi')"><img src="img/psi.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Omega')"><img src="img/omega.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\\\')"><img src="img/enter.gif" alt="换行"></a><img src="img/Unt.gif"><a onclick="eqntext('\\Longupdownarrow')"><img src="img/longupdownarrow1.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\vec{}')"><img src="img/vec.gif" alt="箭头"></a><img src="img/Unt.gif"><a onclick="eqntext('\\bar{}')"><img src="img/bar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\hat{}')"><img src="img/hat.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\tilde{}')"><img src="img/tilde.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\dot{}')"><img src="img/dot.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\ddot{}')"><img src="img/ddot.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\underline{}')"><img src="img/underline.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\overbrace{}')"><img src="img/overbrace.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\underbrace{}')"><img src="img/underbrace.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\longrightarrow')"><img src="img/longrightarrow.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Longrightarrow')"><img src="img/longrightarrow1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\longleftarrow')"><img src="img/longleftarrow.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Longleftarrow')"><img src="img/longleftarrow1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\longleftrightarrow')"><img src="img/longleftrightarrow.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Longleftrightarrow')"><img src="img/longleftrightarrow1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Longuparrow')"><img src="img/longuparrow.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\longuparrow')"><img src="img/longuparrow1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\longdownarrow')"><img src="img/longdownarrow.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Longdownarrow')"><img src="img/longdownarrow1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\longupdownarrow')"><img src="img/longupdownarrow.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\picture(100,100){}')"><img src="img/img.gif" alt="绘图"></a><img src="img/Unt.gif"><a onclick="eqntext('\\circle()')"><img src="img/circle.gif" alt="画圆"></a><img src="img/Unt.gif"><a onclick="eqntext('\(50,50){}')"><img src="img/weizhi.gif" alt="位置"></a><img src="img/Unt.gif"><a onclick="eqntext('\\line()')"><img src="img/line.gif" alt="画线"></a><img src="img/Unt.gif"><a onclick="eqntext('\\left(...\\\\...\\\\...\\right)')"><img src="img/juzhen.gif" alt="矩阵"></a><img src="img/Unt.gif"><a onclick="eqntext('\\overbrace{ac}^{x}')"><img src="img/upx.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\frac{}{}')"><img src="img/hor_fraction.gif" alt="分号"></a><img src="img/Unt.gif"><a onclick="eqntext('\\normalsize\\displaystyle\\sum_{n=0}^{\\infty}{}')"><img src="img/equation.gif" alt="求和"></a><img src="img/Unt.gif"><a onclick="eqntext('\\sqrt{}')"><img src="img/square_root.gif" alt="根号"></a><img src="img/Unt.gif"><a onclick="eqntext('\\triangleleft')"><img src="img/triangleleft.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\triangleright')"><img src="img/triangleright.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\rightharpoondo')"><img src="img/rightharpoondo.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\large\\oint_{}{}')"><img src="img/quxianjifen.gif" alt="曲线积分"></a><img src="img/Unt.gif"><a onclick="eqntext('\\large\\int_{}^{}{}')"><img src="img/int.gif" alt="积分"></a><img src="img/Unt.gif"><a onclick="eqntext('\\large\\log_{x}{y}')"><img src="img/log.gif" alt="对数"></a><img src="img/Unt.gif"><a onclick="eqntext('\\large\\prod\\nolimits_{x}^{y}')"><img src="img/ji.gif" alt="求积"></a><img src="img/Unt.gif"><a onclick="eqntext('\\large f^{\\prime\\prime}(x)')"><img src="img/piepie.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\large f^{\\prime}(x)')"><img src="img/pie.gif" alt=""></a></td>
+		      </tr>
+		    
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\triangle')"><img src="img/triangle.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\bigtriangledo')"><img src="img/bigtriangledo.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\\'')"><img src="img/img1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\neg')"><img src="img/neg.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\top')"><img src="img/top.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\bot')"><img src="img/bot.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\cup')"><img src="img/cup.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\cap')"><img src="img/cap.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\spadesuit')"><img src="img/spadesuit.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Heart')"><img src="img/Heart.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Diamond')"><img src="img/diamonds.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\clubsuit')"><img src="img/clubsuit.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\P')"><img src="img/p.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sqsupseteq')"><img src="img/sqsupseteq.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sqsubseteq')"><img src="img/sqsubseteq.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sqcap')"><img src="img/sqcap.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sqcup')"><img src="img/sqcup.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\leftharpoonup')"><img src="img/leftharpoonup.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\leftharpoondo')"><img src="img/leftharpoondo.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\rightharpoonup')"><img src="img/rightharpoonup.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\leftar')"><img src="img/leftar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\rightar')"><img src="img/righttar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\uparr')"><img src="img/uparr.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\downar')"><img src="img/downar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\leftrightar')"><img src="img/leftrightar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\near')"><img src="img/near.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sear')"><img src="img/sear.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\simeq')"><img src="img/simeq.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Leftar')"><img src="img/Leftar1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Rightar')"><img src="img/Rightar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Upar')"><img src="img/Upar1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Downar')"><img src="img/Downar1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Leftrightar')"><img src="img/Leftrightar1.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\nwar')"><img src="img/nwar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\swar')"><img src="img/swar.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\propto')"><img src="img/propto.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\prime')"><img src="img/prime.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\infty')"><img src="img/infty.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\in')"><img src="img/in.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\ni')"><img src="img/ni.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\cdot')"><img src="img/cdot.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\times')"><img src="img/times.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\ast')"><img src="img/mul.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\div')"><img src="img/divide.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\diamond')"><img src="img/diamond.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\pm')"><img src="img/pm.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\mp')"><img src="img/mp.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\oplus')"><img src="img/oplus.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\ominus')"><img src="img/ominus.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\oslash')"><img src="img/oslash.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\odot')"><img src="img/odot.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\bigcirc')"><img src="img/bigcirc.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\circ')"><img src="img/circ.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\bullet')"><img src="img/bullet.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\asymp')"><img src="img/asymp.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\equiv')"><img src="img/equiv.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\subseteq')"><img src="img/subseteq.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\supseteq')"><img src="img/supseteq.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\leq')"><img src="img/dsp_less_equal.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\geq')"><img src="img/dsp_greater_equal.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><img src="img/Unt1.gif"><a onclick="eqntext('\\sqrt{}')"><img src="img/square_root.gif" alt="平方根"></a><img src="img/Unt.gif"><a onclick="eqntext('\\sqrt[]{}')"><img src="img/root.gif" alt="根式"></a><img src="img/Unt.gif"><a onclick="eqntext('\\frac{}{}')"><img src="img/hor_fraction.gif" alt="分式"></a><img src="img/Unt.gif"><a onclick="eqntext('\\normalsize\\displaystyle\\sum_{}^{}{}')"><img src="img/equation.gif" alt="求和"></a><img src="img/Unt.gif"><a onclick="eqntext('\\large\\int_{}^{}{}')"><img src="img/int.gif" alt="积分"></a><img src="img/Unt.gif"><a onclick="eqntext('\\left|{}\\right|')"><img src="img/abs_value.gif" alt="绝对值"></a><img src="img/Unt.gif"><a onclick="eqntext('{}^{}')"><img src="img/pinfang.gif" alt="上标"></a><img src="img/Unt.gif"><a onclick="eqntext('{}_{}')"><img src="img/pinfang1.gif" alt="下标"></a><img src="img/Unt.gif"><a onclick="eqntext('\\left({}\\right)')"><img src="img/parenthesis.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\sim')"><img src="img/sim.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\lim_{}{}')"><img src="img/lim.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\not{=}')"><img src="img/dsp_notequal.gif" alt="不等号"></a><img src="img/Unt.gif"><a onclick="eqntext('\\approx')"><img src="img/approx.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\subset')"><img src="img/subset.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\supset')"><img src="img/supset.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\middle/')"><img src="img/diag_fraction.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\Delta')"><img src="img/del.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\fbox{}')"><img src="img/fbox.gif" alt="边框"></a><img src="img/Unt.gif"><a onclick="eqntext('\\ll')"><img src="img/ll.gif" alt=""></a><img src="img/Unt.gif"><a onclick="eqntext('\\gg')"><img src="img/gg.gif" alt=""></a></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="100%"><textarea rows=8 type=text name="d_fromurl" cols=64 value="" onkeyup="showimages()"></textarea></td>
+		      </tr>
+		    </table>
+		  </td>
+                </tr>
+              </table>
+	    </fieldset>
+	  </td>
+	</tr>
+	<tr><td height=5></td></tr>
+        <tr>
+          <td noWrap align=right width="100%"><input type=submit value='确定' id=Ok onclick="ok()">&nbsp;&nbsp;<input type=button  value='取消' onclick="window.close();"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="45%">
+      <table border=0 cellpadding=0 cellspacing=0 align=center width="100%">
+	<tr>
+	  <td>
+	    <fieldset>
+	      <legend><span>显示效果</span></legend>
+	      <table border=0 cellpadding=5 cellspacing=0 width="100%">
+		<tr>
+                  <td>
+		    <table border=0 cellpadding=0 cellspacing=2 width="100%">
+		      <tr>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;说明文字</span></td>
+			<td noWrap width="80%" colspan=3><input type=text id=d_alt value="" style="width:100%"></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;边框粗细</span></td>
+			<td noWrap width="30%"><input style="width:100px" type=text id=d_border value="" ONKEYPRESS="event.returnValue=IsDigit();"></td>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;边框颜色</span></td>
+			<td noWrap width="30%"><input style="width:82px" type=text id=d_bordercolor value=""><img border=0 src="../image/rect.gif" width=18 style="cursor:hand" id=s_bordercolor  align=absmiddle></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;特殊效果</span></td>
+			<td noWrap width="30%">
+				<select id=d_filter style="width:100px">
+				<option value='' selected>无</option>
+				<option value='Alpha(Opacity=50)'>半透明</option>
+				<option value='Alpha(Opacity=0, FinishOpacity=100, Style=1, StartX=0, StartY=0, FinishX=100, FinishY=140)'>线型透明</option>
+				<option value='Alpha(Opacity=10, FinishOpacity=100, Style=2, StartX=30, StartY=30, FinishX=200, FinishY=200)'>放射透明</option>
+				<option value='blur(add=1,direction=14,strength=15)'>模糊效果</option>
+				<option value='blur(add=true,direction=45,strength=30)'>风动模糊</option>
+				<option value='Wave(Add=0, Freq=60, LightStrength=1, Phase=0, Strength=3)'>正弦波纹</option>
+				<option value='gray'>黑白照片</option>
+				<option value='Chroma(Color=#FFFFFF)'>白色透明</option>
+				<option value='DropShadow(Color=#999999, OffX=7, OffY=4, Positive=1)'>投射阴影</option>
+				<option value='Shadow(Color=#999999, Direction=45)'>阴影</option>
+				<option value='Glow(Color=#ff9900, Strength=5)'>发光</option>
+				<option value='flipv'>垂直翻转</option>
+				<option value='fliph'>左右翻转</option>
+				<option value='grays'>降低彩色</option>
+				<option value='xray'>X光照片</option>
+				<option value='invert'>底片</option>
+				</select>		
+			</td>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;对齐方式</span></td>
+			<td noWrap width="30%">
+				<select id=d_align style="width:100px">
+				<option value='' selected>默认</option>
+				<option value='left'>左对齐</option>
+				<option value='right'>右对齐</option>
+				<option value='top'>顶部</option>
+				<option value='middle'>中部</option>
+				<option value='bottom'>底部</option>
+				<option value='absmiddle'>绝对居中</option>
+				<option value='absbottom'>绝对底部</option>
+				<option value='baseline'>基线</option>
+				<option value='texttop'>文本顶部</option>
+				</select>
+			</td>
+		      </tr>
+		      <tr>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;公式宽度</span></td>
+			<td noWrap width="30%"><input style="width:100px" type=text id=d_width value="" ONKEYPRESS="event.returnValue=IsDigit();" maxlength=4></td>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;公式高度</span></td>
+			<td noWrap width="30%"><input style="width:100px" type=text id=d_height value="" ONKEYPRESS="event.returnValue=IsDigit();" maxlength=4></td>
+		      </tr>
+		      <tr>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;上下间距</span></td>
+			<td noWrap width="30%"><input style="width:100px" type=text id=d_vspace value="" ONKEYPRESS="event.returnValue=IsDigit();" maxlength=2></td>
+			<td noWrap width="20%"><span>&nbsp;&nbsp;左右间距</span></td>
+			<td noWrap width="30%"><input style="width:100px" type=text id=d_hspace value="" ONKEYPRESS="event.returnValue=IsDigit();" maxlength=2></td>
+		      </tr>
+		    </table>
+		  </td>
+                </tr>
+	      </table>
+	    </fieldset>
+          </td>
+        </tr>
+	<tr><td height=7></td></tr>
+	<tr>
+	  <td height="222">
+            <fieldset style="height:100%">
+              <legend><span>公式预览</span></legend>
+	      <table border=0 cellpadding=0 cellspacing=5 width="100%" height="88%" valign=top>
+	        <tr>
+                  <td bgcolor=#D4D2CC align=center valign=middle id=showimage></td>
+                </tr>
+              </table>
+            </fieldset>
+	  </td>
+	</tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../../jquery/jquery-1.8.3.min.js"></script>
+    <link href="../../../Css/common.css" rel="stylesheet" />
+    <link href="../../../Css/mooc.css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <div class="pop_600" style="display: block; top: 1px; overflow-x: hidden; overflow-y: auto;">
+        <div class="wrap_box">
+            <div class="search_box">
+               <div id="div_set" style=" float:left;width:200px;"></div>
+                <div style=" margin-left:200px;" id="div_search">
+                    <input type="text" id="txt_search" placeholder="输入搜索关键字">
+                    <a class="icon icon_search" style="right:-195px;" href="javascript:void(0)" onclick="File_Search();"></a>
+                </div>
+            </div>
+            <div class="course_data_box">
+                <ul class="course_data_nav">
+                    <li class="active" id="li_1" onclick="qiehuan(1)" ><a href="#">课程资料</a></li>
+                    <li id="li_2" onclick="qiehuan(2)"><a href="#">个人资料</a></li>
+                </ul>
+                <!--<table class="data_table">
+                    <tr>
+                        <td width="405"><p class="file_tit"><input type="checkbox">文件名称</p></td>
+                        <td width="67"><p class="file_tit">大小</p></td>
+                        <td><p class="file_tit">修改日期</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 mp4"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 ppt"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 mp4"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 ppt"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 mp4"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 ppt"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 mp4"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="file_name">
+                                <input type="checkbox">
+                                <i class="icon_24 ppt"></i>
+                                实际环境口语训练.mp4
+                            </p>
+                        </td>
+                        <td><p class="file_name">34.65M</p></td>
+                        <td><p class="file_name">2014-12-31</p></td>
+                    </tr>
+                </table>-->
+                <div id="div_filelist" style=" min-height:320px;"></div>
+               
+            </div>
+        </div>
+        <div class="selected_box">
+           
+            <div class="btn_box">
+                <a class="keep" href="javascript:;" onclick="GetOk();">保存</a>
+                <a class="cancel" href="javascript:;" onclick="window.close()">取消</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Get_Site();
+        File_Search();
+       
+    });
+
+    //切换
+    function qiehuan(type) {
+        if (type == 1) {
+            $("#li_2").removeClass("active");
+            $("#li_1").addClass("active");
+        } else {
+            $("#li_1").removeClass("active");
+            $("#li_2").addClass("active");
+        }
+        File_Search();
+    }
+
+
+    //获取网站
+    function Get_Site() {
+        var strdata;
+        var params = {
+            action: "Get_Site"
+        };
+        var strHtml = "";
+        $.ajax({
+            url: "mybrowse.ashx", data: params, type: 'post', cache: false, async: false,
+            success: function (data) {
+                if (data != "False") {
+                    strdata = data.replace(/[\r\n]/g, "\\r\\n");
+                    strdata = eval("(" + strdata + ")");
+                    if (strdata.Rows.length > 0) {
+                        strHtml += "<select id='sel_opt' style='width:190px;height:32px;' onchange='File_Search()'>";
+                        for (var i = 0; i < strdata.Rows.length; i++) {
+                            var rows = strdata.Rows[i];
+                            strHtml += "<option value='"+rows.OCID+"'>"+rows.Name+"</option>";
+                        }
+                        strHtml += "</select>";
+                    }
+                    $("#div_set").html(strHtml);
+                } else {
+                    $("#li_1").removeClass("active");
+                    $("#li_2").addClass("active");
+                    $(".course_data_nav").hide();
+                    $("#div_set").hide();
+                    $("#div_search").css("margin-left", "1px");
+                    $(".icon_search").css("right", "4px");
+                    File_Search();
+                }
+            }
+        });
+    }
+
+    //获取文件
+    function File_Search() {
+        //是否显示我的资料库
+        var isoc = 0;
+      
+        var ocid = $("#sel_opt").val();
+        if ($("#li_2").hasClass("active")) {
+            isoc = 1;
+            ocid = 0;
+        }
+        var strdata;
+        var params = {
+            action:"File_Search",
+            Searchkey: $("#txt_search").val(),
+            OCID: ocid,
+            CourseID: -1,
+            FolderID: -1,
+            FileType: -1
+        };
+        var strHtml = "";
+        $.ajax({
+            url: "mybrowse.ashx", data: params, type: 'post', cache: false, async: false,
+            success: function (data) {
+                if (data != "False") {
+                    strdata = data.replace(/[\r\n]/g, "\\r\\n");
+                    strdata = eval("(" + strdata + ")");
+                    if (strdata.Rows.length > 0) {
+                        strHtml += "<table class='data_table'>";
+                        strHtml += "<tr>";
+                        strHtml+="  <td width='325'><p class='file_tit'>文件名称</p></td>";
+                        strHtml+="  <td width='67'><p class='file_tit'>大小</p></td>";
+                        strHtml+="  <td><p class='file_tit'>修改日期</p></td>";
+                        strHtml += "</tr>";
+                        for (var i = 0; i < strdata.Rows.length; i++) {
+                            var rows = strdata.Rows[i];
+                            var FilesizeM = rows.FileSize / 1024/1024;
+                            //1024 / rows.FileSize
+                            //FilesizeM = FilesizeM.toFixed(2);
+                            var UploadTime = rows.UploadTime;
+                            var strext = "";
+                            if (rows.FileType == "1") {
+                                strext = "mp4";
+                            } else if (rows.FileType == "2") {
+                                strext = "doc";
+                            } else if (rows.FileType == "3") {
+                                strext = "excel";
+                            } else if (rows.FileType == "4") {
+                                strext = "ppt";
+                            } else if (rows.FileType == "5") {
+                                strext = "pdf";
+                            } else if (rows.FileType == "6") {
+                                strext = "pic";
+                            } else if (rows.FileType == "7") {
+                                strext = "mp3";
+                            } else if (rows.FileType == "8") {
+                                strext = "zip";
+                            } else if (rows.FileType == "9") {
+                                strext = "file";
+                            }
+                            strHtml += "<tr ext='"+rows.Ext+"' title='" + rows.FileTitle + "'pre='" + rows.PreViewURL + "' down='" + rows.DownURL + "'  >";
+                            strHtml += "<td>";
+                            strHtml += "<p class='file_name'>";
+                            strHtml += "<input type='radio' name='myflle' id='rad_" + rows.FileID + "' pid='" + rows.FileID + "' ext='" + rows.Ext + "' title='" + rows.FileTitle + "'pre='" + rows.PreViewURL + "' down='" + rows.DownURL + "'>";
+                            strHtml += "<i class='icon_24 " + strext + "'></i>";
+                            strHtml += rows.FileTitle;
+                            strHtml += "</p>";
+                            strHtml += "</td>";
+                            strHtml += "<td><p class='file_name'>" + FilesizeM.toFixed(1) + "M</p></td>";
+                            strHtml += "<td><p class='file_name'>" + UploadTime + "</p></td>";
+                            strHtml += "</tr>";
+                        }
+                        strHtml += "</table>";
+                    }
+                   
+                    $("#div_filelist").html(strHtml);
+
+                } else {
+                    var straa = "";
+                    straa += ' <div style="text-align:center;height:160px;margin-top:15px;">';
+                    straa += '       <img src="../../../Images/expression.png" width="96" height="96" alt="">';
+                    straa+='       <p>没有找到任何内容</p>';
+                    straa += '  </div>';
+                    $("#div_filelist").html(straa);
+                }
+
+
+            }
+        });
+
+    }
+
+    //保存
+    function GetOk() {
+        var row = $("input:radio:checked");
+        var ext = row.attr("ext").toLowerCase();
+        //switch (sType) {
+        //    case ".png":
+        //    case ".jpg":
+        //    case ".bmp":
+        //    case ".emf":
+        //    case ".gif":
+        //}
+        if (ext == ".mp4") {
+            window.returnValue = row.attr("down") + "!@##@!" + row.attr("pre") + "!@##@!" + row.attr("pid") + "!@##@!.mp4";
+        } else {
+            window.returnValue =  row.attr("pre");
+        }
+        
+        window.close();
+    }
+
+</script>

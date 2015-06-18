@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PaperProvider.aspx.cs" Inherits="App.Resource.DataProvider.Paper.PaperProvider" %> 

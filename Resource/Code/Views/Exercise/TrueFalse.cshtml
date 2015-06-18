@@ -1,0 +1,21 @@
+﻿
+<div class="paper_content">
+    <div class="text_box" style="color:#F00;">
+        <input type="hidden" name="editorInput" id="editorInput" ng-value="editorText" ng-model="editorText">
+        <iframe id="editor01" src="Frameworks/eWebEditor/ewebeditor.htm?id=editorInput&style=coolblue"
+                frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe> 
+    </div>
+    <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
+    <attach-list attachments="attachmentList"></attach-list>
+    <p class="answer_content">
+        <span>题目答案</span>
+        <a ng-class="{active:model.exercisecommon.exercise.Answer==1}" ng-model="model.exercisecommon.exercise.Answer" ng-click="answeChange(0)">正确</a>
+        <a ng-class="{active:model.exercisecommon.exercise.Answer==0}" ng-model="model.exercisecommon.exercise.Answer" ng-click="answeChange(1)">错误</a>
+    </p>
+    <div class="text_box" style="color: #F00; margin-top: 20px;">
+        <input type="hidden" name="editorAnalysis" id="editorAnalysis" ng-model="editorAnalysisText" ng-value="editorAnalysisText">
+        <iframe src="Frameworks/eWebEditor/ewebeditor.htm?id=editorAnalysis&style=coolblue"
+                frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>
+    </div>
+</div>
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>

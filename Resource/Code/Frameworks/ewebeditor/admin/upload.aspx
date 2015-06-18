@@ -1,0 +1,1 @@
+﻿<%@ Page language="VB" AutoEventWireup="false" Inherits="eWebEditorAdmin.upload_aspx" validateRequest="False" aspcompat="true" %>

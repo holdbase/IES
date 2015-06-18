@@ -1,0 +1,33 @@
+﻿<div class="chapter_knowledge">
+    <div class="chapter_btn">
+        <a class="icon_con up_btn" ng-click="move('orderup')" title="上移" ng-class="{'hideAuth': !hasChapterAuth}"></a>
+        <a class="icon_con down_btn" ng-click="move('orderdown')" title="下移" ng-class="{'hideAuth': !hasChapterAuth}"></a>
+        <a class="icon delete_icon" ng-click="deleteChapter()" title="删除章节" ng-class="{'hideAuth': !hasChapterAuth}"></a>
+        <a class="icon_con add_btn" ng-click="addChapter();" title="添加章节" ng-class="{'hideAuth': !hasChapterAuth}"></a>
+        @*<a class="icon_con right_btn" ng-click="move('leveldown')"></a>
+            <a class="icon_con left_btn" ng-click="move('levelup')"></a>*@
+    </div>
+    <ul class="chapter_item">
+        <ies-chapter-item ng-repeat="item in $parent.chapters | parentID:0 | orderBy:'Orde'"
+                          chapter-selected-item="parentChapter"
+                          chapter-item="item"
+                          child-chapter="childChapter"
+                          items="chapters"
+                          will-add-section="willAddSection(item)"
+                          chapter-selected="parentFocus(item)">
+        </ies-chapter-item>
+    </ul>
+
+    <ies-dialog id="eChapterConfirm" style="display:none"
+                dialog-title="确认"
+                dialog-text="您确认删除章节吗？"
+                ok-title="确定"
+                cancel-title="取消"></ies-dialog>
+</div>
+
+<chapter-editor id="eChapter" style="display:none;"
+                editor-title="editorTitle"
+                chapter-name="willAddedChapter.Title"
+                on-save="save(willAddedChapter)">
+
+

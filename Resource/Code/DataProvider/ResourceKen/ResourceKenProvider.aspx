@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResourceKenProvider.aspx.cs" Inherits="App.Resource.DataProvider.ResourceKen.ResourceKenProvider" %>

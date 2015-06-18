@@ -1,0 +1,11 @@
+﻿<div>
+    <p class="first_file">
+        <span><em>-</em></span>
+        <a ng-click="onSelectedMove(node)">{{node.Name}}</a>
+    </p>
+    <ul ng-show="node.Children.length > 0" ng-model="node.Children">
+        <li ng-repeat="child in node.Children">
+            <move-item item-node="child"></move-item>
+        </li>
+    </ul>
+</div>

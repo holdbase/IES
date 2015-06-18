@@ -1,0 +1,113 @@
+<div>
+    <div class="pop_bg"></div>
+    <div class="pop_uploader">
+        <h4>文件上传</h4>
+        <span class="icon close_pop"></span>
+        <div class="pop_wrap" style="height:400px">
+            <style>
+                .attach_box {
+                    border: 1px solid #d4d4d4;
+                    color: #333;
+                    display: block;
+                    height: 98px;
+                    line-height: 20px;
+                    margin-top: 30px;
+                    text-align: center;
+                    width: 198px;
+                }
+
+                    .attach_box i {
+                        display: block;
+                        height: 30px;
+                        margin: 25px auto 0;
+                        width: 30px;
+                    }
+
+                    .attach_box .add {
+                        margin-top: 10px;
+                        font-size: 50px;
+                        font-weight: 900;
+                        font-style: normal;
+                        color: #374760;
+                    }
+
+                .progress-bar {
+                    background-color: #428bca;
+                    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+                    color: #fff;
+                    float: left;
+                    font-size: 12px;
+                    height: 100%;
+                    text-align: center;
+                    transition: width 0.6s ease 0s;
+                    width: 0;
+                }
+            </style>
+            <div class="pop_wrap" style="height:360px;overflow-y:auto;overflow-x:hidden;padding: 20px;">
+                <div nv-file-drop="" uploader="iesUploader" url="uploadUrl" filters="customFilter,fileSize,fileSuffix">
+                    <input type="file" id="file" nv-file-select="" uploader="iesUploader" multiple style="display:none;" />
+                    <a class="attach_box" onclick="$('#file').click()" style="height:50px;width:920px; margin-top:0;">
+                        <i class="add">+</i>
+                    </a>
+                    <div class="col-md-12" style="margin-top: 30px">
+                        <h3 style="font-size:20px;">上传队列</h3>
+                        <p style="margin-left:20px;">已选择文件: {{ iesUploader.queue.length }}</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="25%">文件名</th>
+                                    <th width="15%" ng-show="iesUploader.isHTML5">大小</th>
+                                    <th width="20%" ng-show="iesUploader.isHTML5">进度</th>
+                                    <th width="22%">操作</th>
+                                    <th width="18%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in iesUploader.queue">
+                                    <td><strong>{{ item.file.name }}</strong></td>
+                                    <td ng-show="iesUploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                    <td ng-show="iesUploader.isHTML5">
+                                        <div class="progress" style="margin-bottom: 0;">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                        </div>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            上传
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                            取消
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                            移除
+                                        </button>
+                                    </td>
+                                    <td>
+                                        {{(item.progress==100&&!item.isSuccess)?'文件转存中,请稍后...':''}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="padding-bottom:20px;">
+                            <div>
+                                总进度: {{(iesUploader.progress>=0)?iesUploader.progress:'0'}}
+                                <div class="progress" style="">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': iesUploader.progress + '%' }"></div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-s" ng-click="iesUploader.uploadAll()" ng-disabled="!iesUploader.getNotUploadedItems().length">
+                                <span class="glyphicon glyphicon-upload"></span> 上传所有
+                            </button>
+                            <button type="button" class="btn btn-warning btn-s" ng-click="iesUploader.cancelAll()" ng-disabled="!iesUploader.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> 取消所有
+                            </button>
+                            <button type="button" class="btn btn-danger btn-s" ng-click="iesUploader.clearQueue()" ng-disabled="!iesUploader.queue.length">
+                                <span class="glyphicon glyphicon-trash"></span> 移除所有
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

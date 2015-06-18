@@ -1,0 +1,22 @@
+﻿ <a class="batch_box" href="javascript:;">
+    <em><i class="icon"></i></em>
+    <span>批量操作</span>
+    <ul class="batch_list">
+        <li>
+            批量共享 
+            <ul class="permissions">
+                <share-range style="width:140px;" ng-repeat="item in shareRanges" ng-click="batchShareRange(item)" range="item"></share-range>
+            </ul>
+        </li>
+        <li class="batch_delete" ng-click="batchRemove()">批量删除</li>
+        <li class="batch_share" ng-click="batchShare()">
+            难易程度
+            <ul class="permissions">
+                <li ng-repeat="item in difficults" ng-click="batchDifficult(item)">
+                    <p ng-bind="item.name"></p>
+                </li>
+            </ul>
+        </li>
+        <li class="batch_delete" ng-click="batchPreview()">批量预览</li>
+    </ul>
+</a>

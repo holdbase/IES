@@ -1,0 +1,1680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8274499F-0EE1-403C-B830-7AB8EC4E5B55}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.Resource</RootNamespace>
+    <AssemblyName>App.Resource</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.38.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="eWebEditorAdmin">
+      <HintPath>..\Lib\eWebEditorAdmin.dll</HintPath>
+    </Reference>
+    <Reference Include="eWebEditorControl">
+      <HintPath>..\Lib\eWebEditorControl.dll</HintPath>
+    </Reference>
+    <Reference Include="eWebEditorServer">
+      <HintPath>..\Lib\eWebEditorServer.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.AOP.G2S, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.AOP.G2S.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Cache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Cache.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.CC.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.CC.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.CommonDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.CommonDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Config, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.DataBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.CourseLive.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.CourseLive.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.CourseLive.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.CourseLive.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.CoursLive.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.CoursLive.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.JW.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.JW.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.JW.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.JW.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.JW.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.JW.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.OC.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.OC.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.OC.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.OC.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.OC.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.OC.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.Portal.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.Portal.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.Portal.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.Portal.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.Portal.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.Portal.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.Resource.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.Resource.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.Resource.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.Resource.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.G2S.Resource.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.G2S.Resource.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.JW.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.JW.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Portal.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Portal.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Resource.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Resource.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IES.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IES.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.2.0.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\Lib\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Frameworks\DLL\Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components\js\components.js" />
+    <Content Include="Components\templates\addChapter.html" />
+    <Content Include="Components\templates\addKnowledge.html" />
+    <Content Include="Components\templates\attachmentList.html" />
+    <Content Include="Components\templates\chapterEditor.html" />
+    <Content Include="Components\templates\chapterItem.html" />
+    <Content Include="Components\templates\chapterSection.html" />
+    <Content Include="Components\templates\confirm.html" />
+    <Content Include="Components\templates\editor.html" />
+    <Content Include="Components\templates\exerciseBatch.html" />
+    <Content Include="Components\templates\exerciseList.html" />
+    <Content Include="Components\templates\exerciseUploader.html" />
+    <Content Include="Components\templates\fileOperation.html" />
+    <Content Include="Components\templates\fileProperty.html" />
+    <Content Include="Components\templates\fileShared.html" />
+    <Content Include="Components\templates\fileShareRange.html" />
+    <Content Include="Components\templates\file_icon.html" />
+    <Content Include="Components\templates\iesFileUploader.html" />
+    <Content Include="Components\templates\folder.html" />
+    <Content Include="Components\templates\kenChapterItem.html" />
+    <Content Include="Components\templates\kenItemList.html" />
+    <Content Include="Components\templates\layPage.html" />
+    <Content Include="Components\templates\moreCourse.html" />
+    <Content Include="Components\templates\moveFolder.html" />
+    <Content Include="Components\templates\moveItem.html" />
+    <Content Include="Components\templates\preView.html" />
+    <Content Include="Components\templates\shareRange.html" />
+    <Content Include="Css\app.css" />
+    <Content Include="Css\common.css" />
+    <Content Include="Css\construction.css" />
+    <Content Include="Css\footer.css" />
+    <Content Include="Css\forum.css" />
+    <Content Include="Css\header.css" />
+    <Content Include="Css\index.css" />
+    <Content Include="Css\mooc.css" />
+    <Content Include="Css\resource.css" />
+    <Content Include="Css\reverse.css" />
+    <Content Include="Css\side_left.css" />
+    <Content Include="DataProvider\Authority\AuthProvider.aspx" />
+    <Content Include="DataProvider\Chapter\ChapterProvider.aspx" />
+    <Content Include="DataProvider\Exercise\ExerciseProvider.aspx" />
+    <Content Include="DataProvider\Knowledge\KnowProvider.aspx" />
+    <Content Include="DataProvider\Paper\PaperProvider.aspx" />
+    <Content Include="DataProvider\ResourceKen\ResourceKenProvider.aspx" />
+    <Content Include="DataProvider\Resource\ResourceProvider.aspx" />
+    <Content Include="DataProvider\Shared\AssistProvider.aspx" />
+    <Content Include="DataProvider\Shared\ContentProvider.aspx" />
+    <Content Include="DataProvider\UploadFile.aspx" />
+    <Content Include="DataProvider\User\UserProvider.aspx" />
+    <Content Include="Frameworks\angular-file-uploader\angular-file-upload.min.js" />
+    <Content Include="Frameworks\angularTree\angular-ui-tree.min.css" />
+    <Content Include="Frameworks\angularTree\angular-ui-tree.min.js" />
+    <Content Include="Frameworks\angular\angular-animate.js" />
+    <Content Include="Frameworks\angular\angular-animate.min.js" />
+    <Content Include="Frameworks\angular\angular-cookies.js" />
+    <Content Include="Frameworks\angular\angular-cookies.min.js" />
+    <Content Include="Frameworks\angular\angular-csp.css" />
+    <Content Include="Frameworks\angular\angular-file-upload.js" />
+    <Content Include="Frameworks\angular\angular-loader.js" />
+    <Content Include="Frameworks\angular\angular-loader.min.js" />
+    <Content Include="Frameworks\angular\angular-mocks.js" />
+    <Content Include="Frameworks\angular\angular-resource.js" />
+    <Content Include="Frameworks\angular\angular-resource.min.js" />
+    <Content Include="Frameworks\angular\angular-route.js" />
+    <Content Include="Frameworks\angular\angular-route.min.js" />
+    <Content Include="Frameworks\angular\angular-sanitize.js" />
+    <Content Include="Frameworks\angular\angular-sanitize.min.js" />
+    <Content Include="Frameworks\angular\angular-scenario.js" />
+    <Content Include="Frameworks\angular\angular-touch.js" />
+    <Content Include="Frameworks\angular\angular-touch.min.js" />
+    <Content Include="Frameworks\angular\angular-ui-router.js" />
+    <Content Include="Frameworks\angular\angular-ui-router.min.js" />
+    <Content Include="Frameworks\angular\angular.js" />
+    <Content Include="Frameworks\angular\angular.min.js" />
+    <Content Include="Frameworks\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Frameworks\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Frameworks\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frameworks\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Frameworks\checklist-model\checklist-model.js" />
+    <Content Include="Frameworks\DLL\Tools.dll" />
+    <Content Include="Frameworks\ewebeditor\admin\default.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\images\1_12.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\1_13.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\1_14.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\2_10.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\2_11.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\login.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\menu.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\images\spacer.gif" />
+    <Content Include="Frameworks\ewebeditor\admin\login.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\main.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\menu.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\modilicense.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\modipwd.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\private.css" />
+    <Content Include="Frameworks\ewebeditor\admin\private.js" />
+    <Content Include="Frameworks\ewebeditor\admin\style.aspx" />
+    <Content Include="Frameworks\ewebeditor\admin\upload.aspx" />
+    <Content Include="Frameworks\ewebeditor\aspx\browse.aspx" />
+    <Content Include="Frameworks\ewebeditor\aspx\config.aspx" />
+    <Content Include="Frameworks\ewebeditor\aspx\i.aspx" />
+    <Content Include="Frameworks\ewebeditor\aspx\upload.aspx" />
+    <Content Include="Frameworks\ewebeditor\bin\eWebEditorAdmin.dll" />
+    <Content Include="Frameworks\ewebeditor\bin\eWebEditorControl.dll" />
+    <Content Include="Frameworks\ewebeditor\bin\eWebEditorServer.dll" />
+    <Content Include="Frameworks\ewebeditor\CGI-BIN\tex.exe" />
+    <Content Include="Frameworks\ewebeditor\dialog\about.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\anchor.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\art.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\backimage.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\blank.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\browse.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\chromeinstall-8u25.exe" />
+    <Content Include="Frameworks\ewebeditor\dialog\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\dialog\dialog.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\dialog.js" />
+    <Content Include="Frameworks\ewebeditor\dialog\dialog1.js" />
+    <Content Include="Frameworks\ewebeditor\dialog\dialog_ie6.js" />
+    <Content Include="Frameworks\ewebeditor\dialog\emot.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\eq.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\eWebEditor6Install.exe" />
+    <Content Include="Frameworks\ewebeditor\dialog\eWebEditorPrinterInstall.exe" />
+    <Content Include="Frameworks\ewebeditor\dialog\fieldset.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\file.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\findreplace.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\findreplacetext.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\flash.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\hr.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\hyperlink.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\iframe.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\image1.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\bold.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\down.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\ewebeditor.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\info.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\italic.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\loading.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\lock.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\rect.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\rectimg.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\refresh.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\arrowdown.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\arrowup.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\blank.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\branch1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\branch2.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\dirclose.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\diropen.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\folderclose.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\folderopen.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\folderparent.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\line.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\minus1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\minus2.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\plus1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\plus2.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\tree\root.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\images\unlock.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\abs_value.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\alpha.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\approx.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\asymp.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\bar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\beta.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\bigcirc.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\bigtriangledo.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\blue.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\bot.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\bullet.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\cal.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\cap.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\cdot.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\chi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\circ.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\circle.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\clubsuit.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\cup.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\ddot.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\del.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\delta.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\diag_fraction.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\diamond.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\diamonds.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\divide.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\dot.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\downar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Downar1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\dsp_greater_equal.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\dsp_less_equal.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\dsp_notequal.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\enter.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\epsilon.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\equation.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\equiv.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\eta.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\fang.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\fbox.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\fs1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\fs5.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\fs7.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\gamma.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\gamma1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\gg.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\green.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\hat.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Heart.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\hfill.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\hfill1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\hor_fraction.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\hspace.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\huge.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\img.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\img1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\in.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\infty.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\int.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\iota.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\ji.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\juzhen.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\kappa.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\lambda.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\lambda1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\large.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\large1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\leftar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Leftar1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\leftharpoondo.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\leftharpoonup.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\leftrightar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Leftrightar1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\lim.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\line.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\ll.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\log.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longdownarrow.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longdownarrow1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longleftarrow.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longleftarrow1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longleftrightarrow.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longleftrightarrow1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longrightarrow.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longrightarrow1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longuparrow.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longuparrow1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longupdownarrow.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\longupdownarrow1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\mathbb.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\mimetex.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\mp.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\mu.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\mul.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\near.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\neg.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\ni.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\normalsize.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\nu.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\nwar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\odot.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\omega.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\omega1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\ominus.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\oplus.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\oslash.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\overbrace.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\p.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\parenthesis.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\phi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\phi1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pho.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pi1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pie.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\piepie.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pinfang.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pinfang1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\pm.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\prime.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\propto.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\psi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\psi1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\quxianjifen.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\red.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Rightar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\rightharpoondo.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\rightharpoonup.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\righttar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\root.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\scr.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sear.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sigma.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sigma1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sim.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\simeq.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\spadesuit.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\spces1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\spces2.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\spces3.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sqcap.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sqcup.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sqsubseteq.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\sqsupseteq.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\square_root.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\subset.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\subseteq.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\supset.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\supseteq.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\swar.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\tau.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\theta.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\theta1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\tilde.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\times.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\tiny.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\top.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\triangle.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\triangleleft.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\triangleright.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\underbrace.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\underline.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Unt.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Unt1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Untitled-1.png" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\Upar1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\uparr.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\upsilon.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\upsilon1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\upx.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\varepsilon.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\varphi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\varpi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\varrho.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\varsigma.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\vartheta.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\vec.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\weizhi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\xi.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\xi1.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\img\zeta.gif" />
+    <Content Include="Frameworks\ewebeditor\dialog\importexcel.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\importppt.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\importword.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\installactivex.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\installprinter.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\i_upload.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\map.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\marquee.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\media.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\mybrowse.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\owcexcel.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\pagination.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\paragraph.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\pastegecko.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\pasteoption.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\quickformat.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\selcolor.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\symbol.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\table.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\tablecell.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\tablecellsplit.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\template.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\tex.htm" />
+    <Content Include="Frameworks\ewebeditor\dialog\tex1.htm" />
+    <Content Include="Frameworks\ewebeditor\ewebeditor.htm" />
+    <Content Include="Frameworks\ewebeditor\ewebeditor.js" />
+    <Content Include="Frameworks\ewebeditor\js\buttons.js" />
+    <Content Include="Frameworks\ewebeditor\js\ewebeditor_core.js" />
+    <Content Include="Frameworks\ewebeditor\language\da.css" />
+    <Content Include="Frameworks\ewebeditor\language\da.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\da.js" />
+    <Content Include="Frameworks\ewebeditor\language\de.css" />
+    <Content Include="Frameworks\ewebeditor\language\de.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\de.js" />
+    <Content Include="Frameworks\ewebeditor\language\en.css" />
+    <Content Include="Frameworks\ewebeditor\language\en.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\en.js" />
+    <Content Include="Frameworks\ewebeditor\language\es.css" />
+    <Content Include="Frameworks\ewebeditor\language\es.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\es.js" />
+    <Content Include="Frameworks\ewebeditor\language\fr.css" />
+    <Content Include="Frameworks\ewebeditor\language\fr.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\fr.js" />
+    <Content Include="Frameworks\ewebeditor\language\it.css" />
+    <Content Include="Frameworks\ewebeditor\language\it.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\it.js" />
+    <Content Include="Frameworks\ewebeditor\language\ja.css" />
+    <Content Include="Frameworks\ewebeditor\language\ja.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\ja.js" />
+    <Content Include="Frameworks\ewebeditor\language\nl.css" />
+    <Content Include="Frameworks\ewebeditor\language\nl.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\nl.js" />
+    <Content Include="Frameworks\ewebeditor\language\no.css" />
+    <Content Include="Frameworks\ewebeditor\language\no.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\no.js" />
+    <Content Include="Frameworks\ewebeditor\language\pt.css" />
+    <Content Include="Frameworks\ewebeditor\language\pt.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\pt.js" />
+    <Content Include="Frameworks\ewebeditor\language\ru.css" />
+    <Content Include="Frameworks\ewebeditor\language\ru.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\ru.js" />
+    <Content Include="Frameworks\ewebeditor\language\sv.css" />
+    <Content Include="Frameworks\ewebeditor\language\sv.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\sv.js" />
+    <Content Include="Frameworks\ewebeditor\language\zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\language\zh-cn.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\zh-cn.js" />
+    <Content Include="Frameworks\ewebeditor\language\zh-tw.css" />
+    <Content Include="Frameworks\ewebeditor\language\zh-tw.editarea.css" />
+    <Content Include="Frameworks\ewebeditor\language\zh-tw.js" />
+    <Content Include="Frameworks\ewebeditor\plugin\flvplayer.swf" />
+    <Content Include="Frameworks\ewebeditor\popup.htm" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\back_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\book_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\book_lock_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\book_pencil_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\bullet_arrow_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\bullet_arrow_v48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\bullet_email_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\bullet_info_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\cd_gray_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\cd_green_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\cd_yellow_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\copy_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\doc_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\doc_faq_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\doc_important_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\doc_remove_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\email_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\email_delete_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\email_new_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\email_open_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\email_sent_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\folder_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\folder_info_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\folder_lock_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\folder_move_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\forward_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\mix_clock_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\mix_money_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\mix_pencil_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\mix_world_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\paste_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\stop_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\symbols_download_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\symbols_info_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\symbols_stop_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\symbol_faq_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_back_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_buy_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_calendar_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_edit_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_help_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_login_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_manual_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_open_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_print_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_remove_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_save_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\toolbar_search_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\trash_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\trash_arrow_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\trash_full_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\user_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\user_add_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\user_delete_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\user_info_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\weather_clouds_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\weather_ray_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\weather_sunny_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\weather_sun_48.jpg" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\tbleft.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\tbright.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\tbhandle.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\tbleft.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\office2003\tbright.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\tbleft.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\tbright.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\sb_btn_bg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\sb_btn_bg2.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\sb_btn_left.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\sb_btn_left2.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\sb_btn_right.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\sb_btn_right2.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\tbbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\btnchecked.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\btndown.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\btnover.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\buttons.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\dialog.css" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\dialog0.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\dialog1.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\dlgbtnbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\dlgtabbg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\editarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\editarea.zh-cn.css" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\editor.css" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\menuarea.css" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\menubg.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\tableresizesep_h.gif" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\tableresizesep_v.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\birthday.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\christmas.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\citrus.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\clear.jpg" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\fiesta.jpg" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\flower.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\gathering.jpg" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\glacier.jpg" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\grid.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\hearts.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\ivy.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\maize.jpg" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\nature.jpg" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\snow.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\tech.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_address.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_blockquote.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_div.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_h1.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_h2.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_h3.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_h4.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_h5.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_h6.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_p.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\block_pre.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_anchor.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_comment.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_flash.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_flv.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_hiddenfield.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_mediaplayer.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_noscript.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_pagination.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_plugin.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_quicktime.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_realplayer.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_script.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_style.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\fake_vlc.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\01.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\02.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\03.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\04.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\05.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\06.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\07.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\08.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\09.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\10.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\11.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\12.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\13.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\14.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\15.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\16.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\17.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\18.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\19.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\20.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\21.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\22.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\23.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\24.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\25.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\26.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\27.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\28.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\29.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\30.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\31.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\32.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\33.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\34.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\35.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\36.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\37.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\38.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\39.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\40.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\41.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\42.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\43.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\44.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\45.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\46.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\47.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\48.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\49.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\50.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\audio.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\avi.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\bmp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\closedfolder.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\code.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\doc.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\exe.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\folder.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\folderback.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\gif.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\hlp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\htm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\jpg.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\mdb.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\mid.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\mp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\mp3.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\openfolder.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\parentfolder.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\pdf.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\pic.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\ppt.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\rar.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\rm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\swf.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\txt.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\unknow.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\xls.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\zip.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\aspx.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\audio.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\avi.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\bmp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\chm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\code.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\doc.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\exe.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\gif.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\hlp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\htm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\ico.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\jpg.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\js.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\mdb.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\mid.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\mp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\mp3.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\pdf.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\png.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\ppt.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\rar.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\rm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\swf.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\txt.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\unknow.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\xls.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\xml.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\zip.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\aspx.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\audio.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\avi.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\bmp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\chm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\code.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\doc.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\exe.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\gif.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\hlp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\htm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\ico.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\jpg.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\js.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\mdb.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\mid.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\mp.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\mp3.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\pdf.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\png.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\ppt.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\rar.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\rm.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\swf.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\txt.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\unknow.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\xls.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\xml.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\zip.gif" />
+    <Content Include="Frameworks\ewebeditor\sysimage\space.gif" />
+    <Content Include="Frameworks\ewebeditor\template\0.gif" />
+    <Content Include="Frameworks\ewebeditor\template\01.htm" />
+    <Content Include="Frameworks\ewebeditor\template\02.htm" />
+    <Content Include="Frameworks\ewebeditor\template\03.htm" />
+    <Content Include="Frameworks\ewebeditor\template\04.htm" />
+    <Content Include="Frameworks\ewebeditor\template\05.htm" />
+    <Content Include="Frameworks\ewebeditor\template\06.htm" />
+    <Content Include="Frameworks\ewebeditor\template\article.htm" />
+    <Content Include="Frameworks\ewebeditor\template\template.js" />
+    <Content Include="Frameworks\ewebeditor\uploadfile\20141206111451287001.jpg" />
+    <Content Include="Frameworks\ewebeditor\uploadfile\20141206111958601001.jpg" />
+    <Content Include="Frameworks\ewebeditor\uploadfile\20141206112119474001.jpg" />
+    <Content Include="Frameworks\ewebeditor\_example\ajax.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\clientapi.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\default.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\dlg_upload.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\example.css" />
+    <Content Include="Frameworks\ewebeditor\_example\images\remoteupload.gif" />
+    <Content Include="Frameworks\ewebeditor\_example\myeditorarea.css" />
+    <Content Include="Frameworks\ewebeditor\_example\pagination.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\pagination.cs.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\para_extcss.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\para_file.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\popup.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\remote.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\replacebyclass.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\replacebycode.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\retrieve.aspx" />
+    <Content Include="Frameworks\ewebeditor\_example\standard.aspx" />
+    <Content Include="Frameworks\jquery\jquery-1.11.1.min.js" />
+    <Content Include="Frameworks\jquery\jquery-1.7.2.min.js" />
+    <Content Include="Frameworks\jquery\jquery-1.8.3.min.js" />
+    <Content Include="Frameworks\laypage\laypage.js" />
+    <Content Include="Frameworks\laypage\skin\laypage.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Frameworks\angular\angular-animate.min.js.map" />
+    <Content Include="Frameworks\angular\angular-cookies.min.js.map" />
+    <Content Include="Frameworks\angular\angular-loader.min.js.map" />
+    <Content Include="Frameworks\angular\angular-resource.min.js.map" />
+    <Content Include="Frameworks\angular\angular-route.min.js.map" />
+    <Content Include="Frameworks\angular\angular-sanitize.min.js.map" />
+    <Content Include="Frameworks\angular\angular-touch.min.js.map" />
+    <Content Include="Frameworks\angular\angular.min.js.map" />
+    <Content Include="Frameworks\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Frameworks\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Frameworks\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Frameworks\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Frameworks\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Images\add_bg.gif" />
+    <Content Include="Images\add_bg_hover.gif" />
+    <Content Include="Images\add_new.jpg" />
+    <Content Include="Images\banmian1.jpg" />
+    <Content Include="Images\banmian2.jpg" />
+    <Content Include="Images\banmian3.jpg" />
+    <Content Include="Images\big_pie.png" />
+    <Content Include="Images\btn_list.gif" />
+    <Content Include="Images\company_logo.png" />
+    <Content Include="Images\company_logo2.png" />
+    <Content Include="Images\cry.png" />
+    <Content Include="Images\default\User_M.gif" />
+    <Content Include="Images\default\User_M.jpg" />
+    <Content Include="Images\default\User_S.jpg" />
+    <Content Include="Images\dian.png" />
+    <Content Include="Images\expression.png" />
+    <Content Include="Images\expression2.png" />
+    <Content Include="Images\fold.gif" />
+    <Content Include="Images\fold_hover.gif" />
+    <Content Include="Images\goal1.jpg" />
+    <Content Include="Images\goal2.jpg" />
+    <Content Include="Images\goal3.jpg" />
+    <Content Include="Images\goal4.jpg" />
+    <Content Include="Images\icon_24.png" />
+    <Content Include="Images\icon_construction.png" />
+    <Content Include="Images\icon_forum.png" />
+    <Content Include="Images\icon_index.png" />
+    <Content Include="Images\icon_mooc.png" />
+    <Content Include="Images\icon_reverse.png" />
+    <Content Include="Images\left_bg.gif" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\lock.png" />
+    <Content Include="Images\main_bg.gif" />
+    <Content Include="Images\main_bg2.gif" />
+    <Content Include="Images\menuLineBg.png" />
+    <Content Include="Images\model_text.gif" />
+    <Content Include="Images\module1.gif" />
+    <Content Include="Images\module2.gif" />
+    <Content Include="Images\module3.gif" />
+    <Content Include="Images\no_discuss.gif" />
+    <Content Include="Images\pie.png" />
+    <Content Include="Images\pie2.png" />
+    <Content Include="Images\pie_hover.png" />
+    <Content Include="Images\preview_banner.jpg" />
+    <Content Include="Images\preview_bg.jpg" />
+    <Content Include="Images\quote_l.gif" />
+    <Content Include="Images\quote_r.gif" />
+    <Content Include="Images\resource_btn.gif" />
+    <Content Include="Images\round.png" />
+    <Content Include="Images\round_hover.png" />
+    <Content Include="Images\side_left.gif" />
+    <Content Include="Images\small.png" />
+    <Content Include="Images\small_click.png" />
+    <Content Include="Images\smile.png" />
+    <Content Include="Images\smile2.png" />
+    <Content Include="Images\tag1.png" />
+    <Content Include="Images\tag2.png" />
+    <Content Include="Images\text_box.jpg" />
+    <Content Include="Images\text_box2.jpg" />
+    <Content Include="Images\text_box3.jpg" />
+    <Content Include="Images\text_box4.jpg" />
+    <Content Include="Images\text_box5.jpg" />
+    <Content Include="Images\tip_text.png" />
+    <Content Include="Images\unlock.png" />
+    <Content Include="Images\version_btn.png" />
+    <Content Include="Images\yuan.png" />
+    <Content Include="Images\yuan_hover.png" />
+    <Content Include="login.aspx" />
+    <Content Include="Redir\CS.aspx" />
+    <Content Include="Redir\default.aspx" />
+    <Content Include="Redir\Filedown.aspx" />
+    <Content Include="Redir\Fileview.aspx" />
+    <Content Include="Redir\Resource.aspx" />
+    <Content Include="Redir\TM.aspx" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Authority\AuthService.js" />
+    <Content Include="Scripts\Chapter\ChapterService.js" />
+    <Content Include="Scripts\Common\directives.js" />
+    <Content Include="Scripts\Common\filters.js" />
+    <Content Include="Scripts\Common\services.js" />
+    <Content Include="Scripts\Common\tools.js" />
+    <Content Include="Scripts\Home\HomeControllers.js" />
+    <Content Include="Scripts\Ken\kenControllers.js" />
+    <Content Include="Scripts\Ken\kenService.js" />
+    <Content Include="Scripts\Exercise\ExerciseControllers.js" />
+    <Content Include="Scripts\Exercise\ExerciseService.js" />
+    <Content Include="Scripts\PageAffect\index.js" />
+    <Content Include="Scripts\Paper\PaperControllers.js" />
+    <Content Include="Scripts\Paper\PaperService.js" />
+    <Content Include="Scripts\ResourceKen\ResourceKenService.js" />
+    <Content Include="Scripts\Resource\ResourceControllers.js" />
+    <Content Include="Scripts\Resource\ResourceService.js" />
+    <Content Include="Scripts\Shared\ContentControllers.js" />
+    <Content Include="Scripts\Shared\ContentService.js" />
+    <Content Include="Scripts\Shared\AssistService.js" />
+    <Content Include="Scripts\User\UserControllers.js" />
+    <Content Include="Scripts\User\UserService.js" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="favicon.ico" />
+    <Content Include="humans.txt" />
+    <Content Include="Packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="robots.txt" />
+    <Content Include="Temp\readme.txt" />
+    <Content Include="Views\404.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\UserList.cshtml" />
+    <Content Include="Views\_PageStart.cshtml" />
+    <Content Include="Views\Shared\Content.cshtml" />
+    <Content Include="Views\Resource\ResourceList.cshtml" />
+    <Content Include="Components\templates\batchOperation.html" />
+    <Content Include="Frameworks\ewebeditor\admin\images\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\admin\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\aspx\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\bin\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\js\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\language\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\plugin\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sharefile\image\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\blue1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\blue2\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat10\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat2\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat3\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat4\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat5\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat6\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat7\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat8\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\flat9\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\green1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\light1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\office2000\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\officexp\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\red1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\vista1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\skin\yellow1\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sysimage\bg\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sysimage\editarea\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sysimage\emot\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sysimage\file\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon16\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\sysimage\icon32\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\web.config" />
+    <Content Include="Frameworks\ewebeditor\_example\images\vssver.scc" />
+    <Content Include="Frameworks\ewebeditor\_example\vssver.scc" />
+    <Content Include="DataProvider\FileUpload.ashx" />
+    <Content Include="Logout.ashx" />
+    <Content Include="Frameworks\ewebeditor\dialog\mybrowse.ashx" />
+    <Content Include="ExerciseTemplates\判断题.xls" />
+    <Content Include="ExerciseTemplates\单选题_多选题.xls" />
+    <Content Include="ExerciseTemplates\填空题.xls" />
+    <Content Include="ExerciseTemplates\问答题_翻译题_名词解释_写作题.xls" />
+    <None Include="Properties\PublishProfiles\IES.pubxml" />
+    <Content Include="Views\Exercise\ExerciseList.cshtml" />
+    <Content Include="Views\Paper\PaperList.cshtml" />
+    <Content Include="Views\Paper\AddSmart.cshtml" />
+    <Content Include="Views\Paper\AddTest.cshtml" />
+    <Content Include="Views\Paper\AddSheet.cshtml" />
+    <Content Include="Views\Ken\KenChapter.cshtml" />
+    <Content Include="Views\Ken\KenTopic.cshtml" />
+    <Content Include="Views\Ken\Ken.cshtml" />
+    <Content Include="Views\Exercise\ShortAnswer.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\Shared\Exercise.cshtml" />
+    <Content Include="Views\Exercise\Connection.cshtml" />
+    <Content Include="Views\Exercise\FillBlank.cshtml" />
+    <Content Include="Views\Exercise\TrueFalse.cshtml" />
+    <Content Include="Views\Exercise\Listening.cshtml" />
+    <Content Include="Views\Exercise\Noun.cshtml" />
+    <Content Include="Views\Exercise\FillBlank2.cshtml" />
+    <Content Include="Views\Exercise\QuesAnswer.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Exercise\Radio.cshtml" />
+    <Content Include="Views\Exercise\Multiple.cshtml" />
+    <Content Include="Views\Exercise\Custom.cshtml" />
+    <Content Include="Views\Exercise\Translation.cshtml" />
+    <Content Include="Views\Exercise\Sorting.cshtml" />
+    <Content Include="Views\Exercise\Analysis.cshtml" />
+    <Content Include="Views\Exercise\Preview.cshtml" />
+    <Content Include="Views\Exercise\Reading.cshtml" />
+    <None Include="Properties\PublishProfiles\IES_WSH.pubxml" />
+    <None Include="Properties\PublishProfiles\IES_QB.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="DataProvider\Authority\AuthProvider.aspx.cs">
+      <DependentUpon>AuthProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Authority\AuthProvider.aspx.designer.cs">
+      <DependentUpon>AuthProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Chapter\ChapterProvider.aspx.cs">
+      <DependentUpon>ChapterProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Chapter\ChapterProvider.aspx.designer.cs">
+      <DependentUpon>ChapterProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Exercise\ExerciseProvider.aspx.cs">
+      <DependentUpon>ExerciseProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Exercise\ExerciseProvider.aspx.designer.cs">
+      <DependentUpon>ExerciseProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\FileUpload.ashx.cs">
+      <DependentUpon>FileUpload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Knowledge\KnowProvider.aspx.cs">
+      <DependentUpon>KnowProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Knowledge\KnowProvider.aspx.designer.cs">
+      <DependentUpon>KnowProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Paper\PaperProvider.aspx.cs">
+      <DependentUpon>PaperProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Paper\PaperProvider.aspx.designer.cs">
+      <DependentUpon>PaperProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\ResourceKen\ResourceKenProvider.aspx.cs">
+      <DependentUpon>ResourceKenProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\ResourceKen\ResourceKenProvider.aspx.designer.cs">
+      <DependentUpon>ResourceKenProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Resource\ResourceProvider.aspx.cs">
+      <DependentUpon>ResourceProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Resource\ResourceProvider.aspx.designer.cs">
+      <DependentUpon>ResourceProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Shared\AssistProvider.aspx.cs">
+      <DependentUpon>AssistProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Shared\AssistProvider.aspx.designer.cs">
+      <DependentUpon>AssistProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\Shared\ContentProvider.aspx.cs">
+      <DependentUpon>ContentProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\Shared\ContentProvider.aspx.designer.cs">
+      <DependentUpon>ContentProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\UploadFile.aspx.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\UploadFile.aspx.designer.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataProvider\User\UserProvider.aspx.cs">
+      <DependentUpon>UserProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataProvider\User\UserProvider.aspx.designer.cs">
+      <DependentUpon>UserProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Frameworks\ewebeditor\dialog\mybrowse.ashx.cs">
+      <DependentUpon>mybrowse.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.ashx.cs">
+      <DependentUpon>Logout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Redir\CS.aspx.cs">
+      <DependentUpon>CS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redir\CS.aspx.designer.cs">
+      <DependentUpon>CS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redir\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redir\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redir\Filedown.aspx.cs">
+      <DependentUpon>Filedown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redir\Filedown.aspx.designer.cs">
+      <DependentUpon>Filedown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redir\Fileview.aspx.cs">
+      <DependentUpon>Fileview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redir\Fileview.aspx.designer.cs">
+      <DependentUpon>Fileview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redir\Resource.aspx.cs">
+      <DependentUpon>Resource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redir\Resource.aspx.designer.cs">
+      <DependentUpon>Resource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redir\TM.aspx.cs">
+      <DependentUpon>TM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redir\TM.aspx.designer.cs">
+      <DependentUpon>TM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Routing\DefaultRoute.cs" />
+    <Compile Include="Routing\DefaultRouteHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Frameworks\ewebeditor\sharefile\flash\" />
+    <Folder Include="Frameworks\ewebeditor\sharefile\media\" />
+    <Folder Include="Frameworks\ewebeditor\sharefile\other\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8083/Resource</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:8083/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

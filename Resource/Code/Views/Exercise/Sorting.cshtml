@@ -1,0 +1,24 @@
+﻿<div>
+    <div class="paper_wrap">
+        <div class="text_box" style="color:#F00;">
+            <input type="hidden" name="editorInput" id="editorInput" ng-model="editorText" ng-value="editorText">
+            <iframe id="editor01" src="Frameworks/eWebEditor/ewebeditor.htm?id=editorInput&style=coolblue"
+                    frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
+        </div>
+        <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
+        <attach-list attachments="attachmentList"></attach-list>
+        <p class="no_rank">请按照序号顺序填写答案，题目保存后，答案会自动打乱</p>        
+        <div class="default" ng-repeat="item in model.exercisechoicelist">
+            <em ng-bind="$index+1"></em>
+            <a ng-click="Del(item)">x</a>
+            <input type="text" ng-model="item.Conten">
+        </div>
+    </div>
+    <a class="add_attach" ng-click="Add()"><em><i class="icon"></i></em><span>添加选项</span></a>
+    <div class="text_box" style="color: #F00; margin-top: 20px;">
+        <input type="hidden" name="editorAnalysis" id="editorAnalysis" ng-model="editorAnalysisText" ng-value="editorAnalysisText">
+        <iframe src="Frameworks/eWebEditor/ewebeditor.htm?id=editorAnalysis&style=coolblue"
+                frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>
+    </div>
+</div>
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>

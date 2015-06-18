@@ -1,0 +1,24 @@
+﻿<div>
+    <h4>移动文件</h4>
+    <span class="icon close_pop" ng-click="onClose()"></span>
+    <script type="text/ng-template" id="nodes_renderer.html">
+        <p class="first_file">
+            <span ng-show="node.Children.length>0"><em>+</em></span>
+            <a ng-click="onSelectedMove(node)" ng-class="{'mobileSelected': selected && node.Id === selected.Id && node.RelationType === selected.RelationType}">{{node.Name}}</a>
+        </p>
+        <ul ng-model="node.Children" style="display:none">
+            <li ng-repeat="node in node.Children" ng-include="'nodes_renderer.html'">
+            </li>
+        </ul>
+    </script>
+    <div class="pop_wrap">
+        <ul ng-model="mobile" class="file_box" style="height:300px;overflow:auto;">
+            <li ng-repeat="node in files" ng-include="'nodes_renderer.html'"></li>
+        </ul>
+    </div>
+    <div class="btn_box">
+        <a class="save" ng-click="onMoveFileSubmit()">确定</a>
+        <a class="cancel" ng-click="onClose()">取消</a>
+    </div>
+    <br />
+</div>

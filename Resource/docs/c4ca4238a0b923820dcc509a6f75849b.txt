@@ -1,0 +1,10 @@
+ 
+1、对 zip  压缩包文件 访问路径
+
+2、设置文件是否可以下载（ 仅如下格式支持 ppt pptx  pdf doc docx mp4 wmv asf mp3  ）
+
+
+更新zip起始页名称 [File_RarIndexPage_Upd]
+
+
+文件批量更新是否允许下载  [File_Batch_AllowDownload]

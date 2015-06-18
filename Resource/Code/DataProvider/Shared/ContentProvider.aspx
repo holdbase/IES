@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContentProvider.aspx.cs" Inherits="App.Resource.DataProvider.Shared.ContentProvider" %> 

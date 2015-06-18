@@ -1,0 +1,61 @@
+﻿<div class="add_paper_box">
+    <div class="add_tit">
+        <h4 style="padding-top:10px;">新建试题</h4>
+        <a class="icon icon_close" ng-click="back()"></a> 
+        @*<a class="recom_case" href="#">建议案例</a>*@
+    </div>
+    <div class="paper_box">
+        <div class="paper_sort">
+            <select class="which_course" ng-model="data.shareRange" ng-options="item.name for item in shareRanges"></select>
+            <select class="question_type" ng-model="data.exerciseType" ng-disabled="canChangeExerciseType(data.exerciseType)" ng-change="changeExerciseType(data.exerciseType)" ng-options="item.name for item in exerciseTypes"></select>
+            <select class="difficulty_degree" ng-model="data.difficult" ng-options="item.name for item in difficulties"></select>
+            <select class="difficulty_degree" ng-model="data.chapter" ng-options="item.Title for item in chapters"></select> 
+        </div>
+        <div class="paper_sort">
+            <div class="range_applicable">
+                <span>适用范围</span>
+                <p ng-repeat="item in scopes">
+                    <input type="checkbox" checklist-model="data.scopes" checklist-value="item">{{item.name}}
+                </p>
+            </div>
+        </div>
+        <div class="label_box">
+            <div class="label_item">
+                <p> 
+                    <input type="text" class="form-control" style="border-radius:0px;" ng-model="exerciseKey" placeholder="添加标签" aria-describedby="basic-addon2">
+                    <a style="float:left;" ng-click="addKey(exerciseKey)"><span class="icon"></span></a>
+                </p>
+                <ul class="item_list">
+                    <li ng-repeat="item in data.keys"><a ng-click="data.keys.splice($index, 1)">{{item.Name}}<span>×</span></a></li>
+                </ul>
+            </div> 
+            <div class="label_item" style="margin-top:6px;">
+                <p>
+                    <input type="text" class="form-control" style="border-radius:0px;" ng-model="exerciseKen" placeholder="添加知识点" aria-describedby="basic-addon2">
+                    <a style="float:left;" ng-click="addKen(exerciseKen)"><span class="icon"></span></a>
+                </p>
+                <ul class="knowledge_item">
+                    <li ng-repeat="item in data.kens"><a ng-click="data.kens.splice($index, 1)">{{item.Name}}<span>×</span></a></li>
+                </ul> 
+            </div>
+        </div>
+        <div id="preview"></div>
+        <div class="paper_content">
+            <div ui-view></div>
+            <div class="btn_box">
+                @*<a dialog-show dialog-id="eExercisePreview" class="save" ng-click="preview()" onclick="$('html,body').animate({ scrollTop: $('#preview').offset().top }, 500)">预览</a>*@
+                <a href="javascript:;" class="save" ng-click="submit()">保存</a>
+                <a href="javascript:;" class="cancel" ui-sref="content.exercise">取消</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="pop_bg" ng-show="bgPreview"></div>
+<div class="pop_800" id="ePreview" style="display:none;margin-top:20%;">
+    <pre-view exercise="exercisePreview" on-close="closePreview()"></pre-view>
+</div>
+
+@*<exercise-preview id="eExercisePreview" style="display:none" exercise="data.exercise"></exercise-preview>*@
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="3" />
+

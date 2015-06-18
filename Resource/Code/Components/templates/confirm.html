@@ -1,0 +1,14 @@
+﻿<div>
+    <div class="pop_bg"></div>
+    <div class="pop_400">
+        <h4 ng-bind="dialogTitle"></h4>
+        <span class="icon close_pop" ng-click="close()"></span>
+        <div class="pop_wrap">
+            <p class="confirm_tip" ng-bind="dialogText"></p>
+            <div class="btn_box">
+                <a class="save" ng-click="ok()" ng-bind="okTitle"></a>
+                <a class="cancel" ng-click="cancel()" ng-bind="cancelTitle">取消</a>
+            </div>
+        </div>
+    </div> 
+</div>

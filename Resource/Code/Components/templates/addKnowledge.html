@@ -1,0 +1,28 @@
+﻿<div>
+    <div class="pop_bg"></div>
+    <div class="pop_400">
+        <h4>添加知识点</h4>
+        <span class="icon close_pop" ng-click="onCancel()"></span>
+        <div class="pop_wrap">
+            <div class="add_knowledge">
+                <div class="point_box">
+                    <label>知识点名称</label>
+                    <input type="text" ng-model="knowledge" required>
+                </div>
+                <div class="point_box">
+                    <label>关联章节</label>
+                    <select ng-model="chapter" ng-options="item.Title for item in chapters"></select>
+                </div>
+                <div class="point_box">
+                    <label>重要程度</label>
+                    <select ng-model="requireMent" ng-options="item.name for item in requireMents"></select>
+                </div>
+            </div>
+            <div class="btn_box">
+                <a id="btnSaveNew" class="save" ng-click="onSaveNew()">确定并继续</a>
+                <a id="btnSave" href="javascript:;" class="save" ng-click="onSave()">保存</a>
+                <a id="btnCancel" href="javascript:;" class="cancel" ng-click="onCancel()">取消</a>
+            </div>
+        </div>
+    </div>
+</div>

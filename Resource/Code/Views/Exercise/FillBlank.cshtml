@@ -1,0 +1,25 @@
+﻿<div class="paper_content">
+    <div class="text_box" style="color:#F00;">
+        <input type="hidden" name="editorInput" id="editorInput" ng-model="editorText" ng-value="editorText">
+        <iframe id="editor01" src="Frameworks/eWebEditor/ewebeditor.htm?id=editorInput&style=coolblue"
+                frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
+    </div>
+    <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
+    <attach-list attachments="attachmentList"></attach-list>
+    <div class="blank_item" ng-repeat="item in model.exercisechoicelist | answerFilter">
+        <div class="default objective_answer">
+            <input type="text" ng-model="item.Answer">
+        </div>
+        <div class="default alternative_answer">
+            <a ng-click="Del($index)">x</a>
+            <input type="text" placeholder="备选答案请用逗号隔开" ng-model="item.Spare">
+        </div>
+    </div>
+    <a class="add_attach" ng-click="Add()"><em><i class="icon"></i></em><span>添加选项</span></a>
+    <div class="text_box" style="color:#F00; margin-top:20px;">
+        <input type="hidden" name="editorAnalysis" id="editorAnalysis" ng-model="editorAnalysisText" ng-value="editorAnalysisText">
+        <iframe src="Frameworks/eWebEditor/ewebeditor.htm?id=editorAnalysis&style=coolblue"
+                frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>
+    </div>
+</div>
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>

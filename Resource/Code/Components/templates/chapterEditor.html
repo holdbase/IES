@@ -1,0 +1,19 @@
+﻿<div>
+    <div class="pop_bg"></div>
+    <div class="pop_400">
+        <h4>{{editorTitle}}</h4>
+        <span class="icon close_pop" ng-click="onCancel()"></span>
+        <div class="pop_wrap">
+            <div class="add_knowledge">
+                <div class="point_box">
+                    <label>章节名称</label>
+                    <input type="text" ng-model="chapterName" required>
+                </div> 
+            </div>
+            <div class="btn_box">
+                <a id="btnSave" href="javascript:;" class="save" ng-click="onSave()">保存</a>
+                <a id="btnCancel" href="javascript:;" class="cancel" ng-click="onCancel()">取消</a>
+            </div>
+        </div>
+    </div>
+</div>

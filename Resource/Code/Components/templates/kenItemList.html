@@ -1,0 +1,7 @@
+﻿<dd>
+    <i class="icon btn_delete" ng-click="onRemove()" ng-class="{'hideAuth': !hasAuth}"></i>
+    <i class="icon btn_edit" ng-click="onEdit()" ng-class="{'hideAuth': !hasAuth}"></i>
+    <a ng-bind="kenItem.Name" title="{{kenItem.Name}}"
+       ng-class="{'kenSelected':dataKen.KenID==kenItem.KenID, 'proficient': kenItem.Requirement==3, 'grasp': kenItem.Requirement==2, 'know': kenItem.Requirement==1}">
+    </a> 
+</dd>

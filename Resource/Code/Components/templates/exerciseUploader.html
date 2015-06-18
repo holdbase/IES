@@ -1,0 +1,90 @@
+﻿<div class="pop_exercise_import" style="display:block">
+    <h4>文件导入</h4>
+    <span class="icon close_pop"></span>
+    <div class="pop_box">
+        <div class="options_box">
+            <div class="options_list">
+                <label><b class="red">*</b>选择导入题型：</label>
+                <select ng-model="importTypeSelected" ng-options="item.name for item in importTypes"></select>
+                <a class="muban_btn" ng-href="{{templateUrl}}">[导入模板下载]</a>
+            </div>
+            <div class="options_list">
+                <label><b class="red">*</b>导入文件：</label>
+                <div nv-file-drop="" uploader="exUploader" url="uploadUrl" filters="fileSuffix">
+                    <input type="file" id="file" nv-file-select="" uploader="exUploader" style="display:none;" />
+                    <input class="file_input" type="text" ng-model="fileName" style="margin-left:25px;width:198px;" readonly>
+                    <a class="scan_btn" onclick="$('#file').click();">导入文件</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 导入 等待过程 -->
+        <div class="test_box" ng-show="stepA">
+            <div class="test_tit">
+                <h5 style="line-height:40px;">导入文件数据验证</h5>
+            </div>
+            <div class="table_box">
+                <table class="data_table">
+                    <tr>
+                        <th width="79">序号</th>
+                        <th width="119">异常数据位置</th>
+                        <th width="299">异常原因</th>
+                    </tr>
+                </table>
+                <div class="loading_box"></div>
+            </div>
+        </div>
+
+        <!-- 导入 全部正常 -->
+        <div class="test_box" ng-show="stepB">
+            <div class="test_tit">
+                <h5 style="line-height:40px;">导入文件数据验证</h5>
+                <p ng-show="process==='allRight'">异常数据：<span class="red">{{errors}}</span>条　｜　成功数据：<span class="green">{{rights}}</span>条</p>
+            </div>
+            <div class="table_box">
+                <table class="data_table">
+                    <tr>
+                        <th width="79">序号</th>
+                        <th width="119">异常数据位置</th>
+                        <th width="299">异常原因</th>
+                    </tr>
+                </table>
+                <div class="import_tip">
+                    <img src="images/expression2.png" width="96" height="96" alt="">
+                    <p ng-show="process==='allRight'">恭喜，您的导入文件数据全部正常！<br>请点击下方按钮确定导入</p>
+                    <p ng-show="process==='initial'">请点击上方右侧的【导入模板下载】按钮，下载最新的导入格式</p>
+                </div>
+            </div>
+        </div>
+        <!-- 导入 结果展示 -->
+        <div class="test_box" ng-show="stepC">
+            <div class="test_tit">
+                <h5 style="line-height:40px;">导入文件数据验证</h5>
+                <p ng-show="process==='partRight'">异常数据：<span class="red">{{errors}}</span>条　｜　成功数据：<span class="green">{{rights}}</span>条</p>
+            </div>
+            <div class="table_box">
+                <table class="data_table" ng-show="process==='partRight'">
+                    <tr>
+                        <th width="79">序号</th>
+                        <th width="119">异常数据位置</th>
+                        <th width="299">异常原因</th>
+                    </tr>
+                    <tr ng-repeat="item in resultTable | statusError">
+                        <td>{{$index + 1}}</td>
+                        <td>第{{item.RowNumber}}行</td>
+                        <td>{{item.Message}}</td>
+                    </tr>
+                </table>
+                <div class="import_tip" ng-show="process==='fmtError'">
+                    <img src="../../images/expression.png" width="96" height="96" alt="">
+                    <p>对不起，您的导入格式不正确，习题无法验证！<br>请点击上方右侧的【导入模板下载】按钮，下载最新的导入格式</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn_box" ng-disabled="process!=='allRight'">
+            <a class="save" ng-click="startImport()" ng-class="{'exercise_import_disabled': !canImport}">导入</a>
+            <a class="cancel" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>

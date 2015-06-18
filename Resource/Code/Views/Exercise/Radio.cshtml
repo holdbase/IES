@@ -1,0 +1,36 @@
+﻿
+<div class="paper_content">
+    <div class="paper_wrap">
+        <div class="text_box" style="color:#F00;">
+            <input type="hidden" name="editorInput" id="editorInput" ng-model="editorText" ng-value="editorText">
+            <iframe id="editor01" src="Frameworks/eWebEditor/ewebeditor.htm?id=editorInput&style=coolblue"
+                    frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
+        </div>
+        <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
+        @*<attach-list attachments="model.exercisecommon.attachmentlist"></attach-list>*@        
+        <attach-list attachments="attachmentList"></attach-list>
+        <ul class="answer_list">
+            <li ng-class="{active:item.IsCorrect==1}" ng-repeat="item in model.exercisechoicelist">
+                <div class="default">
+                    <em style="cursor:pointer;"><i class="icon" ng-model="item.IsCorrect" ng-click="isCorrectChange(item)"></i></em>
+                    <a ng-click="del(item)">x</a>
+                    <input type="text" ng-model="item.Conten"> 
+                </div>
+            </li>
+        </ul>
+        <a class="add_attach" ng-click="AddAnswer()"><em><i class="icon"></i></em><span>添加选项</span></a>
+        @*<div class="resource_btn">
+            <a class="up_section" href="javascript:;"></a>
+            <a class="down_section" href="javascript:;"></a>
+            <a class="delete_section" href="javascript:;"></a>
+        </div>*@
+    </div>
+    <div>
+        <div class="text_box" style="color: #F00; margin-top: 20px;">
+            <input type="hidden" name="editorAnalysis" id="editorAnalysis" ng-model="editorAnalysisText" ng-value="editorAnalysisText">
+            <iframe src="Frameworks/eWebEditor/ewebeditor.htm?id=editorAnalysis&style=coolblue"
+                    frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>
+        </div>
+    </div>
+</div>
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>

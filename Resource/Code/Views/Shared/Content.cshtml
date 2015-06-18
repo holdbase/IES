@@ -1,0 +1,11 @@
+﻿<div class="coursesite_box">
+    <div class="exercise_nav"> 
+        @*<ul class="exercise_nav_list">
+            <more-course ng-repeat="item in courses" course="item" course-index="$index" selection="course" on-selected="courseChanged(item)">
+            </more-course> 
+        </ul>*@
+        <more-course courses="courses" course-more="courseMore" course="course" more-title="moreTitle"></more-course> 
+      
+    </div>
+    <div ui-view></div>
+</div>

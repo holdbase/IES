@@ -1,0 +1,273 @@
+﻿<div class="preview_box" >
+    <div class="preview_content" style="margin-top:-15%;">
+        <ul class="question_list" style="height:400px;overflow:auto;">
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==2">
+                <div class="issue_box">
+                    <h4>【单选题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div class="radio_list">
+                    <p ng-repeat="item in exercise.exercisechoicelist">
+                        <input type="radio" ng-checked="item.IsCorrect">{{item.Conten}}
+                    </p>
+                </div>
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==3">
+                <div class="issue_box">
+                    <h4>【多选题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div class="checkbox_list">
+                    <p ng-repeat="item in exercise.exercisechoicelist" class="pre">
+                        <input type="checkbox" ng-checked="item.IsCorrect">{{item.Conten}}
+                    </p>
+                </div>
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==10">
+                <div class="issue_box">
+                    <h4>【问答题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <p ng-bind-html="exercise.exercisecommon.exercise.Answer"></p>
+                <!--<input class="blank_box" type="text" ng-value="exercise.exercisecommon.exercise.Answer">-->
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==5">
+                <div class="issue_box">
+                    <h4>【填空题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div ng-repeat="item in exercise.exercisechoicelist">
+                    <input class="blank_box" style="width: 238px; float:left; margin-right:10px;" type="text" ng-value="item.Answer">
+                    <input class="blank_box" style="width: 338px; float: left;" type="text" ng-value="item.Spare">
+                </div>
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==11">
+                <div class="issue_box">
+                    <h4>【翻译题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <p ng-bind-html="exercise.exercisecommon.exercise.Answer"></p>
+                <!--<input class="blank_box" type="text" ng-value="exercise.exercisecommon.exercise.Answer">-->
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==4">
+                <div class="issue_box">
+                    <h4>【名词解释】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div ng-repeat="item in exercise.exercisechoicelist">
+                    <input class="blank_box" type="text" ng-value="item.Answer">
+                </div>
+            </li>
+            <li class="hearing" ng-show="exercise.exercisecommon.exercise.ExerciseType==12">
+                <div class="listen_box">
+                    <i class="icon head_phone"></i>
+                    <div class="listening">
+                        <h4>【听力训练】</h4>
+                        <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                    </div>
+                </div>
+                <div ng-repeat="Children in exercise.Children">
+                    <div class="issue_box">
+                        <h4>【单选题】</h4>
+                        <p ng-bind="Children.exercisecommon.exercise.Conten"></p>
+                    </div>
+                    <div class="radio_list">
+                        <p ng-repeat="item in Children.exercisechoicelist">
+                            <input type="radio" ng-checked="item.IsCorrect==1">{{item.Conten}}
+                        </p>
+                    </div>
+                </div>
+                <div ng-repeat="ChildrenMultiple in exercise.ChildrenMultiple">
+                    <div class="issue_box">
+                        <h4>【多选题】</h4>
+                        <p ng-bind="ChildrenMultiple.exercisecommon.exercise.Conten"></p>
+                    </div>
+                    <div class="checkbox_list">
+                        <p ng-repeat="item in ChildrenMultiple.exercisechoicelist" class="pre">
+                            <input type="checkbox" ng-checked="item.IsCorrect">{{item.Conten}}
+                        </p>
+                    </div>
+                </div>
+                <div ng-repeat="ChildrenFillBlank in exercise.ChildrenFillBlank">
+                    <div class="issue_box">
+                        <h4>【填空题】</h4>
+                        <p ng-bind="ChildrenFillBlank.exercisecommon.exercise.Conten">填空题题干</p>
+                    </div>
+                    <p ng-bind="ChildrenFillBlank.exercisecommon.exercise.Answer"></p>
+                    <!--<input class="blank_box" type="text" ng-value="ChildrenFillBlank.exercisecommon.exercise.Answer">-->
+                </div>
+            </li>
+            <li class="hearing" ng-show="exercise.exercisecommon.exercise.ExerciseType==17">
+                <div class="listen_box">
+                    <i class="icon head_phone"></i>
+                    <div class="listening">
+                        <h4>【自定义题型】</h4>
+                        <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                    </div>
+                </div>
+                <div ng-repeat="Children in exercise.Children">
+                    <div class="issue_box">
+                        <h4>【单选题】</h4>
+                        <p ng-bind="Children.exercisecommon.exercise.Conten"></p>
+                    </div>
+                    <div class="radio_list">
+                        <p ng-repeat="item in Children.exercisechoicelist">
+                            <input type="radio" ng-checked="item.IsCorrect==1">{{item.Conten}}
+                        </p>
+                    </div>
+                </div>
+                <div ng-repeat="ChildrenMultiple in exercise.ChildrenMultiple">
+                    <div class="issue_box">
+                        <h4>【多选题】</h4>
+                        <p ng-bind="ChildrenMultiple.exercisecommon.exercise.Conten"></p>
+                    </div>
+                    <div class="checkbox_list">
+                        <p ng-repeat="item in ChildrenMultiple.exercisechoicelist" class="pre">
+                            <input type="checkbox" ng-checked="item.IsCorrect">{{item.Conten}}
+                        </p>
+                    </div>
+                </div>
+                <div ng-repeat="ChildrenFillBlank in exercise.ChildrenFillBlank">
+                    <div class="issue_box">
+                        <h4>【填空题】</h4>
+                        <p ng-bind="ChildrenFillBlank.exercisecommon.exercise.Conten">填空题题干</p>
+                    </div>
+                    <p ng-bind="ChildrenFillBlank.exercisecommon.exercise.Answer"></p>
+                    <!--<input class="blank_box" type="text" ng-value="ChildrenFillBlank.exercisecommon.exercise.Answer">-->
+                </div>
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==8">
+                <div class="issue_box">
+                    <h4>【分析题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div ng-repeat="item in exercise.exercisechoicelist">
+                    <p ng-bind="item.Conten"></p>
+                    <input class="blank_box" type="text" ng-value="item.Answer">
+                </div>
+
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==9">
+                <div class="issue_box">
+                    <h4>【计算题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div ng-repeat="item in exercise.exercisechoicelist">
+                    <p ng-bind="item.Conten"></p>
+                    <input class="blank_box" type="text" ng-value="item.Answer">
+                </div>
+            </li>
+            <li style="display:none;">
+                <div class="issue_box">
+                    <h4>【阅读理解（填空）】</h4>
+                    <p>阅读理解（填空）题干</p>
+                </div>
+                <input class="blank_box" type="text" placeholder="输入阅读理解答案">
+            </li>
+            <li class="hearing" ng-show="exercise.exercisecommon.exercise.ExerciseType==14">
+                <div class="listen_box">
+                    <i class="icon text_doc"></i>
+                    <div class="listening">
+                        <h4>【阅读理解（选择）/完形填空】</h4>
+                        <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                    </div>
+                </div>
+                <div ng-repeat="Children in exercise.Children">
+                    <div class="issue_box">
+                        <h4>【单选题】</h4>
+                        <p ng-bind="Children.exercisecommon.exercise.Conten"></p>
+                    </div>
+                    <div class="radio_list">
+                        <p ng-repeat="item in Children.exercisechoicelist">
+                            <input type="radio" ng-checked="item.IsCorrect==1">{{item.Conten}}
+                        </p>
+                    </div>
+                </div>
+                <div ng-repeat="ChildrenMultiple in exercise.ChildrenMultiple">
+                    <div class="issue_box">
+                        <h4>【多选题】</h4>
+                        <p ng-bind="ChildrenMultiple.exercisecommon.exercise.Conten"></p>
+                    </div>
+                    <div class="checkbox_list">
+                        <p ng-repeat="item in ChildrenMultiple.exercisechoicelist" class="pre">
+                            <input type="checkbox" ng-checked="item.IsCorrect">{{item.Conten}}
+                        </p>
+                    </div>
+                </div>
+                <div ng-repeat="ChildrenFillBlank in exercise.ChildrenFillBlank">
+                    <div class="issue_box">
+                        <h4>【填空题】</h4>
+                        <p ng-bind="ChildrenFillBlank.exercisecommon.exercise.Conten">填空题题干</p>
+                    </div>
+                    <p ng-bind="ChildrenFillBlank.exercisecommon.exercise.Answer"></p>
+                    <!--<input class="blank_box" type="text" ng-value="ChildrenFillBlank.exercisecommon.exercise.Answer">-->
+                </div>
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==13">
+                <div class="issue_box">
+                    <h4>【写作】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <p ng-bind-html="exercise.exercisecommon.exercise.Answer"></p>
+                <!--<div class="text_box" style="color:#F00;">
+                {{exercise.exercisecommon.exercise.Answer}}
+            </div>-->
+            </li>
+            <li style="display:none;">
+                <div class="issue_box">
+                    <h4>【答题卡】</h4>
+                    <p>答题卡题干</p>
+                </div>
+                <div class="text_box" style="color:#F00;">
+                    这里是富文本框这里是富文本框这里是富文本框
+                </div>
+                <input class="blank_box" type="text" placeholder="输入答题卡答案">
+                <input class="blank_box" type="text" placeholder="输入答题卡答案">
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==1">
+                <div class="issue_box">
+                    <h4>【判断题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div class="answer_content">
+                    <a ng-class="{active:exercise.exercisecommon.exercise.Answer==1}">正确</a>
+                    <a ng-class="{active:exercise.exercisecommon.exercise.Answer==0}">错误</a>
+                </div>
+            </li>
+            <li ng-show="exercise.exercisecommon.exercise.ExerciseType==7">
+                <div class="issue_box">
+                    <h4>【排序题】</h4>
+                    <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                </div>
+                <div class="sequence_list">
+                    <div class="sequence" ng-repeat="item in exercise.exercisechoicelist">
+                        <select style="width:45px;">
+                            <option ng-bind="item.OrderNum"></option>
+                        </select>
+                        <p ng-bind="item.Conten"></p>
+                    </div>
+                </div>
+            </li>
+            <li class="hearing" ng-show="exercise.exercisecommon.exercise.ExerciseType==6">
+                <div class="listen_box connection">
+                    <i class="icon connect"></i>
+                    <div class="listening">
+                        <h4>【连线题】</h4>
+                        <p ng-bind-html="exercise.exercisecommon.exercise.Conten"></p>
+                    </div>
+                </div>
+                <div class="connection_list" ng-repeat="item in exercise.exercisechoicelist">
+                    <div class="connect_l">
+                        <p>{{item.Conten}}<i></i></p>
+                    </div>
+                    <div class="connect_r">
+                        <p><i></i>{{item.Answer}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="btn_box">
+        <a href="javascript:;" class="save" ng-click="onClose()">关闭</a>
+    </div>
+</div>

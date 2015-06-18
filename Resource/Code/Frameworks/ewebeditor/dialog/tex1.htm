@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv=X-UA-Compatible content=IE=EmulateIE9>
+ <script src="../../js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script language="JavaScript">
+    function submitSmiles() {
+        //	var smiles = document.JME.smiles();
+        //	alert(smiles);
+        //	if (smiles == "") {
+        //		alert("Nothing to submit");
+        //	}
+        //	else {
+        //		opener.fromEditor(smiles);
+        //		window.close();
+        //	}
+        var smiles = document.JME.smiles();
+        //var smiles = "CC1CNCCCOC1";
+        var trueURL1 = 'http://depict.emolecules.com/cgi-bin/mymol/depict.cgi?' +
+		'smiles=' + smiles + '&width=150&height=150&colorscheme=cow&format=png&submit=image';
+        var trueURL = 'http://pubchem.ncbi.nlm.nih.gov/edit/editsrv.fcgi?drawevent=paste&sessionid=1&smiles=' + smiles;
+
+        //var x= new ActiveXObject("Microsoft.xmlhttp");
+        //x.Open("GET",trueURL,false);
+        //x.Send();
+        //var mstream = new ActiveXObject("Adodb.Stream");
+        //mstream.Type = 1; 
+        //mstream.Open(); 
+        //mstream.Write(x.responseBody);
+        //mstream.SaveToFile("c:\123.gif");
+        var flag = "";
+        $.ajax({ url: 'mybrowse.ashx?action=GetChemistry&smiles=' + smiles, cache: false,
+            success: function(data) {
+                if (data.indexOf("<img src=") > -1) {
+                    $(data).find("img").each(function() {
+                        flag = this.href;
+                        var sHTML = '';
+                        sHTML = '<img src="' + flag + '"' + sHTML;
+                        sHTML = sHTML + '>';
+
+                        dialogArguments.insertHTML(sHTML);
+                        window.close()
+                    });
+                } else {
+                    alert("您的公式有错误，请重试");
+                    window.close();
+                }
+            }
+        });
+
+    }
+
+    function saveJMECookie() {
+        var jme = document.JME.jmeFile();
+        document.cookie = "jme=" + jme + ";expires=Thu, 31 Dec 2020 00:00:00 GMT; path=/";
+    }
+
+    function readJMECookie() {
+        window.dialogWidth = 600 + "px";
+        window.dialogHeight = 500 + "px";
+        var editor = document.JME;
+        if (editor.smiles().length > 0) return; // editing already started
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf("jme=") == 0) {
+                var jme = c.substring(4, c.length);
+                //alert("jme="+jme);
+                editor.readMolecule(jme);
+                return;
+            }
+        }
+    }
+</script>
+</head>
+
+<body bgcolor='#FFFFFF' onLoad='readJMECookie()' onUnload='saveJMECookie()'>
+<center>
+<div style="border-width: 5px; border-color: #CCCCCC; border-style: solid; background-color: white; width: 550px; height: 480px; margin: 10px;">
+<!-- <div> 
+<select onChange="document.JME.setSubstituent(options[selectedIndex].text)">
+<option>Select substituent 
+<option>-C(=O)OH 
+<option>-C(=O)OMe 
+<option>-OC(=O)Me
+<option>-CMe3
+<option>-CF3
+<option>-CCl3
+<option>-NO2
+<option>-SO2-NH2
+<option>-NH-SO2-Me
+<option>-NMe2
+<option>-C#N
+<option>-C#C-Me
+<option>-C#CH
+</select>
+</div>-->
+<div>
+<applet name='JME' code='JME.class' archive='JME.jar' width=500 height=400>
+</applet>
+</div>
+<form name="form_editor">
+<input type="button" value=" 确定 " onClick = "submitSmiles();">
+&nbsp;&nbsp;
+<input type="button" value=" 取消 " onClick = "window.close();">
+</form>
+</div>
+</center>
+</body>
+</html>

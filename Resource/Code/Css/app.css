@@ -1,0 +1,76 @@
+﻿body {
+}
+
+a {
+    cursor: pointer;
+}
+
+.chapter-selection {
+    font-weight: bold;
+    color: red !important;
+}
+
+.pop_uploader {
+    width: 1000px;
+    position: absolute;
+    left: 20%;
+    margin-left: -200px;
+    top: 150px;
+    background: #fff;
+    z-index: 999;
+}
+
+    .pop_uploader h4 {
+        height: 40px;
+        line-height: 40px;
+        background: #1e5975;
+        font-size: 14px;
+        color: #fff;
+        padding-left: 13px;
+    }
+
+.margin_exercise_new {
+    margin-left: 100px;
+}
+
+.proficient {
+    color: #FF3300 !important;
+}
+
+.grasp {
+    color: #FF9900 !important;
+}
+
+.know {
+    color: black !important;
+}
+
+.kenSelected {
+    background-color: #A9A9A9!important;
+}
+
+.itemHide {
+    display:none;
+}
+
+.chapterHide {
+    display:none!important; 
+} 
+
+.chapterSelected {
+    background:#f44f4f; 
+    color:#fff !important;
+}
+
+.hideAuth {
+    display:none!important;
+}
+
+.re_show_input {
+    display: inline-block!important;
+    line-height:normal; 
+}
+
+.exercise_import_disabled {
+    cursor:default!important;
+}

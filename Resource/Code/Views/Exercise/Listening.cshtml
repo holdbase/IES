@@ -1,0 +1,91 @@
+﻿<div class="paper_content">
+    <div class="text_box" style="color:#F00;">
+        <input type="hidden" name="editorInput" id="editorInput" ng-model="editorText" ng-value="editorText">
+        <iframe src="Frameworks/eWebEditor/ewebeditor.htm?id=editorInput&style=coolblue"
+                frameborder="0" scrolling="no" width="800" height="300" style="display: block;"></iframe>
+    </div>
+    <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
+    <attach-list attachments="attachmentList"></attach-list>
+    <br />
+    <div id="radio"></div>
+    <div ng-show="isShowRadio==1">
+        <div class="paper_wrap" style="width:800px;" ng-repeat="children in model.Children">
+            <div class="text_box" style="color:#F00;">
+                <textarea class="form-control" rows="4" ng-model="children.exercisecommon.exercise.Conten"></textarea>
+            </div>
+            <ul class="answer_list">
+                <li ng-class="{active:item.IsCorrect==1}" ng-repeat="item in children.exercisechoicelist">
+                    <div class="default">
+                        <em style="cursor:pointer;"><i class="icon" ng-model="item.IsCorrect" ng-click="isCorrectChange(item,children.exercisechoicelist)"></i></em>
+                        <a ng-click="del(item)">x</a>
+                        <input type="text" style="width:620px;" ng-model="item.Conten">
+                    </div>
+                </li>
+            </ul>
+            <a class="add_attach" ng-click="AddAnswer(children)"><em><i class="icon"></i></em><span>添加选项</span></a>
+            <div class="resource_btn">
+                <a class="up_section" href="javascript:;"></a>
+                <a class="down_section" href="javascript:;"></a>
+                <a class="delete_section" href="javascript:;" ng-click="delRadio($index, 0)"></a>
+            </div>
+        </div>
+    </div>
+    <div id="multiple"></div>
+    <div ng-show="isShowMultiple==1">
+        <div class="paper_wrap" style="width:800px;" ng-repeat="childrenMultiple in model.ChildrenMultiple">
+            <div class="text_box" style="color:#F00;">
+                <textarea class="form-control" rows="4" ng-model="childrenMultiple.exercisecommon.exercise.Conten"></textarea>
+            </div>
+            <ul class="answer_list">
+                <li ng-class="{active:item.IsCorrect==1}" ng-repeat="item in childrenMultiple.exercisechoicelist">
+                    <div class="default">
+                        <em style="cursor:pointer;"><i class="icon" ng-model="item.IsCorrect" ng-click="isCorrectChangeMultiple(item)"></i></em>
+                        <a ng-click="delMultiple(item)">x</a>
+                        <input type="text" style="width:620px;" ng-model="item.Conten">
+                    </div>
+                </li>
+            </ul>
+            <a class="add_attach" ng-click="AddAnswerMultiple(childrenMultiple)"><em><i class="icon"></i></em><span>添加选项</span></a>
+            <div class="resource_btn">
+                <a class="up_section" href="javascript:;"></a>
+                <a class="down_section" href="javascript:;"></a>
+                <a class="delete_section" href="javascript:;" ng-click="delMultiples($index, 1)"></a>
+            </div>
+        </div>
+    </div>
+    <div id="fillBlank"></div>
+    <div ng-show="isShowFillBlank==1">
+        <div class="paper_wrap" style="width:800px;" ng-repeat="childrenFillBlank in model.ChildrenFillBlank">
+            <div class="text_box" style="color:#F00;">
+                <textarea class="form-control" rows="4" ng-model="childrenFillBlank.exercisecommon.exercise.Conten"></textarea>
+            </div>
+            <div class="default fill_blank">
+                <input type="text" ng-model="childrenFillBlank.exercisecommon.exercise.Answer">
+            </div>
+            <div class="resource_btn">
+                <a class="up_section" href="javascript:;"></a>
+                <a class="down_section" href="javascript:;"></a>
+                <a class="delete_section" href="javascript:;" ng-click="delFillBlank($index, 2)"></a>
+            </div>
+        </div>
+    </div>
+    @*<div class="text_box" style="color:#F00;">
+            <input type="hidden" name="editorAnalysis" id="editorAnalysis" ng-model="editorAnalysisText" ng-value="editorAnalysisText">
+            <iframe src="/Frameworks/eWebEditor/ewebeditor.htm?id=editorAnalysis&style=coolblue"
+                    frameborder="0" scrolling="no" width="800" height="300" style="display: block;"></iframe>
+        </div>*@
+</div>
+<ul class="listening_btn">
+    @*<li><a href="javascript:;">添加音频</a></li>*@
+    <li><a href="javascript:;" ng-click="AddRadio()" onclick="$('html,body').animate({scrollTop:$('#radio').offset().top},500)">单选题</a></li>
+    <li><a href="javascript:;" ng-click="AddMultiple()" onclick="$('html,body').animate({ scrollTop: $('#multiple').offset().top }, 500)">多选题</a></li>
+    <li><a href="javascript:;" ng-click="AddFillBlank()" onclick="$('html,body').animate({ scrollTop: $('#fillBlank').offset().top }, 500)">填空题</a></li>
+    @*<li><a href="javascript:;">注释说明</a></li>
+    <li><a href="javascript:;">添加附件</a></li>*@
+</ul>
+<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>
+<ies-dialog id="eConfirm" style="display:none"
+            dialog-title="确认"
+            dialog-text="您确认删除吗？"
+            ok-title="确定"
+            cancel-title="取消"></ies-dialog>

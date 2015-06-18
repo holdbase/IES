@@ -1,0 +1,28 @@
+﻿<a class="batch_box" href="javascript:;">
+    <em><i class="icon"></i></em>
+    <span>批量操作</span>
+    <ul class="batch_list">
+        <li ng-show="ocid!=0">
+            浏览权限
+            <ul class="permissions">
+                <share-range style="width:140px;" ng-repeat="item in shareRanges" ng-click="shareRange(item)" range="item"></share-range> 
+            </ul>
+        </li>
+
+        <li ng-show="ocid!=0">
+            下载设置
+            <ul class="permissions">
+                <li ng-click="allowDownload(1)" style="width:140px;">
+                    <p style="width:100%;"><i class="icon"></i>允许</p>
+                </li>
+                <li ng-click="allowDownload(0)" style="width:140px;">
+                    <p style="width:100%;"><i class="icon"></i>不允许</p>
+                </li>
+            </ul>
+        </li>
+
+        <!--<li class="batch_share">批量共享</li>-->
+        <li class="batch_move" ng-click="onFireMobileBatch()">批量移动</li>
+        <li class="batch_delete" ng-click="onFireRemoveAll()">批量删除</li>
+    </ul>
+</a>

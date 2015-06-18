@@ -1,0 +1,113 @@
+/*.icon{ display:inline-block; width:16px; height:16px; background:url(/images/icon_index.png) no-repeat;}*/
+.icon_con{display:inline-block; width:16px; height:16px; background:url(/images/icon_construction.png) no-repeat;}
+.icon_forum{ display:inline-block; width:16px; height:16px; background:url(/images/icon_forum.png) no-repeat;}
+.icon_24{display:inline-block; width:24px; height:24px; background:url(/images/icon_24.png) no-repeat;}
+.icon_r{display:inline-block; width:16px; height:16px; background:url(/images/icon_reverse.png) no-repeat;}
+
+/*回到顶部*/
+.backto_top{ display:block; width:40px; height:40px; background-position:-69px -40px; position:fixed; bottom:60px; left:50%; margin-left:620px;}
+
+/*翻转课堂首页*/
+.classroom_box{ height:50px; background:#f2f2f2; border-bottom:1px solid #e4e4e4; overflow:hidden; zoom:1;}
+.classroom_time{ float:left;  width:300px; height:30px; line-height:30px; border:1px solid #ccc; margin:9px 0 0 25px; color:#666;}
+.add_classroom{ float:right;margin:12px 25px 0 0; width:105px; height:25px; background:url(/images/add_bg.gif) no-repeat; color:#fff; overflow:hidden; zoom:1;}
+.add_classroom em{ float:left; width:25px; height:25px;}
+.add_classroom em i{ margin:4px 0 0 4px;}
+.icon_add{ background-position:-48px -64px;}
+.add_classroom span{ float:left; width:80px; height:25px; text-align:center;}
+.add_classroom:hover{ background:url(/images/add_bg_hover.gif) no-repeat;}
+.course_box{ padding:20px 25px; overflow:hidden; zoom:1;}
+.course_list{ background:#f2f2f2; padding:10px 20px 20px; overflow:hidden; zoom:1;}
+.course_intro_l{ width:510px; float:left; overflow:hidden;}
+.course_intro_l h5{ font-size:16px; color:#374760; font-weight:normal;}
+.course_intro_l p{ color:#666; height:18px; line-height:18px; margin-top:5px; overflow:hidden; zoom:1;}
+.course_intro_l p i{ float:left; font-style:normal;}
+.learning_progress{ float:left; margin-right:10px; width:150px; height:16px; border:1px solid #ccc; position:relative;}
+.learning_progress em{ display:block; width:48%; height:16px; background:#374760; position:absolute;}
+.course_intro_r{ overflow:hidden; zoom:1; border-left:1px solid #e4e4e4;}
+.course_intro_r img{ float:right;}
+.course_intro_r p{ overflow:hidden; zoom:1; margin-left:10px; color:#666; line-height:30px;}
+.course_detail{ display:none; margin-top:15px; overflow:hidden; zoom:1;}
+.course_item{ overflow:hidden; zoom:1;}
+.course_item li{ float:left; margin-right:10px; position:relative;}
+.course_item li a{ display:block; width:100px; height:30px; line-height:30px; text-align:center; background:#e4e4e4; font-size:13px; color:#666;}
+.course_item li img{ position:absolute; top:5px; right:15px;}
+.course_item li.active a{ background:#fff; padding-top:1px;}
+
+.item_detail{ display:none; background:#fff; padding:20px 15px; overflow:hidden; zoom:1;}
+.group_learning{ width:285px;float:left; margin-right:25px; padding:10px 0 10px 12px; border-left:3px solid #ccc; background:#f2f2f2; }
+.progress_tit{ overflow:hidden; zoom:1;}
+.progress_tit p{ float:left; font-size:14px; color:#333; font-weight:bold;}
+.progress_tit p a{ font-size:12px; color:#1e5975; font-weight:normal; text-decoration:underline; padding-left:3px;}
+.groups{ float:right; margin-right:10px; color:#666;}
+.groups i{ float:left; margin:7px 5px 0 0; width:10px; height:10px;}
+.label_gray{ background:#666;}
+.label_red{ background:#ff0000;}
+.progress_bar{ margin-top:10px; width:260px; padding-right:4px; border-right:1px solid #ff0000;}
+.progress_bar li{ height:16px; margin-bottom:10px; position:relative;}
+.bar_red{ background:#ff0000;}
+.bar_green{ background:#7ad488;}
+.bar_gray{ background:#666;}
+.group_detail{ display:none; padding:5px 10px;background-color: rgba(0, 0, 0, 0.4); filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#88000000, endColorstr=#88000000); overflow:hidden; zoom:1; position:absolute; top:8px; left:0; color:#fff; z-index:999;}
+.group_detail span{ display:block; margin-top:5px; padding-left:5px; width:95px; height:26px; line-height:26px;}
+.learning_time{ background:#33cc00;}
+.progress_num{ background:#ff3300;}
+.item_detail_r{ overflow:hidden; zoom:1;}
+
+.tip_box{ height:30px; line-height:30px; background:#feefd9; overflow:hidden; zoom:1;}
+.tip_box p{ float:left; margin-left:10px; color:#666;}
+.tip_box p span{ color:#ff0000; padding:0 5px;}
+.tip_box a{ float:right; margin-right:16px; color:#1e5975; text-decoration:underline;}
+.topic_tit{ height:25px; line-height:25px; overflow:hidden; zoom:1; margin-top:10px; padding-bottom:3px; border-bottom:1px solid #ccc;}
+.check_all{ float:right; width:105px; height:25px; background:url(/images/add_bg.gif) no-repeat; color:#fff;}
+.check_all:hover{ background:url(/images/add_bg_hover.gif) no-repeat;}
+.check_all em{ float:left; width:25px; height:25px;}
+.check_all em i{ margin:4px 0 0 4px;}
+.check_all span{ float:left; width:80px; height:25px; text-align:center;}
+.icon_search{ background-position:0 0;}
+.topic_tit p{ overflow:hidden; zoom:1; color:#666; font-size:13px;}
+.topic_tit p b{ font-size:14px; color:#333; padding-right:15px;}
+.topic_tit p span{ color:#ff0000;}
+.topic_list li{ margin-top:10px; overflow:hidden; zoom:1;}
+.topic_theme{ height:30px; line-height:30px; background:#f2f2f2; overflow:hidden; zoom:1; font-size:13px; color:#666;}
+.topic_theme span{ float:right; margin-right:5px; font-size:12px;}
+.topic_detail{ margin-top:10px; overflow:hidden; zoom:1;}
+.topic_detail img{ float:left; margin:0 10px 0 20px;}
+.topic_detail_r{ overflow:hidden; zoom:1; line-height:16px;}
+.user_reply{ color:#333;}
+.user_reply b{ font-weight:normal; color:#999; padding-left:15px;}
+.topic_detail_r p{ color:#666;}
+.topic_detail_r a{ color:#1e5975; text-decoration:underline;}
+.topic_list{ height:358px; overflow:auto;}
+.unfold{ display:block; width:60px; height:20px; line-height:20px; text-align:center; margin:0 auto; color:#666; background:#f2f2f2;}
+
+
+.wrap_box{ padding:19px; border:1px solid #ccc; overflow:hidden; zoom:1;}
+.urge_box{ overflow:hidden; zoom:1;}
+.urge_l{ float:left; width:195px;}
+.urge_l p{ line-height:32px; color:#666;}
+.urge_l p input{ float:left; margin-right:3px; height:32px; vertical-align:middle;}
+.urge_l p select{ width:70px; height:30px; line-height:30px; border:1px solid #ccc;}
+.group_list{ width:180px;background-color: rgba(0, 0, 0, 0.2); filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#33000000, endColorstr=#33000000); border:1px solid #a3a3a3; height:180px; overflow:auto;}
+.group_list li{ margin:0 10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#333; line-height:25px; height:25px;}
+.group_list li input{ float:left; height:25px; vertical-align:middle; margin-right:2px;}
+.group_list li span{ color:#666;}
+.urge_r{ overflow:hidden; padding:20px 15px; height:220px; background:#f2f2f2;}
+.urge_r dl{ overflow:hidden; zoom:1; margin-bottom:10px;line-height:32px;}
+.urge_r dl dt{ float:left; margin-right:5px; color:#666;}
+.urge_r dl dd{ overflow:hidden; zoom:1;}
+.urge_theme{ float:left; width:250px; height:30px; line-height:30px\9; border:1px solid #ccc;}
+.starred{ padding-left:10px; color:#ff0000; }
+.urge_conent{ width:250px; height:118px; border:1px solid #ccc; resize:none;}
+.urge_means{ color:#666; line-height:32px;}
+.urge_means input{ float:left; margin-right:2px; height:32px; vertical-align:middle;}
+.urge_means span{ color:#999; padding-left:5px;}
+
+
+
+
+
+
+
+
+

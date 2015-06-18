@@ -1,0 +1,85 @@
+﻿<div class="exercise_search">
+    <div class="select_condition">
+        <p class="current_course">我的习题</p>
+    </div>
+    <div class="exercise_btn">
+        <span class="sort_box" ng-click="showQuery=!showQuery">[筛选]</span>
+        <a class="topic_import" ng-click="newExercise()">
+            <em><i class="icon"></i></em>
+            <span>新建习题</span>
+        </a>
+        <a class="import_exercise" dialog-show dialog-id="eExerciseUploader"><em><i class="icon"></i></em><span>导入</span></a>
+        <exercise-batch checks="checks" share-ranges="shareRanges" difficults="difficulties"></exercise-batch>
+        <p class="search_topic"><input type="text" ng-model="data.searchKey" placeholder="请输入您要搜索的关键字"><span class="icon" ng-click="search()"></span></p>
+    </div>
+</div>
+<div class="filter_box" ng-show="showQuery">
+    @*<dl class="filter_list">
+            <dt>课程选择</dt>
+            <dd>
+                <a ng-class="{'active':data.course.OCID==item.OCID}" ng-click="courseChanged(item)" ng-repeat="item in courses"><span ng-bind="item.Name"></span></a>
+            </dd>
+        </dl>*@
+    <dl class="filter_list">
+        <dt>题目类型</dt>
+        <dd>
+            <a ng-class="{'active':data.exerciseType.id==item.id}" ng-click="exerciseTypeChanged(item)" ng-repeat="item in exerciseTypes"><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>难易程度</dt>
+        <dd>
+            <a ng-class="{'active':data.difficult.id==item.id}" ng-click="difficultChanged(item)" ng-repeat="item in conditionDifficulties"><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>共享权限</dt>
+        <dd>
+            <a ng-class="{'active':data.shareRange.id==item.id}" ng-click="shareRangeChanged(item)" ng-repeat="item in shareRangesQuery"><span ng-bind="item.name"></span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>题目标签</dt>
+        <dd>
+            <a ng-class="{'active':data.key.KeyID==item.KeyID}" ng-click="keyChanged(item)" ng-repeat="item in keys"><span ng-bind="item.Name"></span></a>
+        </dd>
+    </dl>
+    <dl class="filter_list">
+        <dt>知识点</dt>
+        <dd>
+            <a ng-class="{'active':data.ken.KenID==item.KenID}" ng-click="kenChanged(item)" ng-repeat="item in kens"><span ng-bind="item.Name"></span></a>
+        </dd>
+    </dl>
+    <span class="guanbi" style="cursor:pointer;" ng-click="showQuery=!showQuery"><i class="icon"></i></span>
+</div>
+<div class="topic_detail">
+    <ul class="topic_list">
+        <exercise-list ng-repeat="item in exercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="false" creater="item.CreateUserID" ocid="item.OCID"></exercise-list>
+    </ul>    
+</div>
+<div style="margin-top:20px;">
+    <dl>
+        <dt style="margin-left:3%; font-size:14px; color: #808080;">
+            <label style="cursor: pointer;">
+                <input type="checkbox" style="cursor: pointer;" ng-model="checkAllValue" ng-change="checkAll()" />&nbsp;全 选
+            </label>
+        </dt>
+        <dd>
+            <div id="pager" style="margin-top:-2.5%; margin-left:35%;" ng-hide="pagesNum<=1"></div>
+        </dd>
+    </dl>
+</div> 
+<div class="pop_bg" ng-show="bgPreview"></div>
+<div class="pop_800" id="ePreview" style="display:none">
+    <pre-view exercise="exercisePreview" on-close="closePreview()"></pre-view>
+</div>
+<ies-dialog id="eConfirm" style="display:none"
+            dialog-title="确认"
+            dialog-text="您确认删除该习题吗？"
+            ok-title="确定"
+            cancel-title="取消"></ies-dialog> 
+
+<ies-exercise-uploader id="eExerciseUploader" style="display:none"
+                       exercise-course="course"
+                       file-catetory="3" />
+
