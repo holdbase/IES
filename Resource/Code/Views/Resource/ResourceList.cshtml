@@ -9,11 +9,11 @@
     </div>
     <div class="exercise_btn">
         <span class="sort_box" ng-click="showQuery=!showQuery">[筛选]</span>
-@*@if ((DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 19) || (DateTime.Now.Hour == 8 && DateTime.Now.Minute >= 30) || ( DateTime.Now.Hour == 20 && DateTime.Now.Minute <= 30))
- {*@
-     <a class="topic_import"  dialog-show dialog-id="eIesUploader"><em style="background-color: #33CC66"><i class="icon"></i></em><span style="background-color: #339966">上传文件</span></a>
-@*}*@
-         <a class="add_topic" ng-click="AddFolder()"><em><i class="icon"></i></em><span>新建文件夹</span></a>
+        @*@if ((DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 19) || (DateTime.Now.Hour == 8 && DateTime.Now.Minute >= 30) || ( DateTime.Now.Hour == 20 && DateTime.Now.Minute <= 30))
+            {*@
+        <a class="topic_import" dialog-show dialog-id="eIesUploader"><em style="background-color: #33CC66"><i class="icon"></i></em><span style="background-color: #339966">上传文件</span></a>
+        @*}*@
+        <a class="add_topic" ng-click="AddFolder()"><em><i class="icon"></i></em><span>新建文件夹</span></a>
         <batch-operation ocid="model.OCID" share-ranges="shareRanges" on-fire-remove-all="fireRemoveAll()" on-fire-mobile-batch="fireMobileBatch()"></batch-operation>
         <p class="search_topic"><input type="text" placeholder="请输入您要搜索的关键字" ng-model="model.FileTitle"><span class="icon" ng-click="filterChanged()"></span></p>
     </div>
@@ -96,7 +96,7 @@
             </div>
         </td>
         <td ng-bind="GetShareRange(item.ShareRange)" ng-show="model.OCID!=0"></td>
-        <td ng-show="model.OCID!=0" title="{{item.Kens}}" >
+        <td ng-show="model.OCID!=0" title="{{item.Kens}}">
             <p ng-bind="item.Kens" style="width:100px; float:left;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;line-height:20px;"></p>
         </td>
         <td ng-bind="item.RelationType==1?item.CreateUserName:'一'" ng-show="model.OCID!=0"></td>
@@ -122,6 +122,7 @@
                  on-close="close()" files="folderTrees"></move-folder>
 </div>
 
+<rar-index-page id="rarIndexPage" style="display:none" folder-relation="rarFolderRelation"></rar-index-page>
 <file-property id="fileProp" style="display:none" chapter="chapter" chapters="chapters" ken="ken" kens="kens"></file-property>
 <ies-file-uploader id="eIesUploader" style="display:none"
                    ocid="course.OCID"

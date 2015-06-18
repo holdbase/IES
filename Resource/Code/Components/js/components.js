@@ -78,6 +78,37 @@ app.directive('fileProperty', function () {
     return directive;
 });
 
+
+app.directive('rarIndexPage', function () {
+    var directive = {};
+
+    directive.restrict = 'EA';
+
+    directive.scope = {
+        folderRelation : '=',
+    }
+
+    directive.templateUrl = window.appPatch + '/Components/templates/rarIndexPage.html';
+
+    directive.link = function (scope, elem, iAttrs) {
+        elem.find('.save,.cancel,.close_pop').bind('click', function () {
+            elem.hide();
+        });
+    }
+
+    directive.controller = function ($scope) {
+
+        $scope.indexPage = '';
+
+        $scope.onSave = function () {
+            $scope.$emit('onRarIndexPageSave',$scope.folderRelation, $scope.indexPage);
+        }
+    }
+
+    return directive;
+});
+
+
 app.directive('addKnowledge', function () {
     var directive = {};
 
@@ -242,30 +273,22 @@ app.directive('fileOperation', ['authService', 'resourceService', function (auth
     directive.link = function (scope, elem, iAttrs) {
         scope.rangeSelection = {};
 
-        var canAllowDownload = function (folderRelation) {
-            return folderRelation.Ext === '.ppt'
-                || folderRelation.Ext === '.pptx'
-                || folderRelation.Ext === '.pdf'
-                || folderRelation.Ext === '.doc'
-                || folderRelation.Ext === '.docx'
-                || folderRelation.Ext === '.mp4'
-                || folderRelation.Ext === '.wmv'
-                || folderRelation.Ext === '.asf'
-                || folderRelation.Ext === '.mp3';
-        }
-
         scope.shareRange = function (range) {
             scope.rangeSelection = range;
             scope.$emit('shareRange', scope.rangeSelection, scope.folderRelation);
         } 
 
         scope.allowDownload = function (folderRelation, allowed) {
-            if (folderRelation.RelationType === 0 || canAllowDownload(folderRelation) === false) return;
+            if (folderRelation.RelationType === 0 || resourceService.canAllowDownload(folderRelation) === false) return;
             resourceService.File_Batch_AllowDownload(folderRelation.Id, allowed, function (data) {
                 if (data.d === true) {
                     folderRelation.AllowDownload = allowed;
                 }
             });
+        }
+
+        scope.showRarIndexPage = function () {
+            scope.$emit('onShowRarIndexPage', scope.folderRelation);
         }
 
         //弹出右键菜单
@@ -322,6 +345,37 @@ app.directive('shareRange', function () {
     return directive;
 });
 
+app.directive('allowDownloadItem', function () {
+    var directive = {};
+
+    directive.restrict = 'EA';
+
+    directive.replace = true;
+
+    directive.scope = {
+        downitem: '='
+    }
+
+    directive.templateUrl = window.appPatch + '/Components/templates/allowDownloadItem.html';
+
+    directive.link = function (scope, elem, iAttrs) {
+
+       
+
+        scope.allowDownload = function (value) {
+            scope.$emit('allowDownload', value);
+        }
+
+        elem.hover(function () {
+            $(this).addClass('current');
+        }, function () {
+            $(this).removeClass('current');
+        });
+    }
+
+    return directive;
+});
+
 app.directive('fileShareRange', function () {
     var directive = {};
 
@@ -361,6 +415,11 @@ app.directive('batchOperation', function () {
     directive.templateUrl = window.appPatch + '/Components/templates/batchOperation.html';
 
     directive.link = function (scope, elem, iAttrs) {
+        scope.downloadItems = [
+           { name: '允许', value: '1' },
+           { name: '不允许', value: '0' }
+        ];
+
         scope.shareRange = function (range) {
             scope.rangeSelection = range;
             scope.$emit('batchShareRange', scope.rangeSelection);

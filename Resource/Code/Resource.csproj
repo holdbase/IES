@@ -264,6 +264,7 @@
     <Content Include="Components\js\components.js" />
     <Content Include="Components\templates\addChapter.html" />
     <Content Include="Components\templates\addKnowledge.html" />
+    <Content Include="Components\templates\allowDownloadItem.html" />
     <Content Include="Components\templates\attachmentList.html" />
     <Content Include="Components\templates\chapterEditor.html" />
     <Content Include="Components\templates\chapterItem.html" />
@@ -287,6 +288,7 @@
     <Content Include="Components\templates\moveFolder.html" />
     <Content Include="Components\templates\moveItem.html" />
     <Content Include="Components\templates\preView.html" />
+    <Content Include="Components\templates\rarIndexPage.html" />
     <Content Include="Components\templates\shareRange.html" />
     <Content Include="Css\app.css" />
     <Content Include="Css\common.css" />

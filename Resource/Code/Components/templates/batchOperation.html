@@ -9,15 +9,16 @@
             </ul>
         </li>
 
-        <li ng-show="ocid!=0">
+        <li>
             下载设置
             <ul class="permissions">
-                <li ng-click="allowDownload(1)" style="width:140px;">
+                <allow-download-item style="width:140px;" ng-repeat="item in downloadItems" downitem="item"></allow-download-item> 
+                <!--<li ng-click="allowDownload(1)" style="width:140px;">
                     <p style="width:100%;"><i class="icon"></i>允许</p>
                 </li>
                 <li ng-click="allowDownload(0)" style="width:140px;">
                     <p style="width:100%;"><i class="icon"></i>不允许</p>
-                </li>
+                </li>-->
             </ul>
         </li>
 

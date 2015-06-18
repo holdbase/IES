@@ -23,6 +23,9 @@
             </li>
         </ul>
     </li>
+    <li class="attribute" ng-click="showRarIndexPage()" ng-show="folderRelation.RelationType===1&&folderRelation.Ext==='.rar'">
+        <p style="width:100%;"><i class="icon data_property"></i>Rar首页</p>
+    </li>
     <li style="margin-top:-2px;" ng-show="folderRelation.RelationType==1">
         <p style="width:100%;">
             <i class="icon data_download"></i>
@@ -30,6 +33,6 @@
         </p>
     </li>
     <li ng-click="onRemove()" style="margin-top:-2px;" ng-class="{'hideAuth': !hasAuth}"><p style="width:100%;"><i class="icon data_remove"></i>删除资料</p></li>
-</ul>
 
+</ul>
 

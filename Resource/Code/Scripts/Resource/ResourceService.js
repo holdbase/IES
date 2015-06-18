@@ -119,6 +119,18 @@ aService.factory('resourceService', ['httpService', function (httpService) {
         return UploadTime;
     }
 
+    service.canAllowDownload = function (folderRelation) {
+        return folderRelation.Ext === '.ppt'
+            || folderRelation.Ext === '.pptx'
+            || folderRelation.Ext === '.pdf'
+            || folderRelation.Ext === '.doc'
+            || folderRelation.Ext === '.docx'
+            || folderRelation.Ext === '.mp4'
+            || folderRelation.Ext === '.wmv'
+            || folderRelation.Ext === '.asf'
+            || folderRelation.Ext === '.mp3';
+    }
+
     //查询列表方法
     service.FolderRelation_List = function (folder, file, callback) {
         if (file) {
@@ -146,6 +158,10 @@ aService.factory('resourceService', ['httpService', function (httpService) {
 
     service.File_Batch_AllowDownload = function (fileIDS, allowed, callback) {
         httpService.ajaxPost(url, 'File_Batch_AllowDownload', { fileIDS: fileIDS, allowed: allowed }, callback);
+    }
+
+    service.File_RarIndexPage_Upd = function (fileId, rarIndexPage, callback) {
+        httpService.ajaxPost(url, 'File_RarIndexPage_Upd', { fileId: fileId, rarIndexPage: rarIndexPage }, callback);
     }
     return service;
 }]);

@@ -488,6 +488,17 @@ appResource.controller('ResourceCtrl', ['$scope', 'resourceService', 'pageServic
             resourceService.File_Chapter_Ken_Edit(file, c, k);
         });
 
+        $scope.$on('onRarIndexPageSave', function (event, folderRelation, indexPage) {
+            if (folderRelation.RelationType === 0 || folderRelation.Ext !== '.rar') return;
+            resourceService.File_RarIndexPage_Upd(folderRelation.Id, indexPage, function (data) {
+                if (data.d === true) { folderRelation.RarIndexPage = indexPage };
+            });
+        });
+        $scope.rarFolderRelation = {};
+        $scope.$on('onShowRarIndexPage', function (event, folderRelation) {
+            $scope.rarFolderRelation = folderRelation;
+            $('#rarIndexPage').show();
+        });
 
         var removeItem = function (item) {
             var length = $scope.folderRelations.length;
@@ -692,26 +703,14 @@ appResource.controller('ResourceCtrl', ['$scope', 'resourceService', 'pageServic
                 resourceService.Folder_Batch_ShareRange(folderIds, shareRange.id);
             }
 
-        }
-
-        var canAllowDownload = function (folderRelation) {
-            return folderRelation.Ext === '.ppt'
-                || folderRelation.Ext === '.pptx'
-                || folderRelation.Ext === '.pdf'
-                || folderRelation.Ext === '.doc'
-                || folderRelation.Ext === '.docx'
-                || folderRelation.Ext === '.mp4'
-                || folderRelation.Ext === '.wmv'
-                || folderRelation.Ext === '.asf'
-                || folderRelation.Ext === '.mp3';
-        }
+        } 
 
         $scope.$on('allowDownload', function (event, allowed) {
             if ($scope.checks.length === 0) return;
             var fileIds = '';
             var length = $scope.checks.length;
             for (var i = 0; i < length; i++) {
-                if ($scope.checks[i].RelationType === 1 && canAllowDownload($scope.checks[i])) {
+                if ($scope.checks[i].RelationType === 1 && resourceService.canAllowDownload($scope.checks[i])) {
                     fileIds += $scope.checks[i].Id.toString() + ',';
                 }
             }

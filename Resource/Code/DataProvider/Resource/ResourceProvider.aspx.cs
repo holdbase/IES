@@ -158,6 +158,18 @@ namespace App.Resource.DataProvider.Resource
         {
             return new FileBLL().File_Batch_AllowDownload(fileIDS, allowed == 1);
         }
+
+        /// <summary>
+        /// 更新zip起始页名称
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [WebMethod]
+        public static bool File_RarIndexPage_Upd(int fileId, string rarIndexPage)
+        {
+            IES.Resource.Model.File file = new IES.Resource.Model.File() { FileID = fileId, RarIndexPage = rarIndexPage };
+            return new FileBLL().File_RarIndexPage_Upd(file);
+        }
         #endregion
 
         #region FolderRelation
