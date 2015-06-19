@@ -74,3 +74,7 @@ a {
 .exercise_import_disabled {
     cursor:default!important;
 }
+
+.exercise_page_size {
+    background-color: #374760;
+}

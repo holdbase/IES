@@ -79,7 +79,9 @@ appExercise.controller('ExerciseListCtrl', ['$scope', '$state', '$stateParams', 
     function ($scope, $state, $stateParams, freezeService, tagService, resourceService, resourceKenService, exerciseService, contentService, kenService, assistService) {
 
         $scope.pagesNum = 100;
-        var pageSize = exerciseService.Page.Size;
+        //var pageSize = exerciseService.Page.Size;
+
+        $scope.exerciseService = exerciseService;
 
         $scope.$emit('willResetCourse', 'Exerciese');
 
@@ -307,10 +309,18 @@ appExercise.controller('ExerciseListCtrl', ['$scope', '$state', '$stateParams', 
             });
         }
 
+        $scope.changePageSize = function (newSize) {
+            exerciseService.Page.Size = newSize;
+            exerciseService.Page.Index = 1;
+            //ExerciseSearch(exerciseService.Page.Size, exerciseService.Page.Index);
+            layPageFlag = false;
+            filterChanged();
+        }
+
         var changePage = function (e) { //触发分页后的回调
             $scope.checks.length = 0;
             exerciseService.Page.Index = e.curr;
-            ExerciseSearch(pageSize, exerciseService.Page.Index);
+            ExerciseSearch(exerciseService.Page.Size, exerciseService.Page.Index);
         }
 
         var filterChanged = function () {
@@ -327,7 +337,7 @@ appExercise.controller('ExerciseListCtrl', ['$scope', '$state', '$stateParams', 
             };
             var keys = $scope.data.key.KeyID === undefined || $scope.data.key.KeyID === 0 ? '' : $scope.data.key.Name;
             var kens = $scope.data.ken.KenID === undefined || $scope.data.ken.KenID === 0 ? '' : $scope.data.ken.Name;
-            exerciseService.Exercise_Search(model, $scope.data.key, keys, kens, pageSize, exerciseService.Page.Index, function (data) {
+            exerciseService.Exercise_Search(model, $scope.data.key, keys, kens, exerciseService.Page.Size, exerciseService.Page.Index, function (data) {
                 $scope.exercises.length = 0;
                 $scope.pagesNum = 1;
                 if (data.d && data.d.length > 0) {
@@ -343,7 +353,7 @@ appExercise.controller('ExerciseListCtrl', ['$scope', '$state', '$stateParams', 
                         }
                     });
                     var rowsCount = $scope.exercises[0].RowsCount;
-                    $scope.pagesNum = Math.ceil(rowsCount / pageSize);
+                    $scope.pagesNum = Math.ceil(rowsCount / exerciseService.Page.Size);
                     if (!layPageFlag) {
                         laypage({
                             cont: $('#pager'), //容器。值支持id名、原生dom对象，jquery对象, 'page'/document.getElementById('page')/$('#page')
@@ -730,7 +740,7 @@ appExercise.controller('ExerciseCtrl', ['$scope', '$window', '$timeout', '$state
                         break;
                     default:
                         break;
-                }                
+                }
             }
         });
 
@@ -830,7 +840,7 @@ appExercise.controller('ExerciseCtrl', ['$scope', '$window', '$timeout', '$state
             }
         }
 
-        var forbidSubmit = false;        
+        var forbidSubmit = false;
 
         $scope.submit = function () {
             if (forbidSubmit) return;
@@ -2283,7 +2293,7 @@ appExercise.controller('TruefalseCtrl', ['$scope', 'exerciseService', '$statePar
     });
 
     $scope.$on('willRequestSave', function (event, data) {
-       
+
         var editor = EWEBEDITOR.Instances["editorInput"];
         $scope.model.exercisecommon.exercise.Conten = editor.getHTML();
         var editor1 = EWEBEDITOR.Instances["editorAnalysis"];
@@ -2830,7 +2840,7 @@ appExercise.controller('RadioCtrl', ['$scope', 'exerciseService', '$stateParams'
                 $scope.editorText = $scope.model.exercisecommon.exercise.Conten;
                 $scope.editorAnalysisText = $scope.model.exercisecommon.exercise.Analysis;
 
-                $scope.assignEditorValues( {
+                $scope.assignEditorValues({
                     editorInput: $scope.editorText,
                     editorAnalysis: $scope.editorAnalysisText
                 });
