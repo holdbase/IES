@@ -291,6 +291,10 @@ app.directive('fileOperation', ['authService', 'resourceService', function (auth
             scope.$emit('onShowRarIndexPage', scope.folderRelation);
         }
 
+        scope.canDownload = function (folderRelation) {
+            return resourceService.canAllowDownload(folderRelation);
+        }
+
         //弹出右键菜单
         elem.parent().hover(function () {
             $(this).find('.mouse_right').toggle();

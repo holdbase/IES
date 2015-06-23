@@ -12,7 +12,7 @@
             <file-share-range style="width:130px;" ng-repeat="item in shareRanges" ng-click="shareRange(item)" range="item"></file-share-range>
         </ul>
     </li>
-    <li ng-show="ocid!=0" style="margin-top:-2px;">
+    <li ng-show="canDownload(folderRelation)" style="margin-top:-2px;">
         <p id="eBrowser" style="width:100%;"><i class="icon data_rights"></i>下载设置</p>
         <ul class="right_obj">
             <li ng-click="allowDownload(folderRelation, 1)">
