@@ -28,8 +28,10 @@
     </li>
     <li style="margin-top:-2px;" ng-show="folderRelation.RelationType==1">
         <p style="width:100%;">
-            <i class="icon data_download"></i>
-            <a ng-href="{{folderRelation.DownURL}}" target="_blank" style="margin: 0px 0px 0 0; width: 100%; ">下载资料</a>
+            <a ng-href="{{folderRelation.DownURL}}" target="_blank" style="margin: 0px 0px 0 0; width: 100%; ">
+                <i class="icon data_download"></i>
+                下载资料
+            </a>
         </p>
     </li>
     <li ng-click="onRemove()" style="margin-top:-2px;" ng-class="{'hideAuth': !hasAuth}"><p style="width:100%;"><i class="icon data_remove"></i>删除资料</p></li>
