@@ -12,7 +12,7 @@
             <file-share-range style="width:130px;" ng-repeat="item in shareRanges" ng-click="shareRange(item)" range="item"></file-share-range>
         </ul>
     </li>
-    <li ng-show="canDownload(folderRelation)" style="margin-top:-2px;">
+    <li ng-show="canDownload(folderRelation)" ng-class="{'hideAuth': !hasAuth}" style="margin-top:-2px;">
         <p id="eBrowser" style="width:100%;"><i class="icon data_rights"></i>下载设置</p>
         <ul class="right_obj">
             <li ng-click="allowDownload(folderRelation, 1)">
@@ -23,8 +23,8 @@
             </li>
         </ul>
     </li>
-    <li class="attribute" ng-click="showRarIndexPage()" ng-show="folderRelation.RelationType===1&&folderRelation.Ext==='.rar'">
-        <p style="width:100%;"><i class="icon data_property"></i>Rar首页</p>
+    <li class="attribute" ng-click="showRarIndexPage()" ng-show="folderRelation.RelationType===1&&folderRelation.Ext==='.zip'">
+        <p style="width:100%;"><i class="icon data_property"></i>Zip首页</p>
     </li>
     <li style="margin-top:-2px;" ng-show="folderRelation.RelationType==1">
         <p style="width:100%;">
