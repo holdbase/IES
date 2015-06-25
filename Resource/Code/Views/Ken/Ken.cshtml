@@ -5,7 +5,7 @@
             <li ui-sref-active="active"><a ui-sref="content.ken.chapter">按章节</a></li>
         </ul>
     </div>
-    <add-knowledge id="eKen" style="display:none;"
+    <div add-knowledge id="eKen" style="display:none;"
                    knowledge="ken.Name"
                    chapter="ken.chapter"
                    chapters="chapters"
@@ -13,8 +13,7 @@
                    require-ments="requireMents"
                    on-save-new="kenSave(ken, true)"
                    on-save="kenSave(ken, false)"
-                   on-cancel="kenCancel()">
-    </add-knowledge>
+                   on-cancel="kenCancel()" />
     @*<add-chapter id="eChapter" style="display:none;"
                  chapter-name="chapter.name"
                  knowledge="chapter.ken"
@@ -63,7 +62,7 @@
 
         <div ng-class="{'connect_item':tab!=2}">
             <ul class="topic_list">
-                <exercise-list ng-repeat="item in linkExercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="true" ocid="OCID" creater="item.CreateUserID"></exercise-list>
+                <div exercise-list ng-repeat="item in linkExercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="true" ocid="OCID" creater="item.CreateUserID" />
             </ul>
         </div>
 
@@ -135,11 +134,11 @@
 </div>
 <div class="pop_bg" ng-show="bgPreview"></div>
 <div class="pop_800" id="ePreview" style="display:none">
-    <pre-view exercise="exercisePreview" on-close="closePreview()"></pre-view>
+    <div pre-view exercise="exercisePreview" on-close="closePreview()"></div>
 </div>
 
-<ies-dialog id="eConfirm" style="display:none"
+<div ies-dialog id="eConfirm" style="display:none"
             dialog-title="确认"
             dialog-text="您确认删除该习题吗？"
             ok-title="确定"
-            cancel-title="取消"></ies-dialog> 
+            cancel-title="取消"></div> 

@@ -5,7 +5,7 @@
                 frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
     </div>
     <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
-    <attach-list attachments="attachmentList"></attach-list>
+    <div attach-list attachments="attachmentList"></div>
     <div class="blank_item" ng-repeat="item in model.exercisechoicelist | answerFilter">
         <div class="default objective_answer">
             <input type="text" ng-model="item.Answer">
@@ -22,4 +22,4 @@
                 frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>
     </div>
 </div>
-<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>
+<div ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></div>

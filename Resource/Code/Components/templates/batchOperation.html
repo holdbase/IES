@@ -5,14 +5,14 @@
         <li ng-show="ocid!=0">
             浏览权限
             <ul class="permissions">
-                <share-range style="width:140px;" ng-repeat="item in shareRanges" ng-click="shareRange(item)" range="item"></share-range> 
+                <share-range style="width:140px;" ng-repeat="item in shareRanges" ng-click="shareRange(item)" range="item" /> 
             </ul>
         </li>
 
         <li>
             下载设置
             <ul class="permissions">
-                <allow-download-item style="width:140px;" ng-repeat="item in downloadItems" downitem="item"></allow-download-item> 
+                <allow-download-item style="width:140px;" ng-repeat="item in downloadItems" downitem="item" /> 
                 <!--<li ng-click="allowDownload(1)" style="width:140px;">
                     <p style="width:100%;"><i class="icon"></i>允许</p>
                 </li>

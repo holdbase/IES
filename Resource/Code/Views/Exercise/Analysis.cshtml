@@ -6,7 +6,7 @@
                 frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
     </div>
     <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
-    <attach-list attachments="attachmentList"></attach-list>
+    <div attach-list attachments="attachmentList"></div>
     <p class="no_rank">默认只有一个选项，您可以添加选项，答案可以为空</p>
     <div ng-repeat="item in model.exercisechoicelist">
         <div class="default fill_blank">
@@ -23,4 +23,4 @@
         @*<textarea class="form-control" rows="4" ng-model="model.exercisecommon.exercise.Analysis"></textarea>*@
     </div>
 </div>
-<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>
+<div ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></div>

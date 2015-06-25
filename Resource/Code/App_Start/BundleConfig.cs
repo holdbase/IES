@@ -37,6 +37,9 @@ namespace App.Resource
                 "~/Frameworks/angularTree/angular-ui-tree.min.js",
                 "~/Frameworks/checklist-model/checklist-model.js",
                 "~/Frameworks/angular/angular-ui-router.js",
+                "~/Frameworks/es5/es5.js",
+                "~/Frameworks/es5/es5-sham.min.js",
+                "~/Frameworks/es5/es5-shim.min.js", 
                 "~/Frameworks/laypage/laypage.js",
                 "~/Frameworks/angular/angular-file-upload.js"
                 ));

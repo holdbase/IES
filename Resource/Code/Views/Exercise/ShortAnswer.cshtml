@@ -7,7 +7,7 @@
                 frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
     </div>
     <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
-    <attach-list attachments="attachmentList"></attach-list>
+    <div attach-list attachments="attachmentList"></div>
     <p class="no_rank">
         <input type="checkbox" ng-model="model.exercisecommon.exercise.IsRand" ng-checked="model.exercisecommon.exercise.IsRand==true" ng-change="isRandChange(model.exercisecommon.exercise.IsRand)">选项乱序<span>（需选择一个选项作为正确答案）</span>
     </p>
@@ -29,4 +29,4 @@
                 frameborder="0" scrolling="no" width="880" height="300" style="display: block;"></iframe>     
     </div>
 </div>
-<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>
+<div ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></div>

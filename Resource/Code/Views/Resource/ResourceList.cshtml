@@ -14,7 +14,7 @@
         <a class="topic_import" dialog-show dialog-id="eIesUploader"><em style="background-color: #33CC66"><i class="icon"></i></em><span style="background-color: #339966">上传文件</span></a>
         @*}*@
         <a class="add_topic" ng-click="AddFolder()"><em><i class="icon"></i></em><span>新建文件夹</span></a>
-        <batch-operation ocid="model.OCID" share-ranges="shareRanges" on-fire-remove-all="fireRemoveAll()" on-fire-mobile-batch="fireMobileBatch()"></batch-operation>
+        <div batch-operation ocid="model.OCID" share-ranges="shareRanges" on-fire-remove-all="fireRemoveAll()" on-fire-mobile-batch="fireMobileBatch()" />
         <p class="search_topic"><input type="text" placeholder="请输入您要搜索的关键字" ng-model="model.FileTitle"><span class="icon" ng-click="filterChanged()"></span></p>
     </div>
 </div>
@@ -78,19 +78,18 @@
         <td>
             <div class="data_name">
                 <input type="checkbox" checklist-model="checks" checklist-value="item" ng-class="{'hideAuth': !authService.hasAuth(item.CreateUserID, model.OCID)}">
-                <folder file-item="item" folder-name="item.Name" folder-ext="item.Ext" folder-item="item" on-open="folderClick(item)" on-blur="updFolderName(item)"></folder>
+                <div folder file-item="item" folder-name="item.Name" folder-ext="item.Ext" folder-item="item" on-open="folderClick(item)" on-blur="updFolderName(item)" />
                 <div class="file_operation">
                     <div class="more_operation">
                         <span>...</span>
-                        <file-operation on-property="fileProperty(item)"
+                        <div file-operation on-property="fileProperty(item)"
                                         on-remove="fireRemove(item)"
                                         on-return-page="returnPage(item)"
                                         on-mobile="fireMobile(item)"
                                         folder-relation="item"
                                         ocid="model.OCID"
                                         creater="item.CreateUserID"
-                                        share-ranges="shareRanges">
-                        </file-operation>
+                                        share-ranges="shareRanges" />
                     </div>
                 </div>
             </div>
@@ -118,13 +117,12 @@
 </div>
 <div class="pop_bg" ng-show="bgShow"></div>
 <div class="pop_400" ng-show="moveShow">
-    <move-folder on-move-file-submit="moveFileSubmit()"
-                 on-close="close()" files="folderTrees"></move-folder>
+    <div move-folder on-move-file-submit="moveFileSubmit()" on-close="close()" files="folderTrees"></div>
 </div>
 
-<rar-index-page id="rarIndexPage" style="display:none" folder-relation="rarFolderRelation"></rar-index-page>
-<file-property id="fileProp" style="display:none" chapter="chapter" chapters="chapters" ken="ken" kens="kens"></file-property>
-<ies-file-uploader id="eIesUploader" style="display:none"
+<div rar-index-page id="rarIndexPage" style="display:none" folder-relation="rarFolderRelation"></div>
+<div file-property id="fileProp" style="display:none" chapter="chapter" chapters="chapters" ken="ken" kens="kens"></div>
+<div ies-file-uploader id="eIesUploader" style="display:none"
                    ocid="course.OCID"
                    course-id="course.CourseID"
                    folder-obj="folderRelation"

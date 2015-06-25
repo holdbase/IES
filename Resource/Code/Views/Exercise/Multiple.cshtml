@@ -7,7 +7,7 @@
                     frameborder="0" scrolling="no" width="850" height="300" style="display: block;"></iframe>
         </div>
         <a class="add_attach" dialog-show dialog-id="eIesUploader"><em><i class="icon"></i></em><span>添加附件</span></a>
-        <attach-list attachments="attachmentList"></attach-list>
+        <div attach-list attachments="attachmentList"></div>
         <ul class="answer_list">
             <li ng-class="{active:item.IsCorrect==1}" ng-repeat="item in model.exercisechoicelist">
                 <div class="default">
@@ -32,4 +32,4 @@
         </div>
     </div>
 </div>
-<ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></ies-file-uploader>
+<div ies-file-uploader id="eIesUploader" style="display:none" file-catetory="2"></div>

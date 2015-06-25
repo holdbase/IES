@@ -8,26 +8,26 @@
             <a class="icon_con left_btn" ng-click="move('levelup')"></a>*@
     </div>
     <ul class="chapter_item">
-        <ies-chapter-item ng-repeat="item in $parent.chapters | parentID:0 | orderBy:'Orde'"
+        <div ies-chapter-item ng-repeat="item in $parent.chapters | parentID:0 | orderBy:'Orde'"
                           chapter-selected-item="parentChapter"
                           chapter-item="item"
                           child-chapter="childChapter"
                           items="chapters"
                           will-add-section="willAddSection(item)"
                           chapter-selected="parentFocus(item)">
-        </ies-chapter-item>
+        </div>
     </ul>
 
-    <ies-dialog id="eChapterConfirm" style="display:none"
+    <div ies-dialog id="eChapterConfirm" style="display:none"
                 dialog-title="确认"
                 dialog-text="您确认删除章节吗？"
                 ok-title="确定"
-                cancel-title="取消"></ies-dialog>
+                cancel-title="取消"></div>
 </div>
 
-<chapter-editor id="eChapter" style="display:none;"
+<div chapter-editor id="eChapter" style="display:none;"
                 editor-title="editorTitle"
                 chapter-name="willAddedChapter.Title"
-                on-save="save(willAddedChapter)">
+                on-save="save(willAddedChapter)" />
 
 

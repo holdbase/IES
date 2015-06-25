@@ -343,6 +343,9 @@
     <Content Include="Frameworks\bootstrap\js\bootstrap.min.js" />
     <Content Include="Frameworks\checklist-model\checklist-model.js" />
     <Content Include="Frameworks\DLL\Tools.dll" />
+    <Content Include="Frameworks\es5\es5-sham.min.js" />
+    <Content Include="Frameworks\es5\es5-shim.min.js" />
+    <Content Include="Frameworks\es5\es5.js" />
     <Content Include="Frameworks\ewebeditor\admin\default.aspx" />
     <Content Include="Frameworks\ewebeditor\admin\images\1_12.gif" />
     <Content Include="Frameworks\ewebeditor\admin\images\1_13.gif" />

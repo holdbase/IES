@@ -9,7 +9,7 @@
             <span>新建习题</span>
         </a>
         <a class="import_exercise" dialog-show dialog-id="eExerciseUploader"><em><i class="icon"></i></em><span>导入</span></a>
-        <exercise-batch checks="checks" share-ranges="shareRanges" difficults="difficulties"></exercise-batch>
+        <div exercise-batch checks="checks" share-ranges="shareRanges" difficults="difficulties"></div>
         <p class="search_topic"><input type="text" ng-model="data.searchKey" placeholder="请输入您要搜索的关键字"><span class="icon" ng-click="search()"></span></p>
     </div>
 </div>
@@ -54,7 +54,7 @@
 </div>
 <div class="topic_detail">
     <ul class="topic_list">
-        <exercise-list ng-repeat="item in exercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="false" creater="item.CreateUserID" ocid="item.OCID"></exercise-list>
+        <div exercise-list ng-repeat="item in exercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="false" creater="item.CreateUserID" ocid="item.OCID"></div>
     </ul>    
 </div>
 <div style="margin-top:20px;">
@@ -75,15 +75,15 @@
 </div> 
 <div class="pop_bg" ng-show="bgPreview"></div>
 <div class="pop_800" id="ePreview" style="display:none">
-    <pre-view exercise="exercisePreview" on-close="closePreview()"></pre-view>
+    <div pre-view exercise="exercisePreview" on-close="closePreview()"></div>
 </div>
-<ies-dialog id="eConfirm" style="display:none"
+<div ies-dialog id="eConfirm" style="display:none"
             dialog-title="确认"
             dialog-text="您确认删除该习题吗？"
             ok-title="确定"
-            cancel-title="取消"></ies-dialog> 
+            cancel-title="取消"></div> 
 
-<ies-exercise-uploader id="eExerciseUploader" style="display:none"
+<div ies-exercise-uploader id="eExerciseUploader" style="display:none"
                        exercise-course="course"
                        file-catetory="3" />
 

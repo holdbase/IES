@@ -1,21 +1,21 @@
 ﻿<div class="all_knowledge">
     <dl class="knowledge_list">
         <dt>全部知识点</dt>
-        <ies-ken-item ng-repeat="item in ocKens"
+        <div ies-ken-item ng-repeat="item in ocKens"
                       on-remove="fireRemove(item)"
                       on-edit="editKen(item)"
                       ng-click="kenFocus(item)"
                       ken-item="item"
-                      data-ken="dataKen"></ies-ken-item> 
+                      data-ken="dataKen"></div> 
     </dl>
     <dl class="knowledge_list">
         <dt>关联章节</dt>
-        <ken-chapter-item ng-repeat="item in dataChapters" 
+        <div ken-chapter-item ng-repeat="item in dataChapters" 
                           ng-click="chapterFocus(item)"
                           ken-chapter="item" data-chapter="dataChapter"
                           >
 
-        </ken-chapter-item> 
+        </div> 
     </dl>
 </div> 
 
