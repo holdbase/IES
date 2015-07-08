@@ -462,7 +462,7 @@ app.directive('exerciseBatch', ['$window', 'exerciseService', function ($window,
             $(this).removeClass('active');
         });
 
-        elem.find('.permissions li').hover(function () {
+        elem.find(".permissions li").hover(function () {
             $(this).addClass('current').siblings().removeClass('current');
         }, function () {
             $(this).removeClass('current');
@@ -501,6 +501,35 @@ app.directive('exerciseBatch', ['$window', 'exerciseService', function ($window,
     return directive;
 }]);
 
+app.directive('difficultItem', [function () {
+    var directive = {};
+
+    directive.restrict = 'EA';
+
+    directive.replace = true;
+
+    directive.scope = {
+        item: '=',
+    }
+
+    directive.templateUrl = window.appPatch + '/Components/templates/difficultItem.html';
+
+    directive.link = function (scope, elem, iAttrs) { 
+        elem.hover(function () {
+            $(this).addClass('current').siblings().removeClass('current');
+        }, function () {
+            $(this).removeClass('current');
+        });
+    }
+
+    directive.controller = ['$scope', '$element', function ($scope, $element) {
+        $scope.batchDifficult = function (item) {
+            $scope.$emit('onBatchDifficult', item);
+        }
+    }];
+
+    return directive;
+}])
 
 app.directive('exerciseList', ['assistService', 'previewService', 'exerciseService', '$state', 'authService',
     function (assistService, previewService, exerciseService, $state, authService) {
@@ -837,7 +866,7 @@ app.directive('iesFileUploader', ['FileUploader', function (FileUploader) {
             name: 'fileSuffix',//过滤器名称 过滤文件类型
             fn: function (item, options) {
                 var fileName = item.name;
-                var suffix = fileName.substring(fileName.lastIndexOf('.') + 1);
+                var suffix = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
                 var length = supportExts.length;
                 for (var i = 0; i < length; i++) {
                     if (supportExts[i] === suffix) return true;

@@ -270,6 +270,7 @@
     <Content Include="Components\templates\chapterItem.html" />
     <Content Include="Components\templates\chapterSection.html" />
     <Content Include="Components\templates\confirm.html" />
+    <Content Include="Components\templates\difficultItem.html" />
     <Content Include="Components\templates\editor.html" />
     <Content Include="Components\templates\exerciseBatch.html" />
     <Content Include="Components\templates\exerciseList.html" />

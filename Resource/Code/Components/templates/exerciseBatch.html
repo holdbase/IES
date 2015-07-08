@@ -11,10 +11,8 @@
         <li class="batch_delete" ng-click="batchRemove()">批量删除</li>
         <li class="batch_share" ng-click="batchShare()">
             难易程度
-            <ul class="permissions">
-                <li ng-repeat="item in difficults" ng-click="batchDifficult(item)">
-                    <p ng-bind="item.name"></p>
-                </li>
+            <ul class="permissions"> 
+                <span difficult-item ng-repeat="item in difficults" item="item" />
             </ul>
         </li>
         <li class="batch_delete" ng-click="batchPreview()">批量预览</li>

@@ -593,19 +593,20 @@
     .mouse_right li {
         cursor: pointer;
         position: relative;
-        height: 30px;
+        height: 31px;
     }
 
         .mouse_right li.active {
             background: #475c7c;
             color: #fff;
+            height:29px;
         }
 
         .mouse_right li p {
             padding-left: 32px;
             width: 120px;
             height: 30px;
-            line-height: 31px;
+            line-height: 30px;
             color: #333;
             position: relative;
             border: 1px solid #ddd;
