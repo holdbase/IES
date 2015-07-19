@@ -1,10 +1,10 @@
 ﻿<li class="show">
     <div class="topic_label">
         <p class="question_degree simple" ng-class="{'simple':exercise.Diffcult==1,'medium':exercise.Diffcult==2,'difficult':exercise.Diffcult==3}">
-            <input type="checkbox" checklist-model="checks" checklist-value="exercise" ng-class="{'itemHide': disableDifficult, 'hideAuth': !hasAuth}">{{getDifficultName(exercise)}}</p>
+            <input type="checkbox" checklist-model="checks" checklist-value="exercise" ng-class="{'itemHide': disableDifficult, 'hideAuth': !hasAuth}" style="margin-top:-1.5px;">{{getDifficultName(exercise)}}</p>
         <div class="label_list ng-cloak" ng-cloak>
            <!-- <a ng-repeat="item in exercise.Keys track by $index"><span ng-bind="item"></span></a>-->
-            <a ng-repeat="item in exercise.Keys track by $index"><span ng-bind="item"></span></a>
+            <a style="cursor:default;" ng-repeat="item in exercise.Keys track by $index"><span ng-bind="item"></span></a>
         </div>
         <div style="text-align: right; padding-right: 20px;">
             创建人：{{exercise.CreateUserName}}<span>&nbsp;&nbsp;最后修改时间：{{exercise.UpdateTime | dateFormat}}</span>

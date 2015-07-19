@@ -1,5 +1,5 @@
 ﻿<div>
     <i class="icon_24" file-ext ext="{{folderItem.Ext}}" ng-click="onOpen();"></i>
-    <p class="data_tit" ng-bind="folderName" ></p>
-    <input class="rename_test" ng-model="folderName" ng-blur="onBlur()" type="text">
+    <p class="data_tit" ng-bind="folderName" ng-class="{itemHide:folderItem.Id === -1}"></p>
+    <input class="rename_test" autofocus="autofocus" ng-class="{re_show_input:folderItem.Id===-1}" ng-model="folderName" ng-blur="onBlur()" type="text">
 </div>

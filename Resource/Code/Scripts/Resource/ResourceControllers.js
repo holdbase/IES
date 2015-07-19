@@ -324,6 +324,7 @@ appResource.controller('ResourceCtrl', ['$scope', 'resourceService', 'pageServic
             $scope.orderField = 'null';
             resourceService.Folder_Get(function (data) {
                 var folder = data.d;
+                folder.Id = -1;
                 folder.Name = '请输入文件夹名称';
                 folder.ParentID = $scope.model.ParentID;
                 folder.OCID = $scope.model.OCID;
@@ -331,6 +332,7 @@ appResource.controller('ResourceCtrl', ['$scope', 'resourceService', 'pageServic
                 folder.FileType = -1;
                 folder.RelationType = 0;
                 $scope.folderRelations.insert(0, folder);
+                $scope.$broadcast('onNewFolder', 111);
                 //console.log($('.course_data tbody').next());
             });
 
@@ -435,7 +437,10 @@ appResource.controller('ResourceCtrl', ['$scope', 'resourceService', 'pageServic
         }
         //批量删除文件夹弹出框
         $scope.fireRemoveAll = function () {
-            if ($scope.checks.length == 0) return;
+            if ($scope.checks.length == 0) {
+                alert('批量删除至少选择一个文件或文件夹！');
+                return;
+            }
             $scope.delIsShow = true;
             $scope.bgShow = true;
             $scope.folder = null;
@@ -450,7 +455,10 @@ appResource.controller('ResourceCtrl', ['$scope', 'resourceService', 'pageServic
         }
         //移动文件弹出框
         $scope.fireMobileBatch = function () {
-            if ($scope.checks.length == 0) return;
+            if ($scope.checks.length == 0) {
+                alert('批量移动至少选择一个文件或文件夹！');
+                return;
+            }
             $scope.checksSelect = $scope.checks;
             $scope.moveShow = true;
             $scope.bgShow = true;

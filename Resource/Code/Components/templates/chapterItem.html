@@ -1,5 +1,6 @@
 ﻿<li>
-    <a class="first_chapter" ng-class="{'chapterSelected':chapterItem.ChapterID==chapterSelectedItem.ChapterID}">
+    <!--<a class="first_chapter" ng-class="{'chapterSelected':chapterItem.ChapterID==chapterSelectedItem.ChapterID}">-->
+    <a class="first_chapter" >
         <p ng-bind="chapterItem.Title" ng-click="chapterSelected()"></p>
         <i class="icon fold_btn"></i>
         <span class="edit_box" ng-class="{'hideAuth': !hasChapterAuth}"><em class="icon btn_box_edit" ng-click="edit(chapterItem)"></em><span>编辑</span></span>

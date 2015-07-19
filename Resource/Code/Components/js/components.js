@@ -242,6 +242,12 @@ app.directive('folder', function () {
             scope.$emit('onCopyFolder', scope.folderItem);
         });
     }
+
+    directive.controller = ['$scope', function ($scope) {
+        $scope.$on('onNewFolder', function (e) {
+            $('input').removeAttr('autofocus');
+        });
+    }]
     return directive;
 });
 

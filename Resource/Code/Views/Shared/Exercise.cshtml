@@ -26,13 +26,13 @@
                     <a style="float:left;" ng-click="addKey(exerciseKey)"><span class="icon"></span></a>
                 </p>
                 <ul class="item_list">
-                    <li ng-repeat="item in data.keys"><a ng-click="data.keys.splice($index, 1)">{{item.Name}}<span>×</span></a></li>
+                    <li ng-repeat="item in data.keys"><a ng-click="data.keys.splice($index, 1)" style="padding-left:5px;padding-right:5px;">{{item.Name}}<span>×</span></a></li>
                 </ul>
             </div> 
             <div class="label_item" style="margin-top:6px;">
                 <p>
                     <input type="text" class="form-control" style="border-radius:0px;" ng-model="exerciseKen" placeholder="添加知识点" aria-describedby="basic-addon2">
-                    <a style="float:left;" ng-click="addKen(exerciseKen)"><span class="icon"></span></a>
+                    <a style="float:left;" ng-click="addKen(exerciseKen)" style="padding-left:5px;padding-right:5px;"><span class="icon"></span></a>
                 </p>
                 <ul class="knowledge_item">
                     <li ng-repeat="item in data.kens"><a ng-click="data.kens.splice($index, 1)">{{item.Name}}<span>×</span></a></li>

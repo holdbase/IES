@@ -2387,6 +2387,16 @@ appExercise.controller('FillBlankCtrl', ['$scope', 'exerciseService', '$statePar
             return;
         }
 
+        var length = $scope.model.exercisechoicelist.length;
+        for (var i = 0; i < length; i++) {
+            var choice = $scope.model.exercisechoicelist[i];
+            if (!!choice.Answer) {
+                alert("请填写选项！")
+                $scope.$parent.resetForbid();
+                return;
+            }
+        }
+
         var content = '';
         var choicSplitFlag = 'wshgkjqbwhfbxlfrh_a';
         angular.forEach($scope.model.exercisechoicelist, function (item) {

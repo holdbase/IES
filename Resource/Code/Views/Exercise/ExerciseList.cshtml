@@ -54,36 +54,50 @@
 </div>
 <div class="topic_detail">
     <ul class="topic_list">
-        <div exercise-list ng-repeat="item in exercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="false" creater="item.CreateUserID" ocid="item.OCID"></div>
-    </ul>    
+        <span exercise-list ng-repeat="item in exercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="false" creater="item.CreateUserID" ocid="item.OCID"></span>
+    </ul>
 </div>
 <div style="margin-top:20px;">
-    <dl>
+    @*<dl>
         <dt style="margin-left:3%; font-size:14px; color: #808080;">
             <label style="cursor: pointer;">
                 <input type="checkbox" style="cursor: pointer;" ng-model="checkAllValue" ng-change="checkAll()" />&nbsp;全 选
             </label>
-            <label style="cursor: pointer;width:20px;text-align:center;margin-left:30px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 10}" ng-click="changePageSize(10)">10</label>
-            <label style="cursor: pointer;width:20px;text-align:center;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 20}" ng-click="changePageSize(20)">20</label>
-            <label style="cursor: pointer;width:20px;text-align:center;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 50}" ng-click="changePageSize(50)">50</label>
-            <label style="cursor: pointer;width:30px;text-align:center;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 100}" ng-click="changePageSize(100)">100</label>
+            <label style="cursor: pointer;padding-top:10px; width:30px;height:26px;text-align:center;margin-left:30px; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 10}" ng-click="changePageSize(10)">10</label>
+            <label style="cursor: pointer;width:30px;text-align:center; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 20}" ng-click="changePageSize(20)">20</label>
+            <label style="cursor: pointer;width:30px;text-align:center; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 50}" ng-click="changePageSize(50)">50</label>
+            <label style="cursor: pointer;width:30px;text-align:center; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 100}" ng-click="changePageSize(100)">100</label>
         </dt>
         <dd>
             <div id="pager" style="margin-top:-2.5%; margin-left:35%;" ng-hide="pagesNum<=1"></div>
         </dd>
-    </dl>
-</div> 
+
+    </dl>*@
+    <div class="row">
+        <div class="col-md-4" style="padding-left:3%; font-size:14px; color: #808080;">
+            <label style="cursor: pointer;">
+                <input type="checkbox" style="cursor: pointer;" ng-model="checkAllValue" ng-change="checkAll()" />&nbsp;全 选
+            </label>
+            <label style="cursor: pointer;width:30px;height:26px;text-align:center;margin-left:30px; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 10}" ng-click="changePageSize(10)">10</label>
+            <label style="cursor: pointer;width:30px;text-align:center; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 20}" ng-click="changePageSize(20)">20</label>
+            <label style="cursor: pointer;width:30px;text-align:center; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 50}" ng-click="changePageSize(50)">50</label>
+            <label style="cursor: pointer;width:30px;text-align:center; padding-top:4px;" ng-class="{'exercise_page_size':exerciseService.Page.Size === 100}" ng-click="changePageSize(100)">100</label>
+
+        </div>
+        <div class="col-md-7 col-md-offset-1" id="pager"></div>
+    </div>
+</div>
 <div class="pop_bg" ng-show="bgPreview"></div>
 <div class="pop_800" id="ePreview" style="display:none">
     <div pre-view exercise="exercisePreview" on-close="closePreview()"></div>
 </div>
 <div ies-dialog id="eConfirm" style="display:none"
-            dialog-title="确认"
-            dialog-text="您确认删除该习题吗？"
-            ok-title="确定"
-            cancel-title="取消"></div> 
+     dialog-title="确认"
+     dialog-text="您确认删除该习题吗？"
+     ok-title="确定"
+     cancel-title="取消"></div>
 
 <div ies-exercise-uploader id="eExerciseUploader" style="display:none"
-                       exercise-course="course"
-                       file-catetory="3" />
+     exercise-course="course"
+     file-catetory="3" />
 
