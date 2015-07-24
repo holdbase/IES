@@ -5,7 +5,7 @@
         <li>
             批量共享 
             <ul class="permissions">
-                <share-range style="width:140px;" ng-repeat="item in shareRanges" ng-click="batchShareRange(item)" range="item"></share-range>
+                <span share-range style="width:140px;" ng-repeat="item in shareRanges" ng-click="batchShareRange(item)" range="item"></span>
             </ul>
         </li>
         <li class="batch_delete" ng-click="batchRemove()">批量删除</li>

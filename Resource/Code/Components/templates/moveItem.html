@@ -5,7 +5,7 @@
     </p>
     <ul ng-show="node.Children.length > 0" ng-model="node.Children">
         <li ng-repeat="child in node.Children">
-            <move-item item-node="child"></move-item>
+            <span move-item item-node="child"></span>
         </li>
     </ul>
 </div>
