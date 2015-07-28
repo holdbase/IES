@@ -51,7 +51,7 @@ namespace App.Resource
                 "~/scripts/Common/directives.js",
                 "~/scripts/Common/services.js",
 
-               // "~/Components/js/components.js",
+                "~/Components/js/components.js",
 
                 "~/scripts/Home/HomeControllers.js", 
                 "~/scripts/Authority/AuthService.js", 
