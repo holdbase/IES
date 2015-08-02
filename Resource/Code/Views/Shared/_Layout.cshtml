@@ -68,7 +68,7 @@
     </script>
 </head>
 <body class="exercise">
-    
+
     <div class="wrap">
         <!--公共头部开始-->
         <div class="public_header">
@@ -86,8 +86,8 @@
                         {
                             if (menu.Title == "返回主页" || menu.Title == "退出系统")
                             {
-                            <li><a href=@gethref( @menu.URL, @menu.MenuID )>@menu.Title</a></li>
-                           }
+                                <li><a href=@gethref( @menu.URL, @menu.MenuID )>@menu.Title</a></li>
+                            }
                         }
                     </ul>
                 </div>
@@ -126,7 +126,14 @@
                         {
                             if (menu.Title != "试卷库")
                             {
-                                <li id="@menu.MenuID" ui-sref-active="active"><a style="height:41px" target="_self" ui-sref="@menu.URL">@menu.Title</a></li>
+                                if (menu.MenuID == "B24")
+                                {
+                                    <li id="@menu.MenuID" ng-class="{active: $state.includes('content.ken')}"><a style="height:41px" target="_self" ui-sref="@menu.URL">@menu.Title</a></li>
+                                }
+                                else
+                                {
+                                    <li id="@menu.MenuID" ui-sref-active="active"><a style="height:41px" target="_self" ui-sref="@menu.URL">@menu.Title</a></li>
+                                }
                             }
                             else
                             {

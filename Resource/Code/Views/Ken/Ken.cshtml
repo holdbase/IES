@@ -13,24 +13,15 @@
                    require-ments="requireMents"
                    on-save-new="kenSave(ken, true)"
                    on-save="kenSave(ken, false)"
-                   on-cancel="kenCancel()" />
-    @*<add-chapter id="eChapter" style="display:none;"
-                 chapter-name="chapter.name"
-                 knowledge="chapter.ken"
-                 knowledges="ocKens"
-                 require-ment="requireMent"
-                 require-ments="requireMents"
-                 on-save-new="chapterSave(chapter, true)"
-                 on-save="chapterSave(chapter, false)">
-    </add-chapter>*@
+                   on-cancel="kenCancel()" /> 
     <div class="exercise_btn">
         <a class="topic_import" dialog-show dialog-id="eKen"><em><i class="icon"></i></em><span>添加知识点</span></a>
-        @*<a class="topic_import" dialog-show dialog-id="eChapter"><em><i class="icon"></i></em><span>添加章节</span></a>*@
     </div>
 </div>
 <p class="guide_word" ng-show="isKen">点击左侧[知识点]，查看该知识点关联章节、资料、习题</p>
 <p class="guide_word" ng-show="!isKen">点击左侧[章节]，查看该章节右侧关联知识点</p> 
 <div class="knowledge_box">
+
     <div ui-view></div>
     
     <div class="chapter_box">
@@ -40,7 +31,6 @@
         <ul class="chapter_list">
             <li ng-class="{'active':tab == 1}"><a ng-click="tabChange(1)">关联资料</a></li>
             <li ng-class="{'active':tab == 2}"><a ng-click="tabChange(2)">关联习题</a></li>
-            @*<li ng-class="{'active':tab == 3}"><a ng-click="tabChange(3)">关联话题</a></li>*@
         </ul>
         <div ng-class="{'connect_item':tab!=1}">
             <table class="data_list">
@@ -64,71 +54,7 @@
             <ul class="topic_list">
                 <div exercise-list ng-repeat="item in linkExercises" exercise="item" checks="checks" share-ranges="shareRanges" disable-difficult="true" ocid="OCID" creater="item.CreateUserID" />
             </ul>
-        </div>
-
-        <div ng-class="{'connect_item':tab!=3}">
-            <ul class="connect_topic">
-                <li>
-                    <img src="http://placehold.it/40x40/cccccc" width="40" height="40" />
-                    <div class="connect_topic_detail">
-                        <p class="connect_detail"><a href="#">话题标题</a><span class="to_top">置顶</span></p>
-                        <p class="topic_origin">[混合式课程设计与技术平台<1>班] 自由讨论区</p>
-                        <p class="connect_topic_info">来自 [混合式课程设计与技术平台<1>班]  陈建  (2014/09/24)　最后回复 诸葛孔明  7小时前</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://placehold.it/40x40/cccccc" width="40" height="40" />
-                    <div class="connect_topic_detail">
-                        <p class="connect_detail"><a href="#">话题标题</a><span class="the_select">精Ⅲ</span></p>
-                        <p class="topic_origin">[混合式课程设计与技术平台<1>班] 自由讨论区</p>
-                        <p class="connect_topic_info">来自 [混合式课程设计与技术平台<1>班]  陈建  (2014/09/24)　最后回复 诸葛孔明  7小时前</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://placehold.it/40x40/cccccc" width="40" height="40" />
-                    <div class="connect_topic_detail">
-                        <p class="connect_detail"><a href="#">话题标题</a></p>
-                        <p class="topic_origin">[混合式课程设计与技术平台<1>班] 自由讨论区</p>
-                        <p class="connect_topic_info">来自 [混合式课程设计与技术平台<1>班] <span>[教师]</span>  陈建  (2014/09/24)　最后回复 诸葛孔明  7小时前</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://placehold.it/40x40/cccccc" width="40" height="40" />
-                    <div class="connect_topic_detail">
-                        <p class="connect_detail"><a href="#">话题标题</a></p>
-                        <p class="topic_origin">[混合式课程设计与技术平台<1>班] 自由讨论区</p>
-                        <p class="connect_topic_info">来自 [混合式课程设计与技术平台<1>班] <span>[教师]</span>  陈建  (2014/09/24)　最后回复 诸葛孔明  7小时前</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://placehold.it/40x40/cccccc" width="40" height="40" />
-                    <div class="connect_topic_detail">
-                        <p class="connect_detail"><a href="#">话题标题</a></p>
-                        <p class="topic_origin">[混合式课程设计与技术平台<1>班] 自由讨论区</p>
-                        <p class="connect_topic_info">来自 [混合式课程设计与技术平台<1>班] <span>[教师]</span>  陈建  (2014/09/24)　最后回复 诸葛孔明  7小时前</p>
-                    </div>
-                </li>
-            </ul>
-            <div class="topic_detail_box">
-                <div class="topic_detail">
-                    <h5>话题标题</h5>
-                    <p class="issue_time">发布于 3 天前　发布人：戴杰</p>
-                    <p class="topic_content">大家好，小编又来给童鞋们解答问题啦：<br>小编发现还有很少一部分同学观看视频没有进度<br>这里呢，小编在这个给大家说明几个问题：<br>1，目前我们的手机APP应用在线观看是完全同步视频进度的，<br>2，请观看离线缓存视频的童鞋一定要保证手机流量的开启，这样才能保存视频的进度哦！<br>3，离线下载的视频在观看时是不会产生任何流量的拉，大家放心好了~<br>最后呢小编提醒大家一个注意点，并且要告诉大家一个好消息！<br>（注意点：目前我们的APP在完全离线的状态下观看离线视频是不会保存进度的！~所以一定要保证手机流量的开启哦！~）<br>好消息就是我们会在下面的版本为大家解决完全离线状态下看视频也有进度的问题，啦啦~！~<br>最后谢谢大家支持我们APP应用哦！还有请大家要帮小编宣传宣传，哈哈~~</p>
-                    <a class="reply_btn" href="javascript:;">快速回复</a>
-                </div>
-                <ul class="reply_box">
-                    <li>
-                        <img src="http://placehold.it/40x40/cccccc" width="40" height="40" />
-                        <div class="reply_detail">
-                            <p class="reply_name">姓名</p>
-                            <p class="reply_content">因为什么选错的？</p>
-                            <p class="reply_time">回复于 3 天前</p>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
+        </div> 
     </div>
 
 </div>
