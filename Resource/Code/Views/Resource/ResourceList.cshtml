@@ -38,7 +38,8 @@
     </dl>
     <span class="guanbi" style="cursor:pointer;" ng-click="showQuery=!showQuery"><i class="icon"></i></span>
 </div>
-<table class="course_data">
+
+<table class="course_data" ng-show="model.OCID!=0">
     <thead>
         <tr>
             <th width="38%">
@@ -48,20 +49,19 @@
                     <i class="icon arrow" ng-click="changeOrder('Name');"></i>
                 </div>
             </th>
-            <th width="12%" ng-show="model.OCID!=0">
+            <th width="12%">
                 <div class="data_name">
                     <p>使用权限</p>
                 </div>
             </th>
-            <th width="10%" ng-show="model.OCID!=0">
+            <th width="10%">
                 <div class="data_name">
                     <p>关联知识点</p>
                 </div>
             </th>
-            <th width="10%" ng-show="model.OCID!=0">
+            <th width="10%">
                 <div class="data_name">
                     <p>上传用户</p>
-                    @*<i class="icon arrow" ng-click="changeOrder('Name');"></i>*@
                 </div>
             </th>
             <th width="10%">文件大小</th>
@@ -73,7 +73,6 @@
             </th>
         </tr>
     </thead>
-    @*<tr ng-repeat="item in folderRelations | orderBy:orderField">*@
     <tr ng-repeat="item in folderRelations">
         <td>
             <div class="data_name">
@@ -83,26 +82,73 @@
                     <div class="more_operation">
                         <span>...</span>
                         <div file-operation on-property="fileProperty(item)"
-                                        on-remove="fireRemove(item)"
-                                        on-return-page="returnPage(item)"
-                                        on-mobile="fireMobile(item)"
-                                        folder-relation="item"
-                                        ocid="model.OCID"
-                                        creater="item.CreateUserID"
-                                        share-ranges="shareRanges" />
+                             on-remove="fireRemove(item)"
+                             on-return-page="returnPage(item)"
+                             on-mobile="fireMobile(item)"
+                             folder-relation="item"
+                             ocid="model.OCID"
+                             creater="item.CreateUserID"
+                             share-ranges="shareRanges" />
                     </div>
                 </div>
             </div>
         </td>
-        <td ng-bind="GetShareRange(item.ShareRange)" ng-show="model.OCID!=0"></td>
-        <td ng-show="model.OCID!=0" title="{{item.Kens}}">
+        <td ng-bind="GetShareRange(item.ShareRange)"></td>
+        <td title="{{item.Kens}}">
             <p ng-bind="item.Kens" style="width:100px; float:left;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;line-height:20px;"></p>
         </td>
-        <td ng-bind="item.RelationType==1?item.CreateUserName:'一'" ng-show="model.OCID!=0"></td>
+        <td ng-bind="item.RelationType==1?item.CreateUserName:'一'"></td>
         <td ng-bind="item.FileSize!=0?CalculatedSize(item.FileSize):'一'"></td>
         <td ng-bind="item.CreateTime | dateFormat"></td>
     </tr>
 </table>
+
+
+
+<table class="course_data" ng-show="model.OCID==0">
+    <thead>
+        <tr>
+            <th width="80%">
+                <div class="data_name">
+                    <input type="checkbox" ng-model="selectionAllToggle" ng-true-value="YES" ng-false-value="NO">
+                    <p>文件名称</p>
+                    <i class="icon arrow" ng-click="changeOrder('Name');"></i>
+                </div>
+            </th> 
+            <th width="10%">文件大小</th>
+            <th width="10%">
+                <div class="data_name">
+                    <p>修改日期</p>
+                    <i class="icon arrow" ng-click="changeOrder('CreateTime');"></i>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tr ng-repeat="item in folderRelations">
+        <td>
+            <div class="data_name">
+                <input type="checkbox" checklist-model="checks" checklist-value="item" ng-class="{'hideAuth': !authService.hasAuth(item.CreateUserID, model.OCID)}">
+                <div folder file-item="item" folder-name="item.Name" folder-ext="item.Ext" folder-item="item" on-open="folderClick(item)" on-blur="updFolderName(item)" />
+                <div class="file_operation">
+                    <div class="more_operation">
+                        <span>...</span>
+                        <div file-operation on-property="fileProperty(item)"
+                             on-remove="fireRemove(item)"
+                             on-return-page="returnPage(item)"
+                             on-mobile="fireMobile(item)"
+                             folder-relation="item"
+                             ocid="model.OCID"
+                             creater="item.CreateUserID"
+                             share-ranges="shareRanges" />
+                    </div>
+                </div>
+            </div>
+        </td> 
+        <td ng-bind="item.FileSize!=0?CalculatedSize(item.FileSize):'一'"></td>
+        <td ng-bind="item.CreateTime | dateFormat"></td>
+    </tr>
+</table>
+
 
 <div class="pop_400" ng-show="delIsShow">
     <h4>删除</h4>
@@ -123,7 +169,7 @@
 <div rar-index-page id="rarIndexPage" style="display:none" folder-relation="rarFolderRelation"></div>
 <div file-property id="fileProp" style="display:none" chapter="chapter" chapters="chapters" ken="ken" kens="kens"></div>
 <div ies-file-uploader id="eIesUploader" style="display:none"
-                   ocid="course.OCID"
-                   course-id="course.CourseID"
-                   folder-obj="folderRelation"
-                   file-catetory="1" />
+     ocid="course.OCID"
+     course-id="course.CourseID"
+     folder-obj="folderRelation"
+     file-catetory="1" />

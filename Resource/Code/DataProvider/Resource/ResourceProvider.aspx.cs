@@ -182,21 +182,11 @@ namespace App.Resource.DataProvider.Resource
         [WebMethod]
         public static IList<FolderRelation> FolderRelation_List(Folder folder, File file)
         {
-            //if (folder.ParentID == 0) folder.ParentID = -1;
-            //IList<Folder> allFolders = new FileBLL().Folder_List(folder);
             folder.CreateUserID = IES.Service.UserService.CurrentUser.UserID;
-            IList<Folder> allFolders = Folder_List(folder);
-            if (file != null)
-            {
-                file.FolderID = folder.ParentID;
-                //file.UploadTime = DateTime.Now.AddMonths(-1);
-            }
-            file.CreateUserID = IES.Service.UserService.CurrentUser.UserID;
-            IList<File> allFiles = new FileBLL().File_Search(file);
-
             IList<FolderRelation> allFolderRelations = new List<FolderRelation>();
-            //TODO
-            if (file.FileTitle == "")
+            IList<Folder> allFolders = Folder_List(folder);
+            bool isFilter = !string.IsNullOrEmpty(file.FileTitle);
+            if (!isFilter)
             {
                 foreach (var item in allFolders)
                 {
@@ -207,13 +197,25 @@ namespace App.Resource.DataProvider.Resource
                     fr.ParentID = item.ParentID;
                     fr.RelationType = FileType.Folder;
                     fr.CourseId = item.CourseID;
-                    //fr.CreateTime = new DateTime();
                     fr.CreateUserID = item.CreateUserID;
                     fr.CreateTime = item.CreateTime;
                     fr.ShareRange = item.ShareRange;
                     allFolderRelations.Add(fr);
                 }
             }
+            else
+            {
+                folder.FolderID = folder.ParentID;
+                allFolders = new FileBLL().Folder_Children(folder);
+            }
+
+            if (file != null)
+            {
+                file.FolderID = folder.ParentID;
+            }
+            file.CreateUserID = IES.Service.UserService.CurrentUser.UserID;
+            IList<File> allFiles = new FileBLL().File_Search(file);
+
             foreach (var item in allFiles)
             {
                 FolderRelation fr = new FolderRelation();
@@ -246,8 +248,9 @@ namespace App.Resource.DataProvider.Resource
 
             foreach (var root in allFolderRelations)
             {
-                var parentId = folder.ParentID == -1 ? 0 : folder.ParentID;
-                if (root.ParentID == parentId) roots.Add(root);
+                //var parentId = folder.ParentID == -1 ? 0 : folder.ParentID;
+                //if (root.ParentID == parentId) roots.Add(root);
+                roots.Add(root);
             }
             foreach (var root in roots)
             {
@@ -255,6 +258,21 @@ namespace App.Resource.DataProvider.Resource
                 {
                     BuildRelationFolder(allFolderRelations, root);
                 }
+            }
+            if (isFilter)
+            {
+                IList<FolderRelation> filterItems = new List<FolderRelation>();
+                foreach (var item in allFolders)
+                {
+                    var children = from v in roots
+                                   where v.ParentID == item.FolderID
+                                   select v;
+                    foreach (var child in children)
+                    {
+                        filterItems.Add(child);
+                    }
+                }
+                return filterItems.ToList();
             }
 
             return roots.ToList();
