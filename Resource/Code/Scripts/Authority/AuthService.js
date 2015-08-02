@@ -27,6 +27,7 @@ aService.factory('authService', ['httpService', function (httpService) {
     }
 
     var findRoleByocid = function (ocid) {
+        if (!service.ocTeamRoles) return null;
         var length = service.ocTeamRoles.length;
         for (var i = 0; i < length; i++) {
             if (service.ocTeamRoles[i].OCID === ocid) return service.ocTeamRoles[i];

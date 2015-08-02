@@ -56,11 +56,14 @@ aService.factory('chapterService', ['httpService', function (httpService) {
             var chapter = chapters[i];
             if (chapter.ParentID === 0) {
                 chapterIndex += 1;
-                chapter.Title = '' + chapterIndex + '.' + ' ' + chapter.Title;
+                //chapter.Title = '' + chapterIndex + '.' + ' ' + chapter.Title;
+                //chapter.Section = '' + chapterIndex + '.' + ' ';
+                chapter.Section = '';
                 sectionIndex = 0;
             } else {
                 sectionIndex += 1;
-                chapter.Title = '' + chapterIndex + '.' + sectionIndex + ' ' + chapter.Title;
+                //chapter.Title = '' + chapterIndex + '.' + sectionIndex + ' ' + chapter.Title;
+                chapter.Section = '' + chapterIndex + '.' + sectionIndex + ' ';
             }
         }
     }     

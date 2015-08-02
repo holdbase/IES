@@ -438,6 +438,7 @@ appKnow.controller('KenChapterCtrl', ['$scope', '$state', 'chapterService', 'ken
                 chapterService.Chapter_ADD(newChapter, function (data) {
                     if (data.d) {
                         $scope.$parent.chapters.push(data.d);
+                        chapterService.SectionFormat($scope.chapters);
                     }
                 });
             } else {
@@ -582,11 +583,32 @@ appKnow.controller('KenChapterCtrl', ['$scope', '$state', 'chapterService', 'ken
             $scope.$emit('onRequestQuery', $scope.lastSelection, ken, 'fromChapter');
         });
 
+        var findChapter = function (chapterID) {
+            var length = $scope.chapters.length;
+            for (var i = 0; i < length; i++) {
+                if ($scope.chapters[i].ChapterID === chapterID) {
+                    return $scope.chapters[i];
+                }
+            }
+        }
+
         $scope.move = function (direction) {
             if (!$scope.lastSelection.ChapterID) return;
             chapterService.Chapter_Move($scope.lastSelection, direction, function (data) {
                 if (data.d) {
-                    $scope.$parent.chapters = data.d;
+                    //$scope.$parent.chapters = data.d;
+                    var changedChapters = [];
+                    angular.forEach(data.d, function (item) {
+                        if (item.ParentID === $scope.parentChapter.ChapterID) {
+                            this.push(item);
+                        }
+                    }, changedChapters);
+
+                    angular.forEach(changedChapters, function (item) {
+                        var chapter = findChapter(item.ChapterID);
+                        chapter.Orde = item.Orde;
+                    });
+                    chapterService.SectionFormat($scope.$parent.chapters);
                 }
             });
         }
@@ -607,6 +629,7 @@ appKnow.controller('KenChapterCtrl', ['$scope', '$state', 'chapterService', 'ken
                             break;
                         }
                     }
+                    chapterService.SectionFormat($scope.$parent.chapters);
 
                     $scope.$parent.linkFiles.length = 0;
                     $scope.$parent.linkExercises.length = 0;

@@ -9,7 +9,7 @@
     <ul class="second_item"> 
         <li ng-class="{'active': child.ChapterID===childChapter.ChapterID}" ng-repeat="child in items | parentID:chapterItem.ChapterID | orderBy:'Orde'" ng-click="childSelected(child)">
             <a class=" first_chapter">
-                <p ng-bind="child.Title"></p>
+                <p >{{child.Section}}{{child.Title}}</p>
                 <span class="edit_box" style="right:4px;" ng-class="{'hideAuth': !hasChapterAuth}">
                     <em class="icon btn_box_edit" ng-click="edit(child)"></em>
                     <span>编辑</span>

@@ -9,7 +9,7 @@
             <select class="which_course" ng-model="data.shareRange" ng-options="item.name for item in shareRanges"></select>
             <select class="question_type" ng-model="data.exerciseType" ng-disabled="canChangeExerciseType(data.exerciseType)" ng-change="changeExerciseType(data.exerciseType)" ng-options="item.name for item in exerciseTypes"></select>
             <select class="difficulty_degree" ng-model="data.difficult" ng-options="item.name for item in difficulties"></select>
-            <select class="difficulty_degree" ng-model="data.chapter" ng-options="item.Title for item in chapters"></select> 
+            <select class="difficulty_degree" ng-model="data.chapter" ng-options="item.Section + item.Title for item in chapters"></select> 
         </div>
         <div class="paper_sort">
             <div class="range_applicable">
